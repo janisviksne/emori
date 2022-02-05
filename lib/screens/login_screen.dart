@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
               alignment: Alignment.center,
               padding: const EdgeInsets.all(10),
               child: const Text(
-                'Amori',
+                'Emori',
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w500,
