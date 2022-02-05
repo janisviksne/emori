@@ -1,6 +1,6 @@
-# emori
+# Emori
 
-Initial creation of emori
+Initial creation of Emori
 
 ## Getting Started
 
