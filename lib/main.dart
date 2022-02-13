@@ -1,5 +1,6 @@
-import 'package:emori/screens/login_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'auth_screens/login.dart';
 
 void main() => runApp(const MyApp());
 
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.light(),
-      home: LoginScreen(),
+      home: Login(),
     );
   }
 }
