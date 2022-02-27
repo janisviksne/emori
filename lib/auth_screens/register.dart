@@ -36,6 +36,10 @@ class _RegisterState extends State<Register> {
                   height: 750,
                   width: MediaQuery.of(context).size.width,
                   decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(
+                            "images/auth_backgrounds/registration_background.png"),
+                        fit: BoxFit.scaleDown),
                     color: Color.fromRGBO(248, 241, 214, 1),
                     boxShadow: [
                       BoxShadow(
@@ -166,7 +170,7 @@ class _RegisterState extends State<Register> {
                   height: 90,
                   width: 90,
                   child: FlatButton(
-                      color: Color.fromRGBO(233, 65, 82, 1),
+                      color: const Color.fromRGBO(233, 65, 82, 1),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           save();
