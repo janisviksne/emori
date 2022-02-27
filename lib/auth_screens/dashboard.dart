@@ -16,7 +16,7 @@ class _DashboardState extends State<Dashboard> {
               height: 750,
               width: MediaQuery.of(context).size.width,
               decoration: const BoxDecoration(
-                color: Color.fromRGBO(233, 65, 82, 1),
+                color: Color.fromRGBO(248, 241, 214, 1),
                 boxShadow: [
                   BoxShadow(
                       blurRadius: 10, color: Colors.black, offset: Offset(1, 5))

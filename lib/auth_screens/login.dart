@@ -41,7 +41,7 @@ class _LoginState extends State<Login> {
                   height: 750,
                   width: MediaQuery.of(context).size.width,
                   decoration: const BoxDecoration(
-                    color: Color.fromRGBO(233, 65, 82, 1),
+                    color: Color.fromRGBO(248, 241, 214, 1),
                     boxShadow: [
                       BoxShadow(
                           blurRadius: 10,
@@ -63,8 +63,8 @@ class _LoginState extends State<Login> {
                           "Login",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 50,
-                            color: Colors.white,
+                            fontSize: 35,
+                            color: Colors.black,
                           ),
                         ),
                         const SizedBox(
@@ -76,8 +76,8 @@ class _LoginState extends State<Login> {
                             "Email",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 40,
-                              color: Color.fromRGBO(255, 255, 255, 0.8),
+                              fontSize: 30,
+                              color: Colors.black,
                             ),
                           ),
                         ),
@@ -93,7 +93,7 @@ class _LoginState extends State<Login> {
                             return null;
                           },
                           style: const TextStyle(
-                              fontSize: 30, color: Colors.white),
+                              fontSize: 20, color: Colors.black),
                           decoration: const InputDecoration(
                               errorStyle:
                                   TextStyle(fontSize: 20, color: Colors.black),
@@ -102,7 +102,7 @@ class _LoginState extends State<Login> {
                         ),
                         Container(
                           height: 8,
-                          color: const Color.fromRGBO(255, 255, 255, 0.4),
+                          color: Colors.black,
                         ),
                         const SizedBox(
                           height: 60,
@@ -112,8 +112,8 @@ class _LoginState extends State<Login> {
                           child: Text(
                             "Password",
                             style: TextStyle(
-                              fontSize: 40,
-                              color: Color.fromRGBO(255, 255, 255, 0.8),
+                              fontSize: 30,
+                              color: Colors.black,
                             ),
                             // fontWeight: FontWeight.bold,
                           ),
@@ -132,7 +132,7 @@ class _LoginState extends State<Login> {
                             return null;
                           },
                           style: const TextStyle(
-                              fontSize: 30, color: Colors.white),
+                              fontSize: 30, color: Colors.black),
                           decoration: const InputDecoration(
                               errorStyle:
                                   TextStyle(fontSize: 20, color: Colors.black),
@@ -141,7 +141,7 @@ class _LoginState extends State<Login> {
                         ),
                         Container(
                           height: 8,
-                          color: Color.fromRGBO(255, 255, 255, 0.4),
+                          color: Colors.black,
                         ),
                         const SizedBox(
                           height: 60,
@@ -157,9 +157,8 @@ class _LoginState extends State<Login> {
                             child: const Text(
                               "Dont have Account ?",
                               style: TextStyle(
-                                fontWeight: FontWeight.bold,
                                 fontSize: 20,
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                             ),
                           ),
@@ -174,15 +173,13 @@ class _LoginState extends State<Login> {
                 Container(
                   height: 90,
                   width: 90,
-                  child: FlatButton(
-                      color: Color.fromRGBO(233, 65, 82, 1),
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(primary: Colors.black),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           save();
                         }
                       },
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
                       child: const Icon(
                         Icons.arrow_forward,
                         color: Colors.white,

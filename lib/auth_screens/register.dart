@@ -36,12 +36,13 @@ class _RegisterState extends State<Register> {
                   height: 750,
                   width: MediaQuery.of(context).size.width,
                   decoration: const BoxDecoration(
-                    color: Color.fromRGBO(233, 65, 82, 1),
+                    color: Color.fromRGBO(248, 241, 214, 1),
                     boxShadow: [
                       BoxShadow(
-                          blurRadius: 10,
-                          color: Colors.black,
-                          offset: Offset(1, 5))
+                        blurRadius: 10,
+                        color: Colors.black,
+                        offset: Offset(1, 5),
+                      )
                     ],
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(80),
@@ -58,8 +59,8 @@ class _RegisterState extends State<Register> {
                           "Register",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 50,
-                            color: Colors.white,
+                            fontSize: 30,
+                            color: Colors.black,
                           ),
                         ),
                         const SizedBox(
@@ -70,9 +71,8 @@ class _RegisterState extends State<Register> {
                           child: Text(
                             "Email",
                             style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 50,
-                              color: Color.fromRGBO(255, 255, 255, 0.8),
+                              fontSize: 30,
+                              color: Colors.black,
                             ),
                           ),
                         ),
@@ -88,7 +88,7 @@ class _RegisterState extends State<Register> {
                             return null;
                           },
                           style: const TextStyle(
-                              fontSize: 30, color: Colors.white),
+                              fontSize: 30, color: Colors.black),
                           decoration: const InputDecoration(
                               errorStyle:
                                   TextStyle(fontSize: 20, color: Colors.black),
@@ -96,8 +96,8 @@ class _RegisterState extends State<Register> {
                                   borderSide: BorderSide.none)),
                         ),
                         Container(
-                          height: 8,
-                          color: Color.fromRGBO(255, 255, 255, 0.4),
+                          height: 2,
+                          color: Colors.black,
                         ),
                         const SizedBox(
                           height: 60,
@@ -108,7 +108,7 @@ class _RegisterState extends State<Register> {
                             "Password",
                             style: TextStyle(
                               fontSize: 40,
-                              color: Color.fromRGBO(255, 255, 255, 0.8),
+                              color: Colors.black,
                             ),
                           ),
                         ),
@@ -134,8 +134,8 @@ class _RegisterState extends State<Register> {
                                   borderSide: BorderSide.none)),
                         ),
                         Container(
-                          height: 8,
-                          color: Color.fromRGBO(255, 255, 255, 0.4),
+                          height: 2,
+                          color: Colors.black,
                         ),
                         const SizedBox(
                           height: 60,
@@ -150,7 +150,7 @@ class _RegisterState extends State<Register> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                             ),
                           ),
