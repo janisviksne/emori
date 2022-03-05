@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:emori/auth_screens/register.dart';
 import 'package:emori/auth_screens/user.dart';
+import 'package:emori/utilities/constants.dart';
+import 'package:emori/utilities/widgets/input_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -15,7 +17,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   User user = User("", "");
-  String url = "http://192.168.8.118:8080/login";
+  String url = "http://localhost:8080/login";
 
   Future save() async {
     var res = await http.post(Uri.parse(url),
@@ -44,7 +46,7 @@ class _LoginState extends State<Login> {
                     image: DecorationImage(
                         image: AssetImage(
                             "images/auth_backgrounds/login_background.png"),
-                        fit: BoxFit.cover),
+                        fit: BoxFit.scaleDown),
                     color: Color.fromRGBO(248, 241, 214, 1),
                     boxShadow: [
                       BoxShadow(
@@ -63,49 +65,21 @@ class _LoginState extends State<Login> {
                         const SizedBox(
                           height: 100,
                         ),
-                        const Text(
-                          "Login",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 35,
-                            color: Colors.black,
-                          ),
-                        ),
+                        const Text("Login", style: kInputTextStyle),
                         const SizedBox(
                           height: 30,
                         ),
                         const Align(
                           alignment: Alignment.topLeft,
-                          child: Text(
-                            "Email",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,
-                              color: Colors.black,
-                            ),
-                          ),
+                          child: Text("Email", style: kInputTextStyle),
                         ),
-                        TextFormField(
-                          controller: TextEditingController(text: user.email),
-                          onChanged: (val) {
-                            user.email = val;
-                          },
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Password is Empty';
-                            }
-                            return null;
-                          },
-                          style: const TextStyle(
-                              fontSize: 20, color: Colors.black),
-                          decoration: const InputDecoration(
-                              errorStyle:
-                                  TextStyle(fontSize: 20, color: Colors.black),
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide.none)),
+                        InputFieldWidget(
+                          inputValue: user.email,
+                          fieldName: 'E-mail',
+                          isObscureText: false,
                         ),
                         Container(
-                          height: 8,
+                          height: 2,
                           color: Colors.black,
                         ),
                         const SizedBox(
@@ -113,38 +87,17 @@ class _LoginState extends State<Login> {
                         ),
                         const Align(
                           alignment: Alignment.topLeft,
-                          child: Text(
-                            "Password",
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Colors.black,
-                            ),
-                            // fontWeight: FontWeight.bold,
-                          ),
+                          child: Text("Password", style: kInputTextStyle
+                              // fontWeight: FontWeight.bold,
+                              ),
                         ),
-                        TextFormField(
-                          obscureText: true,
-                          controller:
-                              TextEditingController(text: user.password),
-                          onChanged: (val) {
-                            user.password = val;
-                          },
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Email is Empty';
-                            }
-                            return null;
-                          },
-                          style: const TextStyle(
-                              fontSize: 30, color: Colors.black),
-                          decoration: const InputDecoration(
-                              errorStyle:
-                                  TextStyle(fontSize: 20, color: Colors.black),
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide.none)),
+                        InputFieldWidget(
+                          inputValue: user.password,
+                          fieldName: 'Password',
+                          isObscureText: true,
                         ),
                         Container(
-                          height: 8,
+                          height: 2,
                           color: Colors.black,
                         ),
                         const SizedBox(
@@ -159,7 +112,7 @@ class _LoginState extends State<Login> {
                                       builder: (context) => Register()));
                             },
                             child: const Text(
-                              "Dont have Account ?",
+                              "Don't have Account ?",
                               style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.black,
@@ -167,28 +120,23 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                         ),
+                        Container(
+                          padding: const EdgeInsets.only(top: 20.0),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                primary: Colors
+                                    .black), //ToDo add the proper tone to this
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                save();
+                              }
+                            },
+                            child: Text('Pieslēgties'),
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                Container(
-                  height: 90,
-                  width: 90,
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(primary: Colors.black),
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          save();
-                        }
-                      },
-                      child: const Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                        size: 30,
-                      )),
                 )
               ],
             )),
