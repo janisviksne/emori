@@ -62,17 +62,17 @@ class _LoginState extends State<Login> {
                         const SizedBox(
                           height: 100,
                         ),
-                        const Text("Login", style: kInputTextStyle),
+                        const Text("Ienāc savā kontā", style: kInputTextStyle),
                         const SizedBox(
                           height: 30,
                         ),
                         const Align(
                           alignment: Alignment.topLeft,
-                          child: Text("Email", style: kInputTextStyle),
+                          child: Text("E-pasts", style: kInputTextStyle),
                         ),
                         InputFieldWidget(
                           inputValue: user.email,
-                          fieldName: 'E-mail',
+                          fieldName: 'E-pasta ',
                           isObscureText: false,
                         ),
                         Container(
@@ -84,18 +84,18 @@ class _LoginState extends State<Login> {
                         ),
                         const Align(
                           alignment: Alignment.topLeft,
-                          child: Text("Password", style: kInputTextStyle
+                          child: Text("Parole ", style: kInputTextStyle
                               // fontWeight: FontWeight.bold,
                               ),
                         ),
                         InputFieldWidget(
                           inputValue: user.password,
-                          fieldName: 'Password',
+                          fieldName: 'Paroles',
                           isObscureText: true,
                         ),
                         Container(
                           height: 2,
-                          color: Colors.black,
+                          color: kActiveGreen,
                         ),
                         const SizedBox(
                           height: 60,
@@ -109,26 +109,22 @@ class _LoginState extends State<Login> {
                                       builder: (context) => Register()));
                             },
                             child: const Text(
-                              "Don't have Account ?",
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.black,
-                              ),
+                              "Izveidot kontu",
+                              style: kInputFieldUnderline,
                             ),
                           ),
                         ),
                         Container(
                           padding: const EdgeInsets.only(top: 20.0),
                           child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                primary: Colors
-                                    .black), //ToDo add the proper tone to this
+                            style:
+                                ElevatedButton.styleFrom(primary: kActiveGreen),
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
                                 save();
                               }
                             },
-                            child: Text('Pieslēgties'),
+                            child: const Text('Pieslēgties'),
                           ),
                         ),
                       ],

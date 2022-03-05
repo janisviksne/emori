@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:emori/auth_screens/user.dart';
+import 'package:emori/utilities/constants.dart';
+import 'package:emori/utilities/widgets/input_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Register extends StatefulWidget {
-  //const Register({required Key key}) : super(key: key);
-
   @override
   _RegisterState createState() => _RegisterState();
 }
@@ -14,7 +14,7 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   User user = User("", "");
-  String url = "http://192.168.8.118:8080/register";
+  String url = "http://localhost:8080/register";
 
   Future save() async {
     var res = await http.post(Uri.parse(url),
@@ -40,7 +40,7 @@ class _RegisterState extends State<Register> {
                         image: AssetImage(
                             "images/auth_backgrounds/registration_background.png"),
                         fit: BoxFit.scaleDown),
-                    color: Color.fromRGBO(248, 241, 214, 1),
+                    color: kBackgroundColor,
                     boxShadow: [
                       BoxShadow(
                         blurRadius: 10,
@@ -48,9 +48,6 @@ class _RegisterState extends State<Register> {
                         offset: Offset(1, 5),
                       )
                     ],
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(80),
-                        bottomRight: Radius.circular(20)),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -59,87 +56,38 @@ class _RegisterState extends State<Register> {
                         const SizedBox(
                           height: 100,
                         ),
-                        const Text(
-                          "Register",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,
-                            color: Colors.black,
-                          ),
-                        ),
+                        const Text("Reģistrācija", style: kInputTextStyle),
                         const SizedBox(
                           height: 30,
                         ),
                         const Align(
                           alignment: Alignment.topLeft,
-                          child: Text(
-                            "Email",
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Colors.black,
-                            ),
-                          ),
+                          child: Text("E-pasts", style: kInputTextStyle),
                         ),
-                        TextFormField(
-                          controller: TextEditingController(text: user.email),
-                          onChanged: (val) {
-                            user.email = val;
-                          },
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Email is Empty';
-                            }
-                            return null;
-                          },
-                          style: const TextStyle(
-                              fontSize: 30, color: Colors.black),
-                          decoration: const InputDecoration(
-                              errorStyle:
-                                  TextStyle(fontSize: 20, color: Colors.black),
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide.none)),
+                        InputFieldWidget(
+                          inputValue: user.email,
+                          fieldName: 'E-pasta',
+                          isObscureText: true,
                         ),
                         Container(
                           height: 2,
-                          color: Colors.black,
+                          color: kActiveGreen,
                         ),
                         const SizedBox(
                           height: 60,
                         ),
                         const Align(
                           alignment: Alignment.topLeft,
-                          child: Text(
-                            "Password",
-                            style: TextStyle(
-                              fontSize: 40,
-                              color: Colors.black,
-                            ),
-                          ),
+                          child: Text("Password", style: kInputTextStyle),
                         ),
-                        TextFormField(
-                          obscureText: true,
-                          controller:
-                              TextEditingController(text: user.password),
-                          onChanged: (val) {
-                            user.password = val;
-                          },
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Email is Empty';
-                            }
-                            return null;
-                          },
-                          style: const TextStyle(
-                              fontSize: 30, color: Colors.white),
-                          decoration: const InputDecoration(
-                              errorStyle:
-                                  TextStyle(fontSize: 20, color: Colors.black),
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide.none)),
+                        InputFieldWidget(
+                          inputValue: user.password,
+                          fieldName: 'Paroles',
+                          isObscureText: true,
                         ),
                         Container(
                           height: 2,
-                          color: Colors.black,
+                          color: kActiveGreen,
                         ),
                         const SizedBox(
                           height: 60,
@@ -150,40 +98,28 @@ class _RegisterState extends State<Register> {
                               Navigator.pop(context);
                             },
                             child: const Text(
-                              "Already have Account ?",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Colors.black,
-                              ),
+                              "Esi jau reģistrējies ?",
+                              style: kInputFieldUnderline,
                             ),
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(top: 20.0),
+                          child: ElevatedButton(
+                            style:
+                                ElevatedButton.styleFrom(primary: kActiveGreen),
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                save();
+                              }
+                            },
+                            child: const Text('Reģistrēties'),
                           ),
                         ),
                       ],
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 40,
-                ),
-                Container(
-                  height: 90,
-                  width: 90,
-                  child: FlatButton(
-                      color: const Color.fromRGBO(233, 65, 82, 1),
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          save();
-                        }
-                      },
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
-                      child: const Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                        size: 30,
-                      )),
-                )
               ],
             )),
       ),

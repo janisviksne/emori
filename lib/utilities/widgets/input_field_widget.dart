@@ -1,3 +1,4 @@
+import 'package:emori/utilities/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,13 +23,13 @@ class InputFieldWidget extends StatelessWidget {
       },
       validator: (value) {
         if (value!.isEmpty) {
-          return '$fieldName is Empty';
+          return '$fieldName lauks ir tukšs!';
         }
         return null;
       },
-      style: const TextStyle(fontSize: 20, color: Colors.black),
+      style: const TextStyle(fontSize: 20, color: kActiveGreen),
       decoration: const InputDecoration(
-          errorStyle: TextStyle(fontSize: 20, color: Colors.black),
+          errorStyle: TextStyle(fontSize: 20, color: Colors.red),
           border: OutlineInputBorder(borderSide: BorderSide.none)),
     );
   }
