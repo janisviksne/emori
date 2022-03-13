@@ -1,6 +1,5 @@
+import 'package:emori/auth_screens/login.dart';
 import 'package:flutter/material.dart';
-
-import 'auth_screens/login.dart';
 
 void main() => runApp(const MyApp());
 

@@ -1,3 +1,4 @@
+import 'package:emori/utilities/constants.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -28,16 +29,14 @@ class _DashboardState extends State<Dashboard> {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
-                  children: const [
-                    SizedBox(
-                      height: 100,
-                    ),
-                    Text(
-                      "Dashboard",
+                  children: [
+                    kSizedBox(100),
+                    const Text(
+                      "Login worked",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 50,
-                        color: Colors.white,
+                        color: kActiveGreen,
                       ),
                     ),
                     SizedBox(

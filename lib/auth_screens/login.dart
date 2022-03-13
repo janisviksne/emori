@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:emori/auth_screens/register.dart';
 import 'package:emori/auth_screens/user.dart';
 import 'package:emori/utilities/constants.dart';
-import 'package:emori/utilities/widgets/input_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -17,7 +16,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   User user = User("", "");
-  String url = "http://localhost:8080/login";
+  String url = "http://10.0.2.2:8080/login";
 
   Future save() async {
     var res = await http.post(Uri.parse(url),
@@ -44,54 +43,75 @@ class _LoginState extends State<Login> {
                   width: MediaQuery.of(context).size.width,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
+                        alignment: Alignment(1.7, -1.09),
                         image: AssetImage(
-                            "images/auth_backgrounds/login_background.png"),
-                        fit: BoxFit.scaleDown),
-                    color: Color.fromRGBO(248, 241, 214, 1),
-                    boxShadow: [
-                      BoxShadow(
-                          blurRadius: 10,
-                          color: Colors.black,
-                          offset: Offset(1, 5))
-                    ],
+                            "images/auth_backgrounds/login_page_top.png")),
+                    color: kBackgroundColor,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(20.0),
                     child: Column(
                       children: [
                         const SizedBox(
-                          height: 100,
+                          height: 70,
                         ),
-                        const Text("Ienāc savā kontā", style: kInputTextStyle),
+                        kInputTextHeading('Ienāc savā kontā', kActiveGreen),
                         const SizedBox(
-                          height: 30,
+                          height: 10,
                         ),
-                        const Align(
+                        Align(
                           alignment: Alignment.topLeft,
-                          child: Text("E-pasts", style: kInputTextStyle),
+                          child: kInputTextHeading('E-pasts', kActiveGreen),
                         ),
-                        InputFieldWidget(
-                          inputValue: user.email,
-                          fieldName: 'E-pasta ',
-                          isObscureText: false,
+                        TextFormField(
+                          obscureText: false,
+                          controller: TextEditingController(text: user.email),
+                          onChanged: (val) {
+                            user.email = val;
+                          },
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return '${user.email} lauks ir tukšs!';
+                            }
+                          },
+                          style: const TextStyle(
+                              fontSize: 20, color: kActiveGreen),
+                          decoration: const InputDecoration(
+                              errorStyle:
+                                  TextStyle(fontSize: 20, color: Colors.red),
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide.none)),
                         ),
                         Container(
                           height: 2,
-                          color: Colors.black,
+                          color: kActiveGreen,
                         ),
                         const SizedBox(
-                          height: 60,
+                          height: 20,
                         ),
-                        const Align(
+                        Align(
                           alignment: Alignment.topLeft,
-                          child: Text("Parole ", style: kInputTextStyle
-                              // fontWeight: FontWeight.bold,
-                              ),
+                          child: kInputTextHeading('Parole', kActiveGreen),
                         ),
-                        InputFieldWidget(
-                          inputValue: user.password,
-                          fieldName: 'Paroles',
-                          isObscureText: true,
+                        TextFormField(
+                          obscureText: true,
+                          controller:
+                              TextEditingController(text: user.password),
+                          onChanged: (val) {
+                            user.password = val;
+                          },
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return '${user.password} lauks ir tukšs!';
+                            }
+                          },
+                          style: const TextStyle(
+                              fontSize: 20, color: kActiveGreen),
+                          decoration: const InputDecoration(
+                              errorStyle:
+                                  TextStyle(fontSize: 20, color: Colors.red),
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide.none)),
                         ),
                         Container(
                           height: 2,
@@ -114,23 +134,38 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                         ),
-                        Container(
-                          padding: const EdgeInsets.only(top: 20.0),
-                          child: ElevatedButton(
-                            style:
-                                ElevatedButton.styleFrom(primary: kActiveGreen),
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                save();
-                              }
-                            },
-                            child: const Text('Pieslēgties'),
+                        Row(children: [
+                          Container(
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  alignment: Alignment.bottomLeft,
+                                  image: AssetImage(
+                                      "images/auth_backgrounds/login_page_bottom.png")),
+                              color: kBackgroundColor,
+                            ),
                           ),
-                        ),
+                          Container(
+                            padding: const EdgeInsets.only(top: 20.0),
+                            width: 90.0,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  primary: kActiveGreen),
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  save();
+                                }
+                              },
+                              child: const Icon(
+                                Icons.arrow_forward,
+                                size: 30,
+                              ),
+                            ),
+                          ),
+                        ]),
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             )),
       ),
