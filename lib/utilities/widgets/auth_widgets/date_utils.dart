@@ -10,7 +10,7 @@ class DatePickerUtils {
                   child,
                 ],
                 cancelButton: CupertinoActionSheetAction(
-                  child: const Text('Atcelt'),
+                  child: const Text('Izvēlēties'),
                   onPressed: onClicked,
                 ),
               ));

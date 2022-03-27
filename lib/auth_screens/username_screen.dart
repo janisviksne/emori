@@ -13,13 +13,14 @@ class UsernameScreen extends StatefulWidget {
 
 //ToDo Pass username to end screen
 class _UsernameState extends State<UsernameScreen> {
+  final _formKey = GlobalKey<FormState>();
   String tempNickName = ''; //this value represents the input
   @override
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: kActiveGreen,
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(15.0),
             child: Column(
               children: [
                 Row(
@@ -35,7 +36,7 @@ class _UsernameState extends State<UsernameScreen> {
                     ),
                   ],
                 ),
-                kSizedBox(20.0),
+                kSizedBox(15.0),
                 Row(
                   children: const [
                     Text(
@@ -48,7 +49,7 @@ class _UsernameState extends State<UsernameScreen> {
                     ),
                   ],
                 ),
-                kSizedBox(20.0),
+                kSizedBox(15.0),
                 Row(
                   children: const [
                     Text(
@@ -57,31 +58,40 @@ class _UsernameState extends State<UsernameScreen> {
                     )
                   ],
                 ),
-                kSizedBox(20.0),
-                TextFormField(
-                  obscureText: false,
-                  controller: TextEditingController(text: tempNickName),
-                  onChanged: (val) {
-                    tempNickName = val;
-                  },
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Ievadītais lauks nedrīkst būt tukšs!';
-                    }
-                  },
-                  style: const TextStyle(fontSize: 20, color: kActiveYellow),
-                  decoration: const InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: kActiveYellow),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: kActiveYellow),
-                      ),
-                      hintText: 'Uzruna/ vārds',
-                      hintStyle: TextStyle(color: kActiveYellow),
-                      errorStyle: TextStyle(fontSize: 20, color: Colors.red),
-                      border: OutlineInputBorder(borderSide: BorderSide.none)),
-                ),
+                kSizedBox(15.0),
+                Form(
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          obscureText: false,
+                          controller: TextEditingController(text: tempNickName),
+                          onChanged: (val) {
+                            tempNickName = val;
+                          },
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Ievadītais lauks nedrīkst būt tukšs!';
+                            }
+                          },
+                          style: const TextStyle(
+                              fontSize: 20, color: kActiveYellow),
+                          decoration: const InputDecoration(
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: kActiveYellow),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: kActiveYellow),
+                              ),
+                              hintText: 'Uzruna/ vārds',
+                              hintStyle: TextStyle(color: kActiveYellow),
+                              errorStyle:
+                                  TextStyle(fontSize: 20, color: Colors.red),
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide.none)),
+                        ),
+                      ],
+                    ),
+                    key: _formKey),
                 Expanded(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
