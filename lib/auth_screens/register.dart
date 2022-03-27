@@ -1,11 +1,16 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:emori/auth_screens/register_user.dart';
-import 'package:emori/utilities/constants.dart';
+import 'package:emori/auth_screens/username_screen.dart';
+import 'package:emori/utilities/auth_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:http/http.dart' as http;
 
 class Register extends StatefulWidget {
+  const Register({Key? key}) : super(key: key);
+
   @override
   _RegisterState createState() => _RegisterState();
 }
@@ -24,7 +29,7 @@ class _RegisterState extends State<Register> {
         headers: {'Content-Type': 'application/json'},
         body: json.encode(
             {'email': registerUser.email, 'password': registerUser.password}));
-    print(res.body);
+    log(res.body);
     Navigator.pop(context);
   }
 
@@ -42,7 +47,7 @@ class _RegisterState extends State<Register> {
                 // decoration: const BoxDecoration(
                 //   image: DecorationImage(
                 //       image: AssetImage(""), fit: BoxFit.scaleDown),
-                color: kBackgroundColor,
+                color: kActiveYellow,
                 //   boxShadow: [
                 //     BoxShadow(
                 //       blurRadius: 10,
@@ -56,11 +61,22 @@ class _RegisterState extends State<Register> {
                   child: Column(
                     children: [
                       kSizedBox(50),
-                      kInputTextHeading('Reģistrācija', Colors.black),
+                      kInputTextHeading('Izveido savu kontu', kActiveGreen, 24),
                       kSizedBox(10),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text(
+                          "Vai Tev jau ir izveidots konts ?",
+                          style: kInputFieldUnderline,
+                        ),
+                      ),
+                      kSizedBox(20),
                       Align(
                           alignment: Alignment.topLeft,
-                          child: kInputTextHeading('E-pasts', kActiveGreen)),
+                          child:
+                              kInputTextHeading('E-pasts', kActiveGreen, 24)),
                       TextFormField(
                         obscureText: false,
                         controller:
@@ -81,11 +97,11 @@ class _RegisterState extends State<Register> {
                             border: OutlineInputBorder(
                                 borderSide: BorderSide.none)),
                       ),
-                      kInputFormLine(),
+                      kInputFormLine(kActiveGreen),
                       kSizedBox(10),
                       Align(
                         alignment: Alignment.topLeft,
-                        child: kInputTextHeading('Parole', kActiveGreen),
+                        child: kInputTextHeading('Parole', kActiveGreen, 24),
                       ),
                       TextFormField(
                         obscureText: true,
@@ -107,15 +123,16 @@ class _RegisterState extends State<Register> {
                             border: OutlineInputBorder(
                                 borderSide: BorderSide.none)),
                       ),
-                      kInputFormLine(),
+                      kInputFormLine(kActiveGreen),
                       kSizedBox(20),
                       //nickname field
                       Align(
                         alignment: Alignment.topLeft,
-                        child: kInputTextHeading('Lietotājvārds', kActiveGreen),
+                        child: kInputTextHeading(
+                            'Parole atkārtoti', kActiveGreen, 24),
                       ),
                       TextFormField(
-                        obscureText: false,
+                        obscureText: true,
                         controller:
                             TextEditingController(text: registerUser.nickname),
                         onChanged: (val) {
@@ -123,7 +140,9 @@ class _RegisterState extends State<Register> {
                         },
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Ievadiet lietotājvārdu!';
+                            return 'Ievadītais lauks nedrīkst būt tukšs'; //return, cuz shows up on screen
+                          } else if (value != registerUser.password) {
+                            return 'Ievadītā parole nesakrīt';
                           }
                         },
                         style:
@@ -134,65 +153,22 @@ class _RegisterState extends State<Register> {
                             border: OutlineInputBorder(
                                 borderSide: BorderSide.none)),
                       ),
-                      kInputFormLine(),
-                      kSizedBox(20),
-                      Column(
-                        children: [
-                          Row(
-                            children: [
-                              Column(
-                                children: [
-                                  Align(
-                                    alignment: Alignment.topLeft,
-                                    child: kInputTextHeading(
-                                        'Dzimšanas datums', kActiveGreen),
-                                  ),
-                                  Text(
-                                    '${defaultDate.day}-${defaultDate.month}-${defaultDate.year}',
-                                    style: const TextStyle(fontSize: 20),
-                                  ),
-                                  ElevatedButton(
-                                    child: const Text('Izvēlies datumu'),
-                                    onPressed: () async {
-                                      defaultDate = (await showDatePicker(
-                                          context: context,
-                                          initialDate: defaultDate,
-                                          firstDate: DateTime(1900),
-                                          lastDate: DateTime(3000)))!;
-
-                                      setState(() =>
-                                          registerUser.birthdate = defaultDate);
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      kSizedBox(20),
-                      Center(
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Text(
-                            "Esi jau reģistrējies ?",
-                            style: kInputFieldUnderline,
-                          ),
-                        ),
-                      ),
+                      kInputFormLine(kActiveGreen),
                       Container(
                         padding: const EdgeInsets.only(top: 20.0),
-                        child: ElevatedButton(
-                          style:
-                              ElevatedButton.styleFrom(primary: kActiveGreen),
+                        child: IconButton(
+                          iconSize: 60.0,
                           onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              save();
-                            }
+                            // if (_formKey.currentState!.validate()) {
+                            log('Moving to username input screen');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => UsernameScreen()));
+                            // }
                           },
-                          child: const Text('Reģistrēties'),
+                          icon: const Icon(Icons.arrow_forward),
+                          color: kActiveGreen,
                         ),
                       ),
                     ],

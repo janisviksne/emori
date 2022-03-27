@@ -1,4 +1,4 @@
-import 'package:emori/utilities/constants.dart';
+import 'package:emori/utilities/auth_constants.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -7,6 +7,7 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  //This class is accessed when login is successful
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +40,7 @@ class _DashboardState extends State<Dashboard> {
                         color: kActiveGreen,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                   ],

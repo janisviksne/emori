@@ -1,8 +1,9 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:emori/auth_screens/register.dart';
 import 'package:emori/auth_screens/user.dart';
-import 'package:emori/utilities/constants.dart';
+import 'package:emori/utilities/auth_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -15,6 +16,7 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
+  //ToDo add another constructor. 1st for login, 2nd for register
   User user = User("", "");
   String url = "http://10.0.2.2:8080/login";
 
@@ -22,7 +24,7 @@ class _LoginState extends State<Login> {
     var res = await http.post(Uri.parse(url),
         headers: {'Content-Type': 'application/json'},
         body: json.encode({'email': user.email, 'password': user.password}));
-    print(res.body);
+    log(res.body);
     Navigator.push(
         context,
         MaterialPageRoute(
@@ -43,25 +45,21 @@ class _LoginState extends State<Login> {
                   width: MediaQuery.of(context).size.width,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                        alignment: Alignment(1.7, -1.09),
+                        alignment: Alignment(1.7, -0.98),
                         image: AssetImage(
                             "images/auth_backgrounds/login_page_top.png")),
-                    color: kBackgroundColor,
+                    color: kActiveYellow,
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Column(
                       children: [
-                        const SizedBox(
-                          height: 70,
-                        ),
-                        kInputTextHeading('Ienāc savā kontā', kActiveGreen),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        kSizedBox(80.0),
+                        kInputTextHeading('Ienāc savā kontā', kActiveGreen, 24),
+                        kSizedBox(10.0),
                         Align(
                           alignment: Alignment.topLeft,
-                          child: kInputTextHeading('E-pasts', kActiveGreen),
+                          child: kInputTextHeading('E-pasts', kActiveGreen, 24),
                         ),
                         TextFormField(
                           obscureText: false,
@@ -71,7 +69,7 @@ class _LoginState extends State<Login> {
                           },
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return '${user.email} lauks ir tukšs!';
+                              return 'E-pasta lauks ir tukšs!';
                             }
                           },
                           style: const TextStyle(
@@ -87,11 +85,11 @@ class _LoginState extends State<Login> {
                           color: kActiveGreen,
                         ),
                         const SizedBox(
-                          height: 20,
+                          height: 10,
                         ),
                         Align(
                           alignment: Alignment.topLeft,
-                          child: kInputTextHeading('Parole', kActiveGreen),
+                          child: kInputTextHeading('Parole', kActiveGreen, 24),
                         ),
                         TextFormField(
                           obscureText: true,
@@ -102,7 +100,7 @@ class _LoginState extends State<Login> {
                           },
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return '${user.password} lauks ir tukšs!';
+                              return 'Paroles lauks ir tukšs!';
                             }
                           },
                           style: const TextStyle(
@@ -118,7 +116,7 @@ class _LoginState extends State<Login> {
                           color: kActiveGreen,
                         ),
                         const SizedBox(
-                          height: 60,
+                          height: 30,
                         ),
                         Center(
                           child: InkWell(
@@ -126,7 +124,7 @@ class _LoginState extends State<Login> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Register()));
+                                      builder: (context) => const Register()));
                             },
                             child: const Text(
                               "Izveidot kontu",
@@ -134,34 +132,27 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                         ),
-                        Row(children: [
-                          Container(
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                  alignment: Alignment.bottomLeft,
-                                  image: AssetImage(
-                                      "images/auth_backgrounds/login_page_bottom.png")),
-                              color: kBackgroundColor,
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.only(top: 20.0),
-                            width: 90.0,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  primary: kActiveGreen),
-                              onPressed: () {
-                                if (_formKey.currentState!.validate()) {
-                                  save();
-                                }
-                              },
-                              child: const Icon(
-                                Icons.arrow_forward,
-                                size: 30,
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.only(top: 20.0),
+                                width: 90.0,
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      primary: kActiveGreen),
+                                  onPressed: () {
+                                    if (_formKey.currentState!.validate()) {
+                                      save();
+                                    }
+                                  },
+                                  child: const Icon(
+                                    Icons.arrow_forward,
+                                    size: 30,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        ]),
+                            ]),
                       ],
                     ),
                   ),
