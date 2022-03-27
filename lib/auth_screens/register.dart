@@ -33,6 +33,7 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: kActiveYellow,
       body: SafeArea(
         child: Padding(
@@ -45,7 +46,7 @@ class _RegisterState extends State<Register> {
                     iconSize: 50.0,
                     onPressed: () {
                       Navigator.pop(context);
-                      log('Returning to e-mail/password input screen');
+                      log('Returning to login screen');
                     },
                     icon: const Icon(Icons.arrow_back),
                     color: kActiveGreen,
