@@ -87,9 +87,9 @@ class _RegisterState extends State<Register> {
                     TextFormField(
                       obscureText: false,
                       controller:
-                          TextEditingController(text: registerUser.password),
+                          TextEditingController(text: registerUser.email),
                       onChanged: (val) {
-                        registerUser.password = val;
+                        registerUser.email = val;
                       },
                       validator: (value) {
                         if (value!.isEmpty) {

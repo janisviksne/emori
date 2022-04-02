@@ -26,7 +26,7 @@ Container kInputFormLine(Color color) => Container(
 SizedBox kSizedBox(double size) => SizedBox(height: size);
 
 const kInputFieldUnderline = TextStyle(
-    fontSize: 20, color: kActiveGreen, decoration: TextDecoration.underline);
+    fontSize: 18, color: kActiveGreen, decoration: TextDecoration.underline);
 
 /*
 * User input field constants
