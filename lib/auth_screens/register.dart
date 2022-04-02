@@ -99,20 +99,7 @@ class _RegisterState extends State<Register> {
                         }
                       },
                       style: const TextStyle(fontSize: 20, color: kActiveGreen),
-                      decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: kActiveGreen),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: kActiveGreen),
-                          ),
-                          hintStyle: TextStyle(
-                              color: kActiveGreen, fontWeight: FontWeight.bold),
-                          hintText: 'E-pasts',
-                          errorStyle:
-                              TextStyle(fontSize: 20, color: Colors.red),
-                          border:
-                              OutlineInputBorder(borderSide: BorderSide.none)),
+                      decoration: kInputFieldDecoration('E-pasts'),
                     ),
                     kSizedBox(20.0),
                     TextFormField(
@@ -131,20 +118,7 @@ class _RegisterState extends State<Register> {
                         }
                       },
                       style: const TextStyle(fontSize: 20, color: kActiveGreen),
-                      decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: kActiveGreen),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: kActiveGreen),
-                          ),
-                          hintStyle: TextStyle(
-                              color: kActiveGreen, fontWeight: FontWeight.bold),
-                          hintText: 'Parole',
-                          errorStyle:
-                              TextStyle(fontSize: 20, color: Colors.red),
-                          border:
-                              OutlineInputBorder(borderSide: BorderSide.none)),
+                      decoration: kInputFieldDecoration('Parole'),
                     ),
                     kSizedBox(20.0),
                     TextFormField(
@@ -163,20 +137,7 @@ class _RegisterState extends State<Register> {
                         }
                       },
                       style: const TextStyle(fontSize: 20, color: kActiveGreen),
-                      decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: kActiveGreen),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: kActiveGreen),
-                          ),
-                          hintText: 'Parole atkārtoti',
-                          hintStyle: TextStyle(
-                              color: kActiveGreen, fontWeight: FontWeight.bold),
-                          errorStyle:
-                              TextStyle(fontSize: 20, color: Colors.red),
-                          border:
-                              OutlineInputBorder(borderSide: BorderSide.none)),
+                      decoration: kInputFieldDecoration('Parole atkārtoti'),
                     ),
                   ],
                 ),

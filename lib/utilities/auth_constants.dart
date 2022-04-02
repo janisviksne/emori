@@ -7,16 +7,22 @@ TextStyle kTextStyle(Color color) => TextStyle(
       fontSize: 15,
       color: color,
     );
+
 Text kInputTextHeading(String text, Color color, double fontSize) => Text(text,
     style: TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: fontSize,
       color: color,
     ));
+
+Text kDescriptionText(String text, Color color, double fontSize) =>
+    Text(text, style: TextStyle(fontSize: fontSize, color: color));
+
 Container kInputFormLine(Color color) => Container(
       height: 1,
       color: color,
     );
+
 SizedBox kSizedBox(double size) => SizedBox(height: size);
 
 const kInputFieldUnderline = TextStyle(
@@ -25,3 +31,16 @@ const kInputFieldUnderline = TextStyle(
 /*
 * User input field constants
 */
+
+InputDecoration kInputFieldDecoration(String hintText) => InputDecoration(
+    enabledBorder: const UnderlineInputBorder(
+      borderSide: BorderSide(color: kActiveGreen),
+    ),
+    focusedBorder: const UnderlineInputBorder(
+      borderSide: BorderSide(color: kActiveGreen),
+    ),
+    hintStyle:
+        const TextStyle(color: kActiveGreen, fontWeight: FontWeight.bold),
+    hintText: hintText,
+    errorStyle: const TextStyle(fontSize: 20, color: Colors.red),
+    border: const OutlineInputBorder(borderSide: BorderSide.none));
