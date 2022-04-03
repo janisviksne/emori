@@ -20,7 +20,7 @@ class _UsernameState extends State<UsernameScreen> {
         backgroundColor: kActiveGreen,
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
               children: [
                 Row(
