@@ -36,18 +36,20 @@ class _DatePickerPageState extends State<BirthDatePicker> {
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Izvēlies savu\ndzimšanas\ndatumu',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          color: kActiveYellow,
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Row(
+                    children: const [
+                      Text(
+                        'Izvēlies savu\ndzimšanas\ndatumu',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            color: kActiveYellow,
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
                 ),
                 kSizedBox(60.0),
                 Row(

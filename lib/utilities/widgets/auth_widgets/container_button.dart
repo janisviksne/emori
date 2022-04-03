@@ -22,7 +22,6 @@ class ContainerButton<T> extends StatelessWidget {
       onTap: () => onChanged(value),
       child: Container(
         height: 56,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -36,15 +35,14 @@ class ContainerButton<T> extends StatelessWidget {
   Widget get _customContainerButton {
     final isSelected = value == groupValue;
     return Container(
-      width: 330,
-      height: 120,
       alignment: Alignment.center,
-      padding: const EdgeInsets.all(15.0),
+      width: 345,
+      height: 120,
       decoration: BoxDecoration(
         color: isSelected ? kActiveYellow : null,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-          color: isSelected ? kActiveYellow : Colors.grey[300]!,
+          color: kActiveYellow,
           width: 1,
         ),
       ),

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'education_screen.dart';
 
 class GenderScreen extends StatefulWidget {
-  const GenderScreen({Key? key}) : super(key: key);
+  //const GenderScreen({Key? key}) : super(key: key);
 
   @override
   State<GenderScreen> createState() => _GenderScreenState();
@@ -21,7 +21,7 @@ class _GenderScreenState extends State<GenderScreen> {
       backgroundColor: kActiveGreen,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(27.0),
           child: Column(
             children: [
               Row(
@@ -37,12 +37,13 @@ class _GenderScreenState extends State<GenderScreen> {
                   ),
                 ],
               ),
+              kSizedBox(20.0),
               Row(
                 children: [
                   kInputTextHeading('Norādi savu\ndzimumu', kActiveYellow, 40)
                 ],
               ),
-              kSizedBox(20.0),
+              kSizedBox(30.0),
               Column(
                 children: [
                   ContainerButton<int>(

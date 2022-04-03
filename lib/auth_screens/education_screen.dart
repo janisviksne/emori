@@ -20,7 +20,7 @@ class _EducationSelectionScreenState extends State<EducationSelectionScreen> {
       backgroundColor: kActiveGreen,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(27.0),
           child: Column(
             children: [
               Row(
