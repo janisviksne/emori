@@ -7,14 +7,14 @@ import 'package:emori/utilities/auth_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
+class EmailPasswordScreen extends StatefulWidget {
+  const EmailPasswordScreen({Key? key}) : super(key: key);
 
   @override
-  _RegisterState createState() => _RegisterState();
+  _EmailPasswordScreenState createState() => _EmailPasswordScreenState();
 }
 
-class _RegisterState extends State<Register> {
+class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
 
   RegisterUser registerUser = RegisterUser(
@@ -54,7 +54,6 @@ class _RegisterState extends State<Register> {
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   kInputTextHeading('Izveido\nsavu kontu', kActiveGreen, 40)
                 ],
@@ -151,7 +150,7 @@ class _RegisterState extends State<Register> {
                       iconSize: 50.0,
                       onPressed: () {
                         // if (_formKey.currentState!.validate()) {
-                        log('Moving to date picker screen');
+                        log('Moving to nickname screen');
                         Navigator.push(
                             context,
                             MaterialPageRoute(

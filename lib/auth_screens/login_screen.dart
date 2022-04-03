@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:emori/auth_screens/email_password_screen.dart';
 import 'package:emori/auth_screens/user.dart';
 import 'package:emori/utilities/auth_constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -114,6 +115,26 @@ class _LoginState extends State<Login> {
                 ],
               ),
               kSizedBox(20.0),
+              Row(
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: kActiveGreen,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 12),
+                        textStyle: const TextStyle(
+                            fontSize: 16, color: kActiveYellow)),
+                    child: const Text('Yalla'),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const EmailPasswordScreen()));
+                    },
+                  )
+                ],
+              ),
             ],
           ),
         ),

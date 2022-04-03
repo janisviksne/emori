@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:emori/auth_screens/gender_screen.dart';
 import 'package:emori/utilities/auth_constants.dart';
 import 'package:emori/utilities/widgets/auth_widgets/date_utils.dart';
 import 'package:flutter/cupertino.dart';
@@ -87,10 +88,10 @@ class _DatePickerPageState extends State<BirthDatePicker> {
                         onPressed: () {
                           // if (_formKey.currentState!.validate()) {
                           log('Moving to gender selection screen');
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => BirthDatePicker()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => GenderScreen()));
                           // }
                         },
                         icon: const Icon(Icons.arrow_forward),
