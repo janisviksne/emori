@@ -20,7 +20,7 @@ class ContainerButton<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => onChanged(value),
-      child: Container(
+      child: SizedBox(
         height: 56,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

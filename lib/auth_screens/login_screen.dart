@@ -39,104 +39,123 @@ class _LoginState extends State<Login> {
       resizeToAvoidBottomInset: false,
       backgroundColor: kActiveYellow,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Container(
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+              child: Column(
                 children: [
-                  kInputTextHeading('Ienāc\nsavā kontā', kActiveGreen, 40),
-                ],
-              ),
-              kSizedBox(20.0),
-              Row(
-                children: [
-                  kDescriptionText(
-                      'Ievadi savus esošos pieejas datus', kActiveGreen, 18),
-                ],
-              ),
-              kSizedBox(20.0),
-              Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    TextFormField(
-                      obscureText: false,
-                      controller: TextEditingController(text: user.email),
-                      onChanged: (val) {
-                        user.email = val;
-                      },
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Šis lauks nedrīkst būt tukšs!';
-                        } else if (user.password != value) {
-                          return 'Ievadītās paroles nesakrīt!';
-                        }
-                      },
-                      style: const TextStyle(fontSize: 20, color: kActiveGreen),
-                      decoration: kInputFieldDecoration('E-pasts'),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      kInputTextHeading('Ienāc\nsavā kontā', kActiveGreen, 40),
+                    ],
+                  ),
+                  kSizedBox(20.0),
+                  Row(
+                    children: [
+                      kDescriptionText('Ievadi savus esošos pieejas datus',
+                          kActiveGreen, 18),
+                    ],
+                  ),
+                  kSizedBox(20.0),
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          obscureText: false,
+                          controller: TextEditingController(text: user.email),
+                          onChanged: (val) {
+                            user.email = val;
+                          },
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Šis lauks nedrīkst būt tukšs!';
+                            } else if (user.password != value) {
+                              return 'Ievadītās paroles nesakrīt!';
+                            }
+                          },
+                          style: const TextStyle(
+                              fontSize: 20, color: kActiveGreen),
+                          decoration: kInputFieldDecoration('E-pasts'),
+                        ),
+                        kSizedBox(20.0),
+                        TextFormField(
+                          obscureText: true,
+                          controller:
+                              //ToDo make sure that both fields can actually use same field, maybe only use in second pass
+                              TextEditingController(text: user.password),
+                          onChanged: (val) {
+                            user.password = val;
+                          },
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Šis lauks nedrīkst būt tukšs!';
+                            } else if (user.password != value) {
+                              return 'Ievadītās paroles nesakrīt!';
+                            }
+                          },
+                          style: const TextStyle(
+                              fontSize: 20, color: kActiveGreen),
+                          decoration: kInputFieldDecoration('Parole'),
+                        ),
+                      ],
                     ),
-                    kSizedBox(20.0),
-                    TextFormField(
-                      obscureText: true,
-                      controller:
-                          //ToDo make sure that both fields can actually use same field, maybe only use in second pass
-                          TextEditingController(text: user.password),
-                      onChanged: (val) {
-                        user.password = val;
-                      },
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Šis lauks nedrīkst būt tukšs!';
-                        } else if (user.password != value) {
-                          return 'Ievadītās paroles nesakrīt!';
-                        }
-                      },
-                      style: const TextStyle(fontSize: 20, color: kActiveGreen),
-                      decoration: kInputFieldDecoration('Parole'),
-                    ),
-                  ],
-                ),
-              ),
-              kSizedBox(20.0),
-              Row(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      print('Redirect to forgot password.');
-                    },
-                    child: const Text(
-                      'Aizmirsi paroli?',
-                      style: kInputFieldUnderline,
-                    ),
+                  ),
+                  kSizedBox(20.0),
+                  Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          print('Redirect to forgot password.');
+                        },
+                        child: const Text(
+                          'Aizmirsi paroli?',
+                          style: kInputFieldUnderline,
+                        ),
+                      ),
+                    ],
+                  ),
+                  kSizedBox(20.0),
+                  Row(
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: kActiveGreen,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 24, vertical: 12),
+                            textStyle: const TextStyle(
+                                fontSize: 16, color: kActiveYellow)),
+                        child: const Text('Yalla'),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const EmailPasswordScreen()));
+                        },
+                      )
+                    ],
                   ),
                 ],
               ),
-              kSizedBox(20.0),
-              Row(
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: kActiveGreen,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 24, vertical: 12),
-                        textStyle: const TextStyle(
-                            fontSize: 16, color: kActiveYellow)),
-                    child: const Text('Yalla'),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const EmailPasswordScreen()));
-                    },
-                  )
-                ],
-              ),
-            ],
-          ),
+            ),
+            // Stack(
+            //   children: const <Widget>[
+            //     Positioned(
+            //       bottom: 0,
+            //       left: 0,
+            //       child: (Image(
+            //         image: AssetImage(
+            //             "assets/images/auth_backgrounds/login_page_bottom.png"),
+            //       )),
+            //     )
+            //   ],
+            // ),
+          ],
         ),
       ),
     );

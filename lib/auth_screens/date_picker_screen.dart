@@ -2,7 +2,8 @@ import 'dart:developer';
 
 import 'package:emori/auth_screens/gender_screen.dart';
 import 'package:emori/utilities/auth_constants.dart';
-import 'package:emori/utilities/widgets/auth_widgets/date_utils.dart';
+import 'package:emori/utilities/utils/picker_utils.dart';
+import 'package:emori/utilities/widgets/auth_widgets/selector_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -67,17 +68,10 @@ class _DatePickerPageState extends State<BirthDatePicker> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const SizedBox(height: 24),
-                    ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateColor.resolveWith(
-                                (states) => kActiveYellow)),
-                        child: const Text(
-                          'Izvēlies datumu',
-                          style: TextStyle(color: kActiveGreen),
-                        ),
-                        onPressed: () => DatePickerUtils.showDatePicker(context,
+                    ButtonWidget(
+                        onClicked: () => PickerUtils.showPicker(context,
                             child: buildDatePicker(),
-                            onClicked: () => Navigator.pop(context)))
+                            onClicked: () => Navigator.pop(context))),
                   ],
                 ),
                 Expanded(
