@@ -110,7 +110,7 @@ class _LoginState extends State<Login> {
                     children: [
                       InkWell(
                         onTap: () {
-                          print('Redirect to forgot password.');
+                          log('Redirect to forgot password.');
                         },
                         child: const Text(
                           'Aizmirsi paroli?',
@@ -129,7 +129,7 @@ class _LoginState extends State<Login> {
                                 horizontal: 24, vertical: 12),
                             textStyle: const TextStyle(
                                 fontSize: 16, color: kActiveYellow)),
-                        child: const Text('Yalla'),
+                        child: const Text('Reģistrējies'),
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -143,18 +143,7 @@ class _LoginState extends State<Login> {
                 ],
               ),
             ),
-            // Stack(
-            //   children: const <Widget>[
-            //     Positioned(
-            //       bottom: 0,
-            //       left: 0,
-            //       child: (Image(
-            //         image: AssetImage(
-            //             "assets/images/auth_backgrounds/login_page_bottom.png"),
-            //       )),
-            //     )
-            //   ],
-            // ),
+            //ToDo THE LOGIN SCREEN IMAGE WILL GO HERE
           ],
         ),
       ),

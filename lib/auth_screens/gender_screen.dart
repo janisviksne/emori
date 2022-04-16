@@ -82,7 +82,7 @@ class _GenderScreenState extends State<GenderScreen> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    const EducationSelectionScreen()));
+                                    EducationSelectionScreen()));
                         // }
                       },
                       icon: const Icon(Icons.arrow_forward),

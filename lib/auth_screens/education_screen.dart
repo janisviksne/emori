@@ -3,19 +3,25 @@ import 'dart:developer';
 import 'package:emori/auth_screens/work_status.dart';
 import 'package:emori/utilities/auth_constants.dart';
 import 'package:emori/utilities/widget_constants.dart';
-import 'package:emori/utilities/widgets/auth_widgets/container_button.dart';
+import 'package:emori/utilities/widgets/auth_widgets/profession_listtile_widget.dart';
 import 'package:flutter/material.dart';
 
 class EducationSelectionScreen extends StatefulWidget {
-  const EducationSelectionScreen({Key? key}) : super(key: key);
-
   @override
   State<EducationSelectionScreen> createState() =>
       _EducationSelectionScreenState();
 }
 
 class _EducationSelectionScreenState extends State<EducationSelectionScreen> {
-  int _value = 1;
+  //int _value = 1;
+  final allProfessions = [
+    'Administratīvais darbs',
+    'Būvniecība',
+    'Drošība / aizsardzība',
+    'Finanses',
+    'Informācijas tehnoloģijas',
+  ];
+  List<String> selectedProfessions = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,54 +41,27 @@ class _EducationSelectionScreenState extends State<EducationSelectionScreen> {
                     ],
                   ),
                   kSizedBox(20.0),
-                  Column(
-                    children: [
-                      ContainerButton<int>(
-                        value: 1,
-                        groupValue: _value,
-                        title: 'Pamata (nepabeigta)',
-                        onChanged: (value) => setState(() => _value = value!),
-                      ),
-                      kSizedBox(20.0),
-                      ContainerButton<int>(
-                        value: 2,
-                        groupValue: _value,
-                        title: 'Pamata',
-                        onChanged: (value) => setState(() => _value = value!),
-                      ),
-                      kSizedBox(20.0),
-                      ContainerButton<int>(
-                        value: 3,
-                        groupValue: _value,
-                        title: 'Vidējā',
-                        onChanged: (value) => setState(() => _value = value!),
-                      ),
-                      kSizedBox(20.0),
-                      ContainerButton<int>(
-                        value: 4,
-                        groupValue: _value,
-                        title: 'Augstākā',
-                        onChanged: (value) => setState(() => _value = value!),
-                      ),
-                    ],
-                  ),
                 ],
               ),
+            ),
+            Expanded(
+              child: ListView(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  children: allProfessions.map((profession) {
+                    final isSelected = selectedProfessions.contains(profession);
+                    return ProfessionListTileWidget(
+                        isSelected: isSelected,
+                        profession: profession,
+                        onSelectedProfession: selectProfession);
+                  }).toList()),
             ),
             Row(
               children: [
                 Expanded(
-                  flex: 2,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Image.asset(
-                        'assets/images/auth_backgrounds/education.png',
-                        fit: BoxFit.cover,
-                      )
-                    ],
+                    children: [], // <- INSERT IMAGE HERE FOR EDUCATION SELECTION
                   ),
                 ),
                 Expanded(
@@ -114,5 +93,14 @@ class _EducationSelectionScreenState extends State<EducationSelectionScreen> {
         ),
       ),
     );
+  }
+
+  void selectProfession(String profession) {
+    final isSelected = selectedProfessions.contains(profession);
+    setState(() {
+      isSelected
+          ? selectedProfessions.remove(profession)
+          : selectedProfessions.add(profession);
+    });
   }
 }
