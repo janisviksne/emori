@@ -96,11 +96,14 @@ class _EducationSelectionScreenState extends State<EducationSelectionScreen> {
   }
 
   void selectProfession(String profession) {
-    final isSelected = selectedProfessions.contains(profession);
+    var isSelected = selectedProfessions.contains(profession);
     setState(() {
       isSelected
           ? selectedProfessions.remove(profession)
           : selectedProfessions.add(profession);
+      if (selectedProfessions.length > 4) {
+        selectedProfessions.remove(profession);
+      }
     });
   }
 }
