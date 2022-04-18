@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:emori/auth_screens/email_password_screen.dart';
-import 'package:emori/auth_screens/user.dart';
+import 'package:emori/user_constructors/user.dart';
 import 'package:emori/utilities/auth_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,13 +18,14 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   //ToDo add another constructor. 1st for login, 2nd for register
-  User user = User("", "");
+  LoginUser loginUser = LoginUser("", "");
   String url = "http://10.0.2.2:8080/login";
 
-  Future save() async {
+  Future login() async {
     var res = await http.post(Uri.parse(url),
         headers: {'Content-Type': 'application/json'},
-        body: json.encode({'email': user.email, 'password': user.password}));
+        body: json.encode(
+            {'email': loginUser.email, 'password': loginUser.password}));
     log(res.body);
     Navigator.push(
         context,
@@ -67,15 +68,14 @@ class _LoginState extends State<Login> {
                       children: [
                         TextFormField(
                           obscureText: false,
-                          controller: TextEditingController(text: user.email),
+                          controller:
+                              TextEditingController(text: loginUser.email),
                           onChanged: (val) {
-                            user.email = val;
+                            loginUser.email = val;
                           },
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'Šis lauks nedrīkst būt tukšs!';
-                            } else if (user.password != value) {
-                              return 'Ievadītās paroles nesakrīt!';
                             }
                           },
                           style: const TextStyle(
@@ -86,16 +86,13 @@ class _LoginState extends State<Login> {
                         TextFormField(
                           obscureText: true,
                           controller:
-                              //ToDo make sure that both fields can actually use same field, maybe only use in second pass
-                              TextEditingController(text: user.password),
+                              TextEditingController(text: loginUser.password),
                           onChanged: (val) {
-                            user.password = val;
+                            loginUser.password = val;
                           },
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'Šis lauks nedrīkst būt tukšs!';
-                            } else if (user.password != value) {
-                              return 'Ievadītās paroles nesakrīt!';
                             }
                           },
                           style: const TextStyle(
@@ -117,6 +114,24 @@ class _LoginState extends State<Login> {
                           style: kInputFieldUnderline,
                         ),
                       ),
+                    ],
+                  ),
+                  kSizedBox(20.0),
+                  Row(
+                    children: [
+                      ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: kActiveGreen,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 24, vertical: 12),
+                              textStyle: const TextStyle(
+                                  fontSize: 16, color: kActiveYellow)),
+                          child: const Text('Ienākt'),
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              login();
+                            }
+                          })
                     ],
                   ),
                   kSizedBox(20.0),

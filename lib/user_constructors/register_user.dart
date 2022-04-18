@@ -6,10 +6,8 @@ class RegisterUser {
   String education;
   String gender;
   List<String> occupations;
-  bool isAgreeTerms;
 
+  //ToDo what is education, what is occupation
   RegisterUser(this.email, this.password, this.nickname, this.birthdate,
-      this.education, this.gender, this.occupations, this.isAgreeTerms) {
-    birthdate = DateTime.now();
-  }
+      this.education, this.gender, this.occupations);
 }

@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:emori/auth_screens/register_user.dart';
 import 'package:emori/auth_screens/username_screen.dart';
+import 'package:emori/user_constructors/register_user.dart';
 import 'package:emori/utilities/auth_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -18,16 +18,18 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
 
   RegisterUser registerUser = RegisterUser(
-      "", "", "", DateTime.now(), "", "", List.empty(growable: true), false);
-  String url = "http://10.0.2.2:8080/register";
+      '', '', '', DateTime.now(), '', '', List.empty(growable: true));
+  String url = "http://10.0.2.2:8080/submitEmailAndPassword";
 
-  Future save() async {
+  Future submitEmailAndPassword() async {
     var res = await http.post(Uri.parse(url),
         headers: {'Content-Type': 'application/json'},
-        body: json.encode(
-            {'email': registerUser.email, 'password': registerUser.password}));
+        body: json.encode({
+          'email': registerUser.email,
+          'password': registerUser.password,
+          'nickname': registerUser.nickname
+        }));
     log(res.body);
-    Navigator.pop(context);
   }
 
   @override
@@ -93,8 +95,6 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Šis lauks nedrīkst būt tukšs!';
-                        } else if (registerUser.password != value) {
-                          return 'Ievadītās paroles nesakrīt!';
                         }
                       },
                       style: const TextStyle(fontSize: 20, color: kActiveGreen),
@@ -104,7 +104,6 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                     TextFormField(
                       obscureText: true,
                       controller:
-                          //ToDo make sure that both fields can actually use same field, maybe only use in second pass
                           TextEditingController(text: registerUser.password),
                       onChanged: (val) {
                         registerUser.password = val;
@@ -149,12 +148,17 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                     IconButton(
                       iconSize: 50.0,
                       onPressed: () {
+                        print("Email: " +
+                            registerUser.email +
+                            ", Password: " +
+                            registerUser.password);
                         // if (_formKey.currentState!.validate()) {
-                        log('Moving to nickname screen');
+                        //   log('Moving to nickname screen');
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => UsernameScreen()));
+                                builder: (context) =>
+                                    UsernameScreen(registerUser)));
                         // }
                       },
                       icon: const Icon(Icons.arrow_forward),

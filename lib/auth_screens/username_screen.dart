@@ -1,20 +1,40 @@
+import 'dart:convert';
 import 'dart:developer';
 
+import 'package:emori/user_constructors/register_user.dart';
 import 'package:emori/utilities/auth_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 import 'date_picker_screen.dart';
 
 class UsernameScreen extends StatefulWidget {
+  RegisterUser registerUser;
+  UsernameScreen(this.registerUser, {Key? key}) : super(key: key);
+
   @override
   _UsernameState createState() => _UsernameState();
 }
 
 //ToDo Pass username to end screen
 class _UsernameState extends State<UsernameScreen> {
+  String url = "http://10.0.2.2:8080/submitNickname";
+
+  late RegisterUser registerUser = widget.registerUser;
+  Future submitUsername() async {
+    print(registerUser.nickname);
+    var res = await http.post(Uri.parse(url),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({
+          'email': registerUser.email,
+          'password': registerUser.password,
+          'nickname': registerUser.nickname
+        }));
+    log(res.body);
+  }
+
   final _formKey = GlobalKey<FormState>();
-  String tempNickName = ''; //this value represents the input
   @override
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: kActiveGreen,
@@ -64,9 +84,10 @@ class _UsernameState extends State<UsernameScreen> {
                       children: [
                         TextFormField(
                           obscureText: false,
-                          controller: TextEditingController(text: tempNickName),
+                          controller: TextEditingController(
+                              text: registerUser.nickname),
                           onChanged: (val) {
-                            tempNickName = val;
+                            registerUser.nickname = val;
                           },
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -100,12 +121,19 @@ class _UsernameState extends State<UsernameScreen> {
                       IconButton(
                         iconSize: 50.0,
                         onPressed: () {
+                          print(registerUser.email +
+                              ' | ' +
+                              registerUser.password +
+                              ' | ' +
+                              registerUser.nickname);
                           // if (_formKey.currentState!.validate()) {
+
                           log('Moving to date picker screen');
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => BirthDatePicker()));
+                                  builder: (context) =>
+                                      BirthDatePickerScreen(registerUser)));
                           // }
                         },
                         icon: const Icon(Icons.arrow_forward),

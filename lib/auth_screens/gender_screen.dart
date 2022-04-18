@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:emori/user_constructors/register_user.dart';
 import 'package:emori/utilities/auth_constants.dart';
 import 'package:emori/utilities/widgets/auth_widgets/container_button.dart';
 import 'package:flutter/material.dart';
@@ -7,13 +8,15 @@ import 'package:flutter/material.dart';
 import 'education_screen.dart';
 
 class GenderScreen extends StatefulWidget {
-  //const GenderScreen({Key? key}) : super(key: key);
+  RegisterUser registerUser;
+  GenderScreen(this.registerUser, {Key? key}) : super(key: key);
 
   @override
   State<GenderScreen> createState() => _GenderScreenState();
 }
 
 class _GenderScreenState extends State<GenderScreen> {
+  late RegisterUser registerUser = widget.registerUser;
   int _value = 1;
   @override
   Widget build(BuildContext context) {
@@ -50,21 +53,30 @@ class _GenderScreenState extends State<GenderScreen> {
                     value: 1,
                     groupValue: _value,
                     title: 'Vīrietis',
-                    onChanged: (value) => setState(() => _value = value!),
+                    onChanged: (value) => setState(() {
+                      registerUser.gender = 'Vīrietis';
+                      _value = value!;
+                    }),
                   ),
                   kSizedBox(20.0),
                   ContainerButton<int>(
                     value: 2,
                     groupValue: _value,
                     title: 'Sieviete',
-                    onChanged: (value) => setState(() => _value = value!),
+                    onChanged: (value) => setState(() {
+                      registerUser.gender = 'Sieviete';
+                      _value = value!;
+                    }),
                   ),
                   kSizedBox(20.0),
                   ContainerButton<int>(
                     value: 3,
                     groupValue: _value,
                     title: 'Cits',
-                    onChanged: (value) => setState(() => _value = value!),
+                    onChanged: (value) => setState(() {
+                      registerUser.gender = 'Cits';
+                      _value = value!;
+                    }),
                   ),
                 ],
               ),
@@ -76,13 +88,22 @@ class _GenderScreenState extends State<GenderScreen> {
                     IconButton(
                       iconSize: 50.0,
                       onPressed: () {
+                        print(registerUser.email +
+                            ' | ' +
+                            registerUser.password +
+                            ' | ' +
+                            registerUser.nickname +
+                            ' | ' +
+                            registerUser.birthdate.toString() +
+                            ' | ' +
+                            registerUser.gender);
                         // if (_formKey.currentState!.validate()) {
                         log('Moving to education selection screen');
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    EducationSelectionScreen()));
+                                    ProfessionSelectionScreen(registerUser)));
                         // }
                       },
                       icon: const Icon(Icons.arrow_forward),

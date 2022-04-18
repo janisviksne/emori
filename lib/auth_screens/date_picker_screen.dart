@@ -1,20 +1,38 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:emori/auth_screens/gender_screen.dart';
+import 'package:emori/user_constructors/register_user.dart';
 import 'package:emori/utilities/auth_constants.dart';
 import 'package:emori/utilities/utils/picker_utils.dart';
 import 'package:emori/utilities/widgets/auth_widgets/selector_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-class BirthDatePicker extends StatefulWidget {
+class BirthDatePickerScreen extends StatefulWidget {
+  RegisterUser registerUser;
+  BirthDatePickerScreen(this.registerUser, {Key? key}) : super(key: key);
+
   @override
   _DatePickerPageState createState() => _DatePickerPageState();
 }
 
-class _DatePickerPageState extends State<BirthDatePicker> {
+class _DatePickerPageState extends State<BirthDatePickerScreen> {
+  late RegisterUser registerUser = widget.registerUser;
+  String url = "http://10.0.2.2:8080/submitNickname";
   //ToDo pass this dateTime value to the next end screen
   DateTime dateTime = DateTime.now();
+  Future submitDate() async {
+    var res = await http.post(Uri.parse(url),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({
+          'email': registerUser.email,
+          'password': registerUser.password,
+          'nickname': registerUser.nickname
+        }));
+    log(res.body);
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -57,7 +75,7 @@ class _DatePickerPageState extends State<BirthDatePicker> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      '${dateTime.year}-${dateTime.month}-${dateTime.day}',
+                      '${registerUser.birthdate.year}-${registerUser.birthdate.month}-${registerUser.birthdate.day}',
                       style:
                           const TextStyle(fontSize: 20, color: kActiveYellow),
                     ),
@@ -82,12 +100,20 @@ class _DatePickerPageState extends State<BirthDatePicker> {
                       IconButton(
                         iconSize: 50.0,
                         onPressed: () {
+                          print(registerUser.email +
+                              ' | ' +
+                              registerUser.password +
+                              ' | ' +
+                              registerUser.nickname +
+                              ' | ' +
+                              registerUser.birthdate.toString());
                           // if (_formKey.currentState!.validate()) {
                           log('Moving to gender selection screen');
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => GenderScreen()));
+                                  builder: (context) =>
+                                      GenderScreen(registerUser)));
                           // }
                         },
                         icon: const Icon(Icons.arrow_forward),
@@ -110,7 +136,7 @@ class _DatePickerPageState extends State<BirthDatePicker> {
           initialDateTime: dateTime,
           mode: CupertinoDatePickerMode.date,
           onDateTimeChanged: (dateTime) => setState(
-            () => this.dateTime = dateTime,
+            () => registerUser.birthdate = dateTime,
           ),
         ),
       );
