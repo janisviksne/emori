@@ -1,17 +1,15 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:emori/user_constructors/register_user.dart';
 import 'package:emori/utilities/auth_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 import 'date_picker_screen.dart';
 
 class UsernameScreen extends StatefulWidget {
-  RegisterUser registerUser;
-  UsernameScreen(this.registerUser, {Key? key}) : super(key: key);
+  final RegisterUser registerUser;
+  const UsernameScreen(this.registerUser, {Key? key}) : super(key: key);
 
   @override
   _UsernameState createState() => _UsernameState();
@@ -22,17 +20,17 @@ class _UsernameState extends State<UsernameScreen> {
   String url = "http://10.0.2.2:8080/submitNickname";
 
   late RegisterUser registerUser = widget.registerUser;
-  Future submitUsername() async {
-    print(registerUser.nickname);
-    var res = await http.post(Uri.parse(url),
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode({
-          'email': registerUser.email,
-          'password': registerUser.password,
-          'nickname': registerUser.nickname
-        }));
-    log(res.body);
-  }
+  // Future submitUsername() async {
+  //   print(registerUser.nickname);
+  //   var res = await http.post(Uri.parse(url),
+  //       headers: {'Content-Type': 'application/json'},
+  //       body: json.encode({
+  //         'email': registerUser.email,
+  //         'password': registerUser.password,
+  //         'nickname': registerUser.nickname
+  //       }));
+  //   log(res.body);
+  // }
 
   final _formKey = GlobalKey<FormState>();
   @override

@@ -1,15 +1,14 @@
 import 'dart:developer';
 
+import 'package:emori/auth_screens/education_screen.dart';
 import 'package:emori/user_constructors/register_user.dart';
 import 'package:emori/utilities/auth_constants.dart';
 import 'package:emori/utilities/widgets/auth_widgets/container_button.dart';
 import 'package:flutter/material.dart';
 
-import 'education_screen.dart';
-
 class GenderScreen extends StatefulWidget {
-  RegisterUser registerUser;
-  GenderScreen(this.registerUser, {Key? key}) : super(key: key);
+  final RegisterUser registerUser;
+  const GenderScreen(this.registerUser, {Key? key}) : super(key: key);
 
   @override
   State<GenderScreen> createState() => _GenderScreenState();
@@ -103,7 +102,7 @@ class _GenderScreenState extends State<GenderScreen> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    ProfessionSelectionScreen(registerUser)));
+                                    EducationSelectionScreen(registerUser)));
                         // }
                       },
                       icon: const Icon(Icons.arrow_forward),

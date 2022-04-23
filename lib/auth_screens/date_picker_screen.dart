@@ -11,8 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class BirthDatePickerScreen extends StatefulWidget {
-  RegisterUser registerUser;
-  BirthDatePickerScreen(this.registerUser, {Key? key}) : super(key: key);
+  final RegisterUser registerUser;
+  const BirthDatePickerScreen(this.registerUser, {Key? key}) : super(key: key);
 
   @override
   _DatePickerPageState createState() => _DatePickerPageState();

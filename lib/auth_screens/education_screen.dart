@@ -1,52 +1,25 @@
-import 'dart:convert';
 import 'dart:developer';
 
+import 'package:emori/auth_screens/profession_screen.dart';
 import 'package:emori/user_constructors/register_user.dart';
 import 'package:emori/utilities/auth_constants.dart';
 import 'package:emori/utilities/widget_constants.dart';
-import 'package:emori/utilities/widgets/auth_widgets/profession_listtile_widget.dart';
+import 'package:emori/utilities/widgets/auth_widgets/container_button.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
-import 'dashboard.dart';
-
-class ProfessionSelectionScreen extends StatefulWidget {
-  RegisterUser registerUser;
-  ProfessionSelectionScreen(this.registerUser, {Key? key}) : super(key: key);
+class EducationSelectionScreen extends StatefulWidget {
+  final RegisterUser registerUser;
+  const EducationSelectionScreen(this.registerUser, {Key? key})
+      : super(key: key);
 
   @override
-  State<ProfessionSelectionScreen> createState() =>
-      _ProfessionSelectionScreenState();
+  State<EducationSelectionScreen> createState() =>
+      _EducationSelectionScreenState();
 }
 
-class _ProfessionSelectionScreenState extends State<ProfessionSelectionScreen> {
-  String url = "http://10.0.2.2:8080/registerUserData";
-  Future login() async {
-    var res = await http.post(Uri.parse(url),
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode({
-          'email': registerUser.email,
-          'password': registerUser.password,
-          'nickname': registerUser.nickname,
-          'birthdate': registerUser.birthdate
-        }));
-    log(res.body);
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => Dashboard(),
-        ));
-  }
-
+class _EducationSelectionScreenState extends State<EducationSelectionScreen> {
+  int _value = 1;
   late RegisterUser registerUser = widget.registerUser;
-  //int _value = 1;
-  final allProfessions = [
-    'Administratīvais darbs',
-    'Būvniecība',
-    'Drošība / aizsardzība',
-    'Finanses',
-    'Informācijas tehnoloģijas',
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,77 +39,90 @@ class _ProfessionSelectionScreenState extends State<ProfessionSelectionScreen> {
                     ],
                   ),
                   kSizedBox(20.0),
-                ],
-              ),
-            ),
-            Expanded(
-              child: ListView(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  children: allProfessions.map((profession) {
-                    final isSelected =
-                        registerUser.occupations.contains(profession);
-                    return ProfessionListTileWidget(
-                        isSelected: isSelected,
-                        profession: profession,
-                        onSelectedProfession: selectProfession);
-                  }).toList()),
-            ),
-            Row(
-              children: [
-                // Expanded(
-                //   child: Column(
-                //     children: [], // <- INSERT IMAGE HERE FOR EDUCATION SELECTION
-                //   ),
-                // ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                  Column(
                     children: [
-                      IconButton(
-                        padding: const EdgeInsets.only(top: 100, right: 10.0),
-                        iconSize: 50.0,
-                        onPressed: () {
-                          print(registerUser.email +
-                              ' | ' +
-                              registerUser.password +
-                              ' | ' +
-                              registerUser.nickname +
-                              ' | ' +
-                              registerUser.birthdate.toString() +
-                              ' | ' +
-                              registerUser.gender +
-                              ' | ' +
-                              registerUser.occupations.toString());
-                          // if (_formKey.currentState!.validate()) {
-                          log('Moving to work status selection screen');
-
-                          // }
-                        },
-                        icon: const Icon(Icons.arrow_forward),
-                        color: kActiveYellow,
+                      ContainerButton<int>(
+                        value: 1,
+                        groupValue: _value,
+                        title: 'Pamata (nepabeigta)',
+                        onChanged: (value) => setState(() {
+                          registerUser.education = 'Pamata (nepabeigta)';
+                          _value = value!;
+                        }),
+                      ),
+                      kSizedBox(20.0),
+                      ContainerButton<int>(
+                        value: 2,
+                        groupValue: _value,
+                        title: 'Pamata',
+                        onChanged: (value) => setState(() {
+                          registerUser.education = 'Pamata';
+                          _value = value!;
+                        }),
+                      ),
+                      kSizedBox(20.0),
+                      ContainerButton<int>(
+                        value: 3,
+                        groupValue: _value,
+                        title: 'Vidējā',
+                        onChanged: (value) => setState(() {
+                          registerUser.education = 'Vidējā';
+                          _value = value!;
+                        }),
+                      ),
+                      kSizedBox(20.0),
+                      ContainerButton<int>(
+                        value: 4,
+                        groupValue: _value,
+                        title: 'Augstākā',
+                        onChanged: (value) => setState(() {
+                          registerUser.education = 'Augstākā';
+                          _value = value!;
+                        }),
                       ),
                     ],
                   ),
-                )
-              ],
-            ),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        IconButton(
+                          iconSize: 50.0,
+                          onPressed: () {
+                            print(registerUser.email +
+                                ' | ' +
+                                registerUser.password +
+                                ' | ' +
+                                registerUser.nickname +
+                                ' | ' +
+                                registerUser.birthdate.toString() +
+                                ' | ' +
+                                registerUser.gender +
+                                ' | ' +
+                                registerUser.education);
+                            // if (_formKey.currentState!.validate()) {
+                            log('Moving to education selection screen');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ProfessionSelectionScreen(
+                                            registerUser)));
+                            // }
+                          },
+                          icon: const Icon(Icons.arrow_forward),
+                          color: kActiveYellow,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
     );
-  }
-
-  void selectProfession(String profession) {
-    var isSelected = registerUser.occupations.contains(profession);
-    setState(() {
-      isSelected
-          ? registerUser.occupations.remove(profession)
-          : registerUser.occupations.add(profession);
-      if (registerUser.occupations.length > 4) {
-        registerUser.occupations.remove(profession);
-      }
-    });
   }
 }

@@ -1,11 +1,9 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:emori/auth_screens/username_screen.dart';
 import 'package:emori/user_constructors/register_user.dart';
 import 'package:emori/utilities/auth_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 class EmailPasswordScreen extends StatefulWidget {
   const EmailPasswordScreen({Key? key}) : super(key: key);
@@ -21,16 +19,16 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
       '', '', '', DateTime.now(), '', '', List.empty(growable: true));
   String url = "http://10.0.2.2:8080/submitEmailAndPassword";
 
-  Future submitEmailAndPassword() async {
-    var res = await http.post(Uri.parse(url),
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode({
-          'email': registerUser.email,
-          'password': registerUser.password,
-          'nickname': registerUser.nickname
-        }));
-    log(res.body);
-  }
+  // Future submitEmailAndPassword() async {
+  //   var res = await http.post(Uri.parse(url),
+  //       headers: {'Content-Type': 'application/json'},
+  //       body: json.encode({
+  //         'email': registerUser.email,
+  //         'password': registerUser.password,
+  //         'nickname': registerUser.nickname
+  //       }));
+  //   log(res.body);
+  // }
 
   @override
   Widget build(BuildContext context) {
