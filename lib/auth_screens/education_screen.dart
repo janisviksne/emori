@@ -1,9 +1,9 @@
 import 'dart:developer';
 
-import 'package:emori/auth_screens/profession_screen.dart';
-import 'package:emori/user_constructors/register_user.dart';
-import 'package:emori/utilities/auth_constants.dart';
-import 'package:emori/utilities/widget_constants.dart';
+import 'package:emori/auth_screens/work_status_screen.dart';
+import 'package:emori/model/user/register_user.dart';
+import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:emori/utilities/widgets/auth_widgets/container_button.dart';
 import 'package:flutter/material.dart';
 
@@ -82,44 +82,44 @@ class _EducationSelectionScreenState extends State<EducationSelectionScreen> {
                       ),
                     ],
                   ),
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        IconButton(
-                          iconSize: 50.0,
-                          onPressed: () {
-                            print(registerUser.email +
-                                ' | ' +
-                                registerUser.password +
-                                ' | ' +
-                                registerUser.nickname +
-                                ' | ' +
-                                registerUser.birthdate.toString() +
-                                ' | ' +
-                                registerUser.gender +
-                                ' | ' +
-                                registerUser.education);
-                            // if (_formKey.currentState!.validate()) {
-                            log('Moving to education selection screen');
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        ProfessionSelectionScreen(
-                                            registerUser)));
-                            // }
-                          },
-                          icon: const Icon(Icons.arrow_forward),
-                          color: kActiveYellow,
-                        ),
-                      ],
-                    ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  IconButton(
+                    iconSize: 50.0,
+                    onPressed: () {
+                      print(registerUser.email +
+                          ' | ' +
+                          registerUser.password +
+                          ' | ' +
+                          registerUser.nickname +
+                          ' | ' +
+                          registerUser.birthdate.toString() +
+                          ' | ' +
+                          registerUser.gender +
+                          ' | ' +
+                          registerUser.education);
+                      // if (_formKey.currentState!.validate()) {
+                      log('Moving to education selection screen');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  WorkStatusScreen(registerUser)));
+                      //ProfessionSelectionScreen(registerUser)
+                      // }
+                    },
+                    icon: const Icon(Icons.arrow_forward),
+                    color: kActiveYellow,
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

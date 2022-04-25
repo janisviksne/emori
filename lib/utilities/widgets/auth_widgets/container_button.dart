@@ -1,4 +1,4 @@
-import 'package:emori/utilities/auth_constants.dart';
+import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -49,10 +49,9 @@ class ContainerButton<T> extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-          color: isSelected ? kActiveGreen : kActiveYellow,
-          fontWeight: FontWeight.bold,
-          fontSize: 18,
-        ),
+            color: isSelected ? kActiveGreen : kActiveYellow,
+            fontSize: 18,
+            fontFamily: 'Readex Pro'),
       ),
     );
   }

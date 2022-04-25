@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Dashboard extends StatefulWidget {
+class TempScreen extends StatefulWidget {
+  const TempScreen({Key? key}) : super(key: key);
+
   @override
-  _DashboardState createState() => _DashboardState();
+  _TempScreenState createState() => _TempScreenState();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _TempScreenState extends State<TempScreen> {
   //This class is accessed when login is successful
   @override
   Widget build(BuildContext context) {

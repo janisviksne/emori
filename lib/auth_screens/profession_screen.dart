@@ -1,14 +1,14 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:emori/user_constructors/register_user.dart';
-import 'package:emori/utilities/auth_constants.dart';
-import 'package:emori/utilities/widget_constants.dart';
+import 'package:emori/model/user/register_user.dart';
+import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:emori/utilities/widgets/auth_widgets/profession_listtile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'dashboard.dart';
+import 'temporary.dart';
 
 class ProfessionSelectionScreen extends StatefulWidget {
   final RegisterUser registerUser;
@@ -35,7 +35,7 @@ class _ProfessionSelectionScreenState extends State<ProfessionSelectionScreen> {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => Dashboard(),
+          builder: (context) => TempScreen(),
         ));
   }
 
@@ -62,8 +62,8 @@ class _ProfessionSelectionScreenState extends State<ProfessionSelectionScreen> {
                   kBackArrow('Returning to gender selection screen', context),
                   Row(
                     children: [
-                      kInputTextHeading(
-                          'Atzīmē savu\nizglītības līmeni ', kActiveYellow, 40)
+                      kInputTextHeading('Atzīmē savas\nnodarbinātības\nsfēras',
+                          kActiveYellow, 40)
                     ],
                   ),
                   kSizedBox(20.0),
@@ -109,10 +109,13 @@ class _ProfessionSelectionScreenState extends State<ProfessionSelectionScreen> {
                               ' | ' +
                               registerUser.gender +
                               ' | ' +
+                              registerUser.education +
+                              ' | ' +
+                              registerUser.workStatus +
+                              ' | ' +
                               registerUser.occupations.toString());
                           // if (_formKey.currentState!.validate()) {
                           log('Moving to work status selection screen');
-
                           // }
                         },
                         icon: const Icon(Icons.arrow_forward),

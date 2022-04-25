@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:emori/auth_screens/education_screen.dart';
-import 'package:emori/user_constructors/register_user.dart';
-import 'package:emori/utilities/auth_constants.dart';
+import 'package:emori/model/user/register_user.dart';
+import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:emori/utilities/widgets/auth_widgets/container_button.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +39,7 @@ class _GenderScreenState extends State<GenderScreen> {
                   ),
                 ],
               ),
-              kSizedBox(20.0),
+              kSizedBox(10.0),
               Row(
                 children: [
                   kInputTextHeading('Norādi savu\ndzimumu', kActiveYellow, 40)

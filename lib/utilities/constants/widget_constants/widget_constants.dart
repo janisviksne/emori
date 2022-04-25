@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import 'auth_constants.dart';
+import '../text_constants/auth_constants.dart';
 
 Row kBackArrow(String logMessage, BuildContext context) => Row(children: [
       IconButton(

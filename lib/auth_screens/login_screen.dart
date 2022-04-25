@@ -2,22 +2,24 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:emori/auth_screens/email_password_screen.dart';
-import 'package:emori/user_constructors/user.dart';
-import 'package:emori/utilities/auth_constants.dart';
+import 'package:emori/model/user/login_user.dart';
+import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'dashboard.dart';
+import 'temporary.dart';
 
 class Login extends StatefulWidget {
+  const Login({Key? key}) : super(key: key);
+
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
-  //ToDo add another constructor. 1st for login, 2nd for register
+
   LoginUser loginUser = LoginUser("", "");
   String url = "http://10.0.2.2:8080/login";
 
@@ -30,7 +32,7 @@ class _LoginState extends State<Login> {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => Dashboard(),
+          builder: (context) => const TempScreen(),
         ));
   }
 
@@ -51,14 +53,14 @@ class _LoginState extends State<Login> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      kInputTextHeading('Ienāc\nsavā kontā', kActiveGreen, 40),
+                      kInputTextHeading('Ienāc\nsavā kontā', kActiveGreen, 30),
                     ],
                   ),
                   kSizedBox(20.0),
                   Row(
                     children: [
                       kDescriptionText('Ievadi savus esošos pieejas datus',
-                          kActiveGreen, 18),
+                          kActiveGreen, 16),
                     ],
                   ),
                   kSizedBox(20.0),
@@ -80,7 +82,8 @@ class _LoginState extends State<Login> {
                           },
                           style: const TextStyle(
                               fontSize: 20, color: kActiveGreen),
-                          decoration: kInputFieldDecoration('E-pasts'),
+                          decoration:
+                              kInputFieldDecoration('E-pasts', kActiveGreen),
                         ),
                         kSizedBox(20.0),
                         TextFormField(
@@ -97,7 +100,8 @@ class _LoginState extends State<Login> {
                           },
                           style: const TextStyle(
                               fontSize: 20, color: kActiveGreen),
-                          decoration: kInputFieldDecoration('Parole'),
+                          decoration:
+                              kInputFieldDecoration('Parole', kActiveGreen),
                         ),
                       ],
                     ),

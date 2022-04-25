@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:emori/auth_screens/gender_screen.dart';
-import 'package:emori/user_constructors/register_user.dart';
-import 'package:emori/utilities/auth_constants.dart';
+import 'package:emori/model/user/register_user.dart';
+import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:emori/utilities/utils/picker_utils.dart';
 import 'package:emori/utilities/widgets/auth_widgets/selector_button.dart';
 import 'package:flutter/cupertino.dart';
@@ -58,15 +58,9 @@ class _DatePickerPageState extends State<BirthDatePickerScreen> {
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0),
                   child: Row(
-                    children: const [
-                      Text(
-                        'Izvēlies savu\ndzimšanas\ndatumu',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                            color: kActiveYellow,
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold),
-                      ),
+                    children: [
+                      kInputTextHeading(
+                          'Ievadi savi\ndzimšanas\ndatumu', kActiveYellow, 32)
                     ],
                   ),
                 ),
@@ -74,11 +68,10 @@ class _DatePickerPageState extends State<BirthDatePickerScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      '${registerUser.birthdate.year}-${registerUser.birthdate.month}-${registerUser.birthdate.day}',
-                      style:
-                          const TextStyle(fontSize: 20, color: kActiveYellow),
-                    ),
+                    kDescriptionText(
+                        '${registerUser.birthdate.year}-${registerUser.birthdate.month}-${registerUser.birthdate.day}',
+                        kActiveYellow,
+                        22)
                   ],
                 ),
                 kSizedBox(15.0),

@@ -1,4 +1,4 @@
-import 'package:emori/utilities/auth_constants.dart';
+import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:flutter/material.dart';
 
 class ProfessionListTileWidget extends StatelessWidget {
@@ -19,8 +19,9 @@ class ProfessionListTileWidget extends StatelessWidget {
             fontSize: 18,
             color: kActiveGreen,
             fontWeight: FontWeight.bold,
-          )
-        : const TextStyle(fontSize: 18, color: Colors.white);
+            fontFamily: 'Readex Pro')
+        : const TextStyle(
+            fontSize: 18, color: kActiveYellow, fontFamily: 'Readex Pro');
 
     return Container(
       color: isSelected ? kActiveYellow : kActiveGreen,

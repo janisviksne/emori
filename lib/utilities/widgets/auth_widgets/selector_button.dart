@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../auth_constants.dart';
+import '../../constants/text_constants/auth_constants.dart';
 
 class ButtonWidget extends StatelessWidget {
   final VoidCallback onClicked;
@@ -21,6 +21,7 @@ class ButtonWidget extends StatelessWidget {
             SizedBox(width: 8),
             Text(
               'Izvēlies',
+              textAlign: TextAlign.center,
               style: TextStyle(fontSize: 20, color: kActiveGreen),
             ),
           ],

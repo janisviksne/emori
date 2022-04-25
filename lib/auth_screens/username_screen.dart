@@ -1,11 +1,11 @@
 import 'dart:developer';
 
-import 'package:emori/user_constructors/register_user.dart';
-import 'package:emori/utilities/auth_constants.dart';
+import 'package:emori/model/user/register_user.dart';
+import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'date_picker_screen.dart';
+import 'birthdate_screen.dart';
 
 class UsernameScreen extends StatefulWidget {
   final RegisterUser registerUser;
@@ -15,22 +15,10 @@ class UsernameScreen extends StatefulWidget {
   _UsernameState createState() => _UsernameState();
 }
 
-//ToDo Pass username to end screen
 class _UsernameState extends State<UsernameScreen> {
   String url = "http://10.0.2.2:8080/submitNickname";
 
   late RegisterUser registerUser = widget.registerUser;
-  // Future submitUsername() async {
-  //   print(registerUser.nickname);
-  //   var res = await http.post(Uri.parse(url),
-  //       headers: {'Content-Type': 'application/json'},
-  //       body: json.encode({
-  //         'email': registerUser.email,
-  //         'password': registerUser.password,
-  //         'nickname': registerUser.nickname
-  //       }));
-  //   log(res.body);
-  // }
 
   final _formKey = GlobalKey<FormState>();
   @override
@@ -56,24 +44,17 @@ class _UsernameState extends State<UsernameScreen> {
                 ),
                 kSizedBox(15.0),
                 Row(
-                  children: const [
-                    Text(
-                      'Kā Tevi uzrunāt?',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          color: kActiveYellow,
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold),
-                    ),
+                  children: [
+                    kInputTextHeading('Kā Tevi uzrunāt?', kActiveYellow, 32)
                   ],
                 ),
                 kSizedBox(15.0),
                 Row(
-                  children: const [
-                    Text(
-                      'Ieraksti vārdu, kurā vēlies, lai lietotne\nTevi uzrunā dažādās sadaļās.',
-                      style: TextStyle(color: kActiveYellow, fontSize: 20),
-                    )
+                  children: [
+                    kDescriptionText(
+                        'Ieraksti vārdu, kurā vēlies, lai lietotne\nTevi uzrunā dažādās sadaļās.',
+                        kActiveYellow,
+                        18)
                   ],
                 ),
                 kSizedBox(15.0),
@@ -94,19 +75,8 @@ class _UsernameState extends State<UsernameScreen> {
                           },
                           style: const TextStyle(
                               fontSize: 20, color: kActiveYellow),
-                          decoration: const InputDecoration(
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: kActiveYellow),
-                              ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: kActiveYellow),
-                              ),
-                              hintText: 'Uzruna/ vārds',
-                              hintStyle: TextStyle(color: kActiveYellow),
-                              errorStyle:
-                                  TextStyle(fontSize: 20, color: Colors.red),
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide.none)),
+                          decoration: kInputFieldDecoration(
+                              'Uzruna / vārds', kActiveYellow),
                         ),
                       ],
                     ),
@@ -125,7 +95,6 @@ class _UsernameState extends State<UsernameScreen> {
                               ' | ' +
                               registerUser.nickname);
                           // if (_formKey.currentState!.validate()) {
-
                           log('Moving to date picker screen');
                           Navigator.push(
                               context,

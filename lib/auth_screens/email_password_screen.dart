@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:emori/auth_screens/username_screen.dart';
-import 'package:emori/user_constructors/register_user.dart';
-import 'package:emori/utilities/auth_constants.dart';
+import 'package:emori/model/user/register_user.dart';
+import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:flutter/material.dart';
 
 class EmailPasswordScreen extends StatefulWidget {
@@ -16,7 +16,7 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
 
   RegisterUser registerUser = RegisterUser(
-      '', '', '', DateTime.now(), '', '', List.empty(growable: true));
+      '', '', '', DateTime.now(), '', '', 'Cits', List.empty(growable: true));
   String url = "http://10.0.2.2:8080/submitEmailAndPassword";
 
   // Future submitEmailAndPassword() async {
@@ -96,7 +96,8 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                         }
                       },
                       style: const TextStyle(fontSize: 20, color: kActiveGreen),
-                      decoration: kInputFieldDecoration('E-pasts'),
+                      decoration:
+                          kInputFieldDecoration('E-pasts', kActiveGreen),
                     ),
                     kSizedBox(20.0),
                     TextFormField(
@@ -114,7 +115,7 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                         }
                       },
                       style: const TextStyle(fontSize: 20, color: kActiveGreen),
-                      decoration: kInputFieldDecoration('Parole'),
+                      decoration: kInputFieldDecoration('Parole', kActiveGreen),
                     ),
                     kSizedBox(20.0),
                     TextFormField(
@@ -133,7 +134,8 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                         }
                       },
                       style: const TextStyle(fontSize: 20, color: kActiveGreen),
-                      decoration: kInputFieldDecoration('Parole atkārtoti'),
+                      decoration: kInputFieldDecoration(
+                          'Parole atkārtoti', kActiveGreen),
                     ),
                   ],
                 ),
