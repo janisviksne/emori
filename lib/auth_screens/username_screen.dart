@@ -16,8 +16,7 @@ class UsernameScreen extends StatefulWidget {
 }
 
 class _UsernameState extends State<UsernameScreen> {
-  String url = "http://10.0.2.2:8080/submitNickname";
-
+  //passed register user from previous screen
   late RegisterUser registerUser = widget.registerUser;
 
   final _formKey = GlobalKey<FormState>();

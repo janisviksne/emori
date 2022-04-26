@@ -8,7 +8,7 @@ class TempScreen extends StatefulWidget {
 }
 
 class _TempScreenState extends State<TempScreen> {
-  //This class is accessed when login is successful
+  //This class is accessed when login/registration is successful
   @override
   Widget build(BuildContext context) {
     return const Scaffold(

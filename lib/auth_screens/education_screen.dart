@@ -111,7 +111,6 @@ class _EducationSelectionScreenState extends State<EducationSelectionScreen> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   WorkStatusScreen(registerUser)));
-                      //ProfessionSelectionScreen(registerUser)
                       // }
                     },
                     icon: const Icon(Icons.arrow_forward),
