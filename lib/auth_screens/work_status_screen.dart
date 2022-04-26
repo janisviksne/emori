@@ -77,7 +77,7 @@ class _WorkStatusScreenState extends State<WorkStatusScreen> {
                             ' | ' +
                             registerUser.nickname +
                             ' | ' +
-                            registerUser.birthdate.toString() +
+                            registerUser.birthDate.toString() +
                             ' | ' +
                             registerUser.gender +
                             ' | ' +

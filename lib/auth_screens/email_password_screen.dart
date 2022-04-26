@@ -14,21 +14,8 @@ class EmailPasswordScreen extends StatefulWidget {
 
 class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
-
   RegisterUser registerUser = RegisterUser(
-      '', '', '', DateTime.now(), '', '', 'Cits', List.empty(growable: true));
-  String url = "http://10.0.2.2:8080/submitEmailAndPassword";
-
-  // Future submitEmailAndPassword() async {
-  //   var res = await http.post(Uri.parse(url),
-  //       headers: {'Content-Type': 'application/json'},
-  //       body: json.encode({
-  //         'email': registerUser.email,
-  //         'password': registerUser.password,
-  //         'nickname': registerUser.nickname
-  //       }));
-  //   log(res.body);
-  // }
+      '', '', '', '', '', '', 'Students', List.empty(growable: true));
 
   @override
   Widget build(BuildContext context) {

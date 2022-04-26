@@ -14,7 +14,7 @@ class _TempScreenState extends State<TempScreen> {
     return const Scaffold(
       body: SafeArea(
         child: Center(
-          child: Text('Login worked!'),
+          child: Text('IT WORKED!!!'),
         ),
       ),
     );

@@ -93,7 +93,7 @@ class _GenderScreenState extends State<GenderScreen> {
                             ' | ' +
                             registerUser.nickname +
                             ' | ' +
-                            registerUser.birthdate.toString() +
+                            registerUser.birthDate.toString() +
                             ' | ' +
                             registerUser.gender);
                         // if (_formKey.currentState!.validate()) {

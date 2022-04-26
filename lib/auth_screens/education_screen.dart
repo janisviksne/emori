@@ -99,7 +99,7 @@ class _EducationSelectionScreenState extends State<EducationSelectionScreen> {
                           ' | ' +
                           registerUser.nickname +
                           ' | ' +
-                          registerUser.birthdate.toString() +
+                          registerUser.birthDate.toString() +
                           ' | ' +
                           registerUser.gender +
                           ' | ' +

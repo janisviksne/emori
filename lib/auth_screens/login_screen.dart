@@ -29,11 +29,15 @@ class _LoginState extends State<Login> {
         body: json.encode(
             {'email': loginUser.email, 'password': loginUser.password}));
     log(res.body);
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const TempScreen(),
-        ));
+    if (res.statusCode == 200) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const TempScreen(),
+          ));
+    } else {
+      log('Something went wrong');
+    }
   }
 
   @override

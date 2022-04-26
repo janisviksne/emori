@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:emori/auth_screens/gender_screen.dart';
@@ -8,7 +7,7 @@ import 'package:emori/utilities/utils/picker_utils.dart';
 import 'package:emori/utilities/widgets/auth_widgets/selector_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 class BirthDatePickerScreen extends StatefulWidget {
   final RegisterUser registerUser;
@@ -20,19 +19,7 @@ class BirthDatePickerScreen extends StatefulWidget {
 
 class _DatePickerPageState extends State<BirthDatePickerScreen> {
   late RegisterUser registerUser = widget.registerUser;
-  String url = "http://10.0.2.2:8080/submitNickname";
-  //ToDo pass this dateTime value to the next end screen
-  DateTime dateTime = DateTime.now();
-  Future submitDate() async {
-    var res = await http.post(Uri.parse(url),
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode({
-          'email': registerUser.email,
-          'password': registerUser.password,
-          'nickname': registerUser.nickname
-        }));
-    log(res.body);
-  }
+  final dateFormat = DateFormat('dd/MM/yyyy');
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -68,10 +55,7 @@ class _DatePickerPageState extends State<BirthDatePickerScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    kDescriptionText(
-                        '${registerUser.birthdate.year}-${registerUser.birthdate.month}-${registerUser.birthdate.day}',
-                        kActiveYellow,
-                        22)
+                    kDescriptionText(registerUser.birthDate, kActiveYellow, 22)
                   ],
                 ),
                 kSizedBox(15.0),
@@ -99,7 +83,7 @@ class _DatePickerPageState extends State<BirthDatePickerScreen> {
                               ' | ' +
                               registerUser.nickname +
                               ' | ' +
-                              registerUser.birthdate.toString());
+                              registerUser.birthDate);
                           // if (_formKey.currentState!.validate()) {
                           log('Moving to gender selection screen');
                           Navigator.push(
@@ -124,12 +108,12 @@ class _DatePickerPageState extends State<BirthDatePickerScreen> {
   Widget buildDatePicker() => SizedBox(
         height: 180,
         child: CupertinoDatePicker(
-          maximumYear: dateTime.year,
+          maximumYear: DateTime.now().year,
           minimumYear: 1900,
-          initialDateTime: dateTime,
+          initialDateTime: DateTime.now(),
           mode: CupertinoDatePickerMode.date,
           onDateTimeChanged: (dateTime) => setState(
-            () => registerUser.birthdate = dateTime,
+            () => registerUser.birthDate = dateFormat.format(dateTime),
           ),
         ),
       );

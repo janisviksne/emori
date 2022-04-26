@@ -22,25 +22,32 @@ class ProfessionSelectionScreen extends StatefulWidget {
 
 class _ProfessionSelectionScreenState extends State<ProfessionSelectionScreen> {
   String url = "http://10.0.2.2:8080/registerUserData";
-  Future login() async {
+  Future registerNewUser() async {
     var res = await http.post(Uri.parse(url),
         headers: {'Content-Type': 'application/json'},
         body: json.encode({
           'email': registerUser.email,
           'password': registerUser.password,
           'nickname': registerUser.nickname,
-          'birthdate': registerUser.birthdate
+          'birthDate': registerUser.birthDate,
+          'gender': registerUser.gender,
+          'education': registerUser.education,
+          'workStatus': registerUser.workStatus,
+          'occupations': registerUser.occupations
         }));
     log(res.body);
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => TempScreen(),
-        ));
+    if (res.statusCode == 200) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const TempScreen(),
+          ));
+    } else {
+      log('There was an exception');
+    }
   }
 
   late RegisterUser registerUser = widget.registerUser;
-  //int _value = 1;
   final allProfessions = [
     'Administratīvais darbs',
     'Būvniecība',
@@ -105,7 +112,7 @@ class _ProfessionSelectionScreenState extends State<ProfessionSelectionScreen> {
                               ' | ' +
                               registerUser.nickname +
                               ' | ' +
-                              registerUser.birthdate.toString() +
+                              registerUser.birthDate.toString() +
                               ' | ' +
                               registerUser.gender +
                               ' | ' +
@@ -115,6 +122,7 @@ class _ProfessionSelectionScreenState extends State<ProfessionSelectionScreen> {
                               ' | ' +
                               registerUser.occupations.toString());
                           // if (_formKey.currentState!.validate()) {
+                          registerNewUser();
                           log('Moving to work status selection screen');
                           // }
                         },
