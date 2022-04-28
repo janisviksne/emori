@@ -24,6 +24,15 @@ class FifthIntroScreen extends StatelessWidget {
                   ],
                 ),
                 Container(
+                  padding: const EdgeInsets.only(right: 20, top: 60),
+                  child: Center(
+                    child: SvgPicture.asset(
+                      'assets/images/intro_backgrounds/fifth_intro/fifth_intro_person.svg',
+                      height: 350,
+                    ),
+                  ),
+                ),
+                Container(
                   padding: const EdgeInsets.only(left: 10.0, top: 10.0),
                   child: Row(
                     children: [
@@ -33,20 +42,11 @@ class FifthIntroScreen extends StatelessWidget {
                           Navigator.pop(context);
                         },
                         icon: SvgPicture.asset(
-                            'assets/images/common/back_arrow.svg'),
+                            'assets/images/common/back_arrow_yellow.svg'),
                       ),
                     ],
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.only(right: 20, top: 60),
-                  child: Center(
-                    child: SvgPicture.asset(
-                      'assets/images/intro_backgrounds/fifth_intro/fifth_intro_person.svg',
-                      height: 350,
-                    ),
-                  ),
-                )
               ],
             ),
             kSizedBox(5.0),

@@ -35,8 +35,8 @@ class _GenderScreenState extends State<GenderScreen> {
                       Navigator.pop(context);
                       log('Returning to date picker screen');
                     },
-                    icon:
-                        SvgPicture.asset('assets/images/common/back_arrow.svg'),
+                    icon: SvgPicture.asset(
+                        'assets/images/common/back_arrow_yellow.svg'),
                   ),
                 ],
               ),

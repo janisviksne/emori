@@ -16,21 +16,6 @@ class SecondIntroScreen extends StatelessWidget {
             Stack(
               children: [
                 Container(
-                  padding: const EdgeInsets.only(left: 10.0, top: 10.0),
-                  child: Row(
-                    children: [
-                      IconButton(
-                        iconSize: 50.0,
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: SvgPicture.asset(
-                            'assets/images/common/back_arrow.svg'),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
                   padding: const EdgeInsets.only(top: 165),
                   child: Row(
                     children: [
@@ -47,7 +32,22 @@ class SecondIntroScreen extends StatelessWidget {
                       'assets/images/intro_backgrounds/second_intro/second_intro_people.svg',
                     ),
                   ),
-                )
+                ),
+                Container(
+                  padding: const EdgeInsets.only(left: 10.0, top: 10.0),
+                  child: Row(
+                    children: [
+                      IconButton(
+                        iconSize: 50.0,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: SvgPicture.asset(
+                            'assets/images/common/back_arrow_yellow.svg'),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
             kSizedBox(4.0),

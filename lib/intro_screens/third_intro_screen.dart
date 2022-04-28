@@ -16,21 +16,6 @@ class ThirdIntroScreen extends StatelessWidget {
             Stack(
               children: [
                 Container(
-                  padding: const EdgeInsets.only(left: 10.0, top: 10.0),
-                  child: Row(
-                    children: [
-                      IconButton(
-                        iconSize: 50.0,
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: SvgPicture.asset(
-                            'assets/images/common/back_arrow.svg'),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
                   padding: const EdgeInsets.only(top: 80),
                   child: Row(
                     children: [
@@ -47,7 +32,22 @@ class ThirdIntroScreen extends StatelessWidget {
                       'assets/images/intro_backgrounds/third_intro/third_intro_person.svg',
                     ),
                   ),
-                )
+                ),
+                Container(
+                  padding: const EdgeInsets.only(left: 10.0, top: 10.0),
+                  child: Row(
+                    children: [
+                      IconButton(
+                        iconSize: 50.0,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: SvgPicture.asset(
+                            'assets/images/common/back_arrow_yellow.svg'),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
             kSizedBox(10.0),

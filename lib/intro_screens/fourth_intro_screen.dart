@@ -32,7 +32,7 @@ class FourthIntroScreen extends StatelessWidget {
                           Navigator.pop(context);
                         },
                         icon: SvgPicture.asset(
-                            'assets/images/common/back_arrow.svg'),
+                            'assets/images/common/back_arrow_yellow.svg'),
                       ),
                     ],
                   ),
