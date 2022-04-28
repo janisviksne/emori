@@ -1,10 +1,10 @@
-import 'package:emori/intro_screens/third_intro_screen.dart';
+import 'package:emori/auth_screens/email_password_screen.dart';
 import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class SecondIntroScreen extends StatelessWidget {
-  const SecondIntroScreen({Key? key}) : super(key: key);
+class FifthIntroScreen extends StatelessWidget {
+  const FifthIntroScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +15,14 @@ class SecondIntroScreen extends StatelessWidget {
           children: [
             Stack(
               children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    SvgPicture.asset(
+                      'assets/images/intro_backgrounds/fifth_intro/fifth_sun.svg',
+                    ),
+                  ],
+                ),
                 Container(
                   padding: const EdgeInsets.only(left: 10.0, top: 10.0),
                   child: Row(
@@ -31,40 +39,31 @@ class SecondIntroScreen extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.only(top: 165),
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        'assets/images/intro_backgrounds/second_intro/second_sun.svg',
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(right: 20, top: 40),
+                  padding: const EdgeInsets.only(right: 20, top: 60),
                   child: Center(
                     child: SvgPicture.asset(
-                      'assets/images/intro_backgrounds/second_intro/second_intro_people.svg',
+                      'assets/images/intro_backgrounds/fifth_intro/fifth_intro_person.svg',
+                      height: 350,
                     ),
                   ),
                 )
               ],
             ),
-            kSizedBox(4.0),
+            kSizedBox(5.0),
             Container(
               padding: const EdgeInsets.only(left: 20.0, right: 20.0),
               child: Column(
                 children: [
                   Row(
                     children: [
-                      kInputTextHeading('Aptaujas', kActiveYellow, 32),
+                      kInputTextHeading('Motivācija', kActiveYellow, 32),
                     ],
                   ),
                   kSizedBox(4),
                   Row(
                     children: [
                       kDescriptionText(
-                          'Atbildi uz aptaujas jautājumiem par\nsavām emocijas regulācijas prasmēm,\nlai pielāgotu uzdevumus tieši Tev.',
+                          'Par uzdevumiem saņemsi virtuālus\nžetonus. Tie apliecinās emociju\nregulācijas prasmju iepazīšanu un attīstību.',
                           kActiveYellow,
                           18),
                     ],
@@ -80,10 +79,10 @@ class SecondIntroScreen extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const ThirdIntroScreen()));
+                                      const EmailPasswordScreen()));
                         },
                         icon: SvgPicture.asset(
-                            'assets/images/intro_backgrounds/second_intro/second_intro_forward_arrow_icon.svg'),
+                            'assets/images/intro_backgrounds/fifth_intro/fifth_intro_forward_arrow_icon.svg'),
                       ),
                     ],
                   ),

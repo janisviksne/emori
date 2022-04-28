@@ -21,10 +21,8 @@ class FirstIntroScreen extends StatelessWidget {
                   child: Row(
                     children: [
                       SvgPicture.asset(
-                        'assets/images/intro_backgrounds/first_intro/small_sun.svg',
-                        width: 80,
+                        'assets/images/intro_backgrounds/first_intro/first_sun.svg',
                         height: 210,
-                        color: Colors.orange,
                       ),
                     ],
                   ),
@@ -33,10 +31,10 @@ class FirstIntroScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 20),
                   child: Center(
                     child: SvgPicture.asset(
-                      'assets/images/intro_backgrounds/first_intro/people.svg',
+                      'assets/images/intro_backgrounds/first_intro/first_intro_people.svg',
                     ),
                   ),
-                )
+                ),
               ],
             ),
             Container(
@@ -60,14 +58,13 @@ class FirstIntroScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              padding: const EdgeInsets.only(right: 20.0),
+            Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   IconButton(
-                    iconSize: 75.0,
+                    iconSize: 100.0,
                     onPressed: () {
                       Navigator.push(
                           context,
@@ -75,11 +72,11 @@ class FirstIntroScreen extends StatelessWidget {
                               builder: (context) => const SecondIntroScreen()));
                     },
                     icon: SvgPicture.asset(
-                        'assets/images/common/intro_proceed_arrow_button.svg'),
+                        'assets/images/intro_backgrounds/first_intro/first_intro_forward_arrow_icon.svg'),
                   ),
                 ],
               ),
-            ),
+            )
           ],
         ),
       ),

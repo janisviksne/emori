@@ -5,6 +5,7 @@ import 'package:emori/model/user/register_user.dart';
 import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:emori/utilities/widgets/auth_widgets/container_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class GenderScreen extends StatefulWidget {
   final RegisterUser registerUser;
@@ -34,8 +35,8 @@ class _GenderScreenState extends State<GenderScreen> {
                       Navigator.pop(context);
                       log('Returning to date picker screen');
                     },
-                    icon: const Icon(Icons.arrow_back),
-                    color: kActiveYellow,
+                    icon:
+                        SvgPicture.asset('assets/images/common/back_arrow.svg'),
                   ),
                 ],
               ),
