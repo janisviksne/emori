@@ -14,18 +14,29 @@ class FirstIntroScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+            Stack(
               children: [
-                SvgPicture.asset(
-                  'assets/images/intro_backgrounds/first_intro/sun.svg',
-                  color: Colors.orange,
+                Container(
+                  padding: const EdgeInsets.only(top: 240),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        'assets/images/intro_backgrounds/first_intro/small_sun.svg',
+                        width: 80,
+                        height: 210,
+                        color: Colors.orange,
+                      ),
+                    ],
+                  ),
                 ),
-                SvgPicture.asset(
-                  'assets/images/intro_backgrounds/first_intro/people.svg',
-                  height: 415,
-                  fit: BoxFit.fill,
-                ),
+                Container(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Center(
+                    child: SvgPicture.asset(
+                      'assets/images/intro_backgrounds/first_intro/people.svg',
+                    ),
+                  ),
+                )
               ],
             ),
             Container(
@@ -50,28 +61,25 @@ class FirstIntroScreen extends StatelessWidget {
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(right: 10.0),
-              child: Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    IconButton(
-                      iconSize: 100.0,
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const SecondIntroScreen()));
-                      },
-                      icon: SvgPicture.asset(
-                          'assets/images/common/arrow_button.svg'),
-                    ),
-                  ],
-                ),
+              padding: const EdgeInsets.only(right: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  IconButton(
+                    iconSize: 75.0,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SecondIntroScreen()));
+                    },
+                    icon: SvgPicture.asset(
+                        'assets/images/common/intro_proceed_arrow_button.svg'),
+                  ),
+                ],
               ),
-            )
+            ),
           ],
         ),
       ),
