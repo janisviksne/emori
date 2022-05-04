@@ -58,25 +58,42 @@ class FirstIntroScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  IconButton(
-                    iconSize: 100.0,
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SecondIntroScreen()));
-                    },
-                    icon: SvgPicture.asset(
-                        'assets/images/intro_backgrounds/first_intro/first_intro_forward_arrow_icon.svg'),
-                  ),
-                ],
-              ),
-            )
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                IconButton(
+                  iconSize: 100.0,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SecondIntroScreen()));
+                  },
+                  icon: SvgPicture.asset(
+                      'assets/images/intro_backgrounds/first_intro/first_intro_forward_arrow_icon.svg'),
+                ),
+              ],
+            ),
+            // Expanded(
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.end,
+            //     crossAxisAlignment: CrossAxisAlignment.end,
+            //     children: [
+            //       IconButton(
+            //         iconSize: 100.0,
+            //         onPressed: () {
+            //           Navigator.push(
+            //               context,
+            //               MaterialPageRoute(
+            //                   builder: (context) => const SecondIntroScreen()));
+            //         },
+            //         icon: SvgPicture.asset(
+            //             'assets/images/intro_backgrounds/first_intro/first_intro_forward_arrow_icon.svg'),
+            //       ),
+            //     ],
+            //   ),
+            // )
           ],
         ),
       ),

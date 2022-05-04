@@ -41,6 +41,7 @@ flutter:
   - assets/images/intro_backgrounds/third_intro/
   - assets/images/intro_backgrounds/fourth_intro/
   - assets/images/intro_backgrounds/fifth_intro/
+  - assets/images/questionnaire_backgrounds/
   - assets/images/common/
   fonts:
     - family: Readex Pro

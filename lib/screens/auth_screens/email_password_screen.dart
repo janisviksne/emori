@@ -2,6 +2,7 @@ import 'package:emori/model/user/register_user.dart';
 import 'package:emori/screens/auth_screens/login_screen.dart';
 import 'package:emori/screens/auth_screens/username_screen.dart';
 import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -26,21 +27,7 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              padding: const EdgeInsets.only(left: 10.0, top: 10.0),
-              child: Row(
-                children: [
-                  IconButton(
-                    iconSize: 50.0,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: SvgPicture.asset(
-                        'assets/images/common/back_arrow_green.svg'),
-                  ),
-                ],
-              ),
-            ),
+            kBackArrowGreen(context),
             Container(
               padding: const EdgeInsets.only(left: 20.0, right: 20.0),
               child: Column(
