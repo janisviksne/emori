@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:emori/auth_screens/work_status_screen.dart';
 import 'package:emori/model/user/register_user.dart';
+import 'package:emori/screens/auth_screens/work_status_screen.dart';
 import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:emori/utilities/widgets/auth_widgets/container_button.dart';

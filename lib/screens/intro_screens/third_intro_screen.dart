@@ -1,10 +1,11 @@
-import 'package:emori/intro_screens/fifth_intro_screen.dart';
 import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class FourthIntroScreen extends StatelessWidget {
-  const FourthIntroScreen({Key? key}) : super(key: key);
+import 'fourth_intro_screen.dart';
+
+class ThirdIntroScreen extends StatelessWidget {
+  const ThirdIntroScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +16,23 @@ class FourthIntroScreen extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Row(
-                  children: [
-                    SvgPicture.asset(
-                      'assets/images/intro_backgrounds/fourth_intro/fourth_sun.svg',
+                Container(
+                  padding: const EdgeInsets.only(top: 80),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        'assets/images/intro_backgrounds/third_intro/third_sun.svg',
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.only(right: 75, top: 20),
+                  child: Center(
+                    child: SvgPicture.asset(
+                      'assets/images/intro_backgrounds/third_intro/third_intro_person.svg',
                     ),
-                  ],
+                  ),
                 ),
                 Container(
                   padding: const EdgeInsets.only(left: 10.0, top: 10.0),
@@ -37,14 +49,6 @@ class FourthIntroScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.only(right: 20, top: 40),
-                  child: Center(
-                    child: SvgPicture.asset(
-                      'assets/images/intro_backgrounds/fourth_intro/fourth_intro_person.svg',
-                    ),
-                  ),
-                )
               ],
             ),
             kSizedBox(10.0),
@@ -54,14 +58,14 @@ class FourthIntroScreen extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      kInputTextHeading('Uzdevumi', kActiveYellow, 32),
+                      kInputTextHeading('Garastāvoklis', kActiveYellow, 32),
                     ],
                   ),
                   kSizedBox(4),
                   Row(
                     children: [
                       kDescriptionText(
-                          'Aizpildi uzdevumus, lai uzlabotu\nkonkrētas emocijas regulācijas prasmes.',
+                          'Garastāvokļa novērošana\nregulāri atzīmē, kā jūties.',
                           kActiveYellow,
                           18),
                     ],
@@ -77,10 +81,10 @@ class FourthIntroScreen extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const FifthIntroScreen()));
+                                      const FourthIntroScreen()));
                         },
                         icon: SvgPicture.asset(
-                            'assets/images/intro_backgrounds/fourth_intro/fourth_intro_forward_arrow_icon.svg'),
+                            'assets/images/intro_backgrounds/third_intro/third_intro_forward_arrow_icon.svg'),
                       ),
                     ],
                   ),

@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:emori/auth_screens/email_password_screen.dart';
 import 'package:emori/model/user/login_user.dart';
 import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'email_password_screen.dart';
 import 'temporary.dart';
 
 class Login extends StatefulWidget {
@@ -21,11 +21,11 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
 
   LoginUser loginUser = LoginUser("", "");
-  String url = "http://10.0.2.2:8080/login";
+  String url = "http://10.0.2.2:8080/loginUser";
 
   Future login() async {
     var res = await http.post(Uri.parse(url),
-        headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json;charset=utf-8'},
         body: json.encode(
             {'email': loginUser.email, 'password': loginUser.password}));
     log(res.body);

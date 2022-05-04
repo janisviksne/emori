@@ -1,10 +1,11 @@
-import 'package:emori/auth_screens/email_password_screen.dart';
 import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class FifthIntroScreen extends StatelessWidget {
-  const FifthIntroScreen({Key? key}) : super(key: key);
+import 'fifth_intro_screen.dart';
+
+class FourthIntroScreen extends StatelessWidget {
+  const FourthIntroScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,21 +17,11 @@ class FifthIntroScreen extends StatelessWidget {
             Stack(
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     SvgPicture.asset(
-                      'assets/images/intro_backgrounds/fifth_intro/fifth_sun.svg',
+                      'assets/images/intro_backgrounds/fourth_intro/fourth_sun.svg',
                     ),
                   ],
-                ),
-                Container(
-                  padding: const EdgeInsets.only(right: 20, top: 60),
-                  child: Center(
-                    child: SvgPicture.asset(
-                      'assets/images/intro_backgrounds/fifth_intro/fifth_intro_person.svg',
-                      height: 350,
-                    ),
-                  ),
                 ),
                 Container(
                   padding: const EdgeInsets.only(left: 10.0, top: 10.0),
@@ -47,23 +38,31 @@ class FifthIntroScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                Container(
+                  padding: const EdgeInsets.only(right: 20, top: 40),
+                  child: Center(
+                    child: SvgPicture.asset(
+                      'assets/images/intro_backgrounds/fourth_intro/fourth_intro_person.svg',
+                    ),
+                  ),
+                )
               ],
             ),
-            kSizedBox(5.0),
+            kSizedBox(10.0),
             Container(
               padding: const EdgeInsets.only(left: 20.0, right: 20.0),
               child: Column(
                 children: [
                   Row(
                     children: [
-                      kInputTextHeading('Motivācija', kActiveYellow, 32),
+                      kInputTextHeading('Uzdevumi', kActiveYellow, 32),
                     ],
                   ),
                   kSizedBox(4),
                   Row(
                     children: [
                       kDescriptionText(
-                          'Par uzdevumiem saņemsi virtuālus\nžetonus. Tie apliecinās emociju\nregulācijas prasmju iepazīšanu un attīstību.',
+                          'Aizpildi uzdevumus, lai uzlabotu\nkonkrētas emocijas regulācijas prasmes.',
                           kActiveYellow,
                           18),
                     ],
@@ -79,10 +78,10 @@ class FifthIntroScreen extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const EmailPasswordScreen()));
+                                      const FifthIntroScreen()));
                         },
                         icon: SvgPicture.asset(
-                            'assets/images/intro_backgrounds/fifth_intro/fifth_intro_forward_arrow_icon.svg'),
+                            'assets/images/intro_backgrounds/fourth_intro/fourth_intro_forward_arrow_icon.svg'),
                       ),
                     ],
                   ),

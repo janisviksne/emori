@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:emori/auth_screens/gender_screen.dart';
 import 'package:emori/model/user/register_user.dart';
+import 'package:emori/screens/auth_screens/gender_screen.dart';
 import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:emori/utilities/utils/picker_utils.dart';
 import 'package:emori/utilities/widgets/auth_widgets/selector_button.dart';

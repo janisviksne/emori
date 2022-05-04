@@ -1,6 +1,6 @@
-import 'package:emori/auth_screens/login_screen.dart';
-import 'package:emori/auth_screens/username_screen.dart';
 import 'package:emori/model/user/register_user.dart';
+import 'package:emori/screens/auth_screens/login_screen.dart';
+import 'package:emori/screens/auth_screens/username_screen.dart';
 import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,10 +33,7 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                   IconButton(
                     iconSize: 50.0,
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Login()));
+                      Navigator.pop(context);
                     },
                     icon: SvgPicture.asset(
                         'assets/images/common/back_arrow_green.svg'),
@@ -63,7 +60,10 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.pop(context);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Login()));
                         },
                         child: const Text(
                           'Ienākt',

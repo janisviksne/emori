@@ -1,4 +1,4 @@
-import 'package:emori/intro_screens/first_intro_screen.dart';
+import 'package:emori/screens/intro_screens/first_intro_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());

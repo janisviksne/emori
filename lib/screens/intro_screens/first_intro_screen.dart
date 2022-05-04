@@ -1,4 +1,4 @@
-import 'package:emori/intro_screens/second_intro_screen.dart';
+import 'package:emori/screens/intro_screens/second_intro_screen.dart';
 import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

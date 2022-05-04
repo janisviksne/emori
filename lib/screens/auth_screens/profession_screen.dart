@@ -24,7 +24,7 @@ class _ProfessionSelectionScreenState extends State<ProfessionSelectionScreen> {
   String url = "http://10.0.2.2:8080/registerUserData";
   Future registerNewUser() async {
     var res = await http.post(Uri.parse(url),
-        headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json;charset=utf-8'},
         body: json.encode({
           'email': registerUser.email,
           'password': registerUser.password,
