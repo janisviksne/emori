@@ -47,7 +47,14 @@ class FirstIntroScreen extends StatelessWidget {
                     ],
                   ),
                   kSizedBox(2.5),
-                  Row(
+                ],
+              ),
+            ),
+            Stack(
+              children: [
+                Container(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Row(
                     children: [
                       kDescriptionText(
                           'Šis palīdzēs uzlabot emociju\npārvaldīšanas (regulācijas) prasmes,\nizmantojot pašpalīdzības metodes.',
@@ -55,26 +62,27 @@ class FirstIntroScreen extends StatelessWidget {
                           18),
                     ],
                   ),
-                ],
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                IconButton(
-                  iconSize: 100.0,
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SecondIntroScreen()));
-                  },
-                  icon: SvgPicture.asset(
-                      'assets/images/intro_backgrounds/first_intro/first_intro_forward_arrow_icon.svg'),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      padding: const EdgeInsets.only(top: 60.0, right: 30.0),
+                      iconSize: 100.0,
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const SecondIntroScreen()));
+                      },
+                      icon: SvgPicture.asset(
+                          'assets/images/intro_backgrounds/first_intro/first_intro_forward_arrow_icon.svg'),
+                    ),
+                  ],
                 ),
               ],
-            ),
+            )
             // Expanded(
             //   child: Row(
             //     mainAxisAlignment: MainAxisAlignment.end,

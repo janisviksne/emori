@@ -130,7 +130,7 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(top: 30),
+              padding: const EdgeInsets.only(top: 40),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
