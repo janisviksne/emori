@@ -17,7 +17,14 @@ class EmailPasswordScreen extends StatefulWidget {
 class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
   RegisterUser registerUser = RegisterUser(
-      '', '', '', '', '', '', 'Students', List.empty(growable: true));
+      '',
+      '',
+      '',
+      '0${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}',
+      'Vīrietis',
+      'Pamata (nepabeigta)',
+      'Students',
+      List.empty(growable: true));
 
   @override
   Widget build(BuildContext context) {

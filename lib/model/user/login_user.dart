@@ -1,12 +1,7 @@
 class LoginUser {
+  int userId;
   String email;
   String password;
 
-  LoginUser(this.email, this.password);
-}
-
-class Nickname {
-  String nickname;
-
-  Nickname(this.nickname);
+  LoginUser(this.userId, this.email, this.password);
 }

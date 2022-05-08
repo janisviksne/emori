@@ -8,7 +8,6 @@ class RegisterUser {
   String gender;
   List<String> occupations;
 
-  //ToDo what is education, what is occupation
   RegisterUser(this.email, this.password, this.nickname, this.birthDate,
       this.gender, this.education, this.workStatus, this.occupations);
 }

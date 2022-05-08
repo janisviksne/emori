@@ -1,14 +1,16 @@
 import 'dart:convert';
+import 'dart:convert' as convert;
 import 'dart:developer';
 
 import 'package:emori/model/user/login_user.dart';
+import 'package:emori/screens/questionnaire_screens/questionnaire_intro.dart';
+import 'package:emori/utilities/constants/endpoint_constants.dart';
 import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import 'email_password_screen.dart';
-import 'temporary.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -20,23 +22,24 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
 
-  LoginUser loginUser = LoginUser("", "");
-  String url = "http://10.0.2.2:8080/loginUser";
+  LoginUser loginUser = LoginUser(0, "", "");
 
   Future login() async {
-    var res = await http.post(Uri.parse(url),
+    var response = await http.post(Uri.parse(Endpoints.LOGIN_ENDPOINT),
         headers: {'Content-Type': 'application/json;charset=utf-8'},
         body: json.encode(
             {'email': loginUser.email, 'password': loginUser.password}));
-    log(res.body);
-    if (res.statusCode == 200) {
+    if (response.statusCode == 200) {
+      log(response.body);
+      loginUser.userId = await convert.jsonDecode(response.body);
+      print('user id: ' + loginUser.userId.toString());
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const TempScreen(),
+            builder: (context) => QuestionnaireAIntroScreen(loginUser),
           ));
     } else {
-      log('Something went wrong');
+      print(response.statusCode);
     }
   }
 
