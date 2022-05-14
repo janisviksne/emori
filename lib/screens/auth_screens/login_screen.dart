@@ -30,16 +30,16 @@ class _LoginState extends State<Login> {
         body: json.encode(
             {'email': loginUser.email, 'password': loginUser.password}));
     if (response.statusCode == 200) {
+      log(response.statusCode.toString());
       log(response.body);
       loginUser.userId = await convert.jsonDecode(response.body);
-      print('user id: ' + loginUser.userId.toString());
       Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => QuestionnaireAIntroScreen(loginUser),
           ));
     } else {
-      print(response.statusCode);
+      log(response.statusCode.toString());
     }
   }
 

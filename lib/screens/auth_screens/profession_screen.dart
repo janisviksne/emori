@@ -2,13 +2,13 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:emori/model/user/register_user.dart';
+import 'package:emori/screens/auth_screens/login_screen.dart';
+import 'package:emori/utilities/constants/endpoint_constants.dart';
 import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:emori/utilities/widgets/auth_widgets/profession_listtile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
-import 'temporary.dart';
 
 class ProfessionSelectionScreen extends StatefulWidget {
   final RegisterUser registerUser;
@@ -21,10 +21,9 @@ class ProfessionSelectionScreen extends StatefulWidget {
 }
 
 class _ProfessionSelectionScreenState extends State<ProfessionSelectionScreen> {
-  String url = "http://10.0.2.2:8080/registerUserData";
   Future registerNewUser() async {
-    var res = await http.post(Uri.parse(url),
-        headers: {'Content-Type': 'application/json;charset=utf-8'},
+    var response = await http.post(Uri.parse(Endpoints.REGISTER_ENDPOINT),
+        headers: {'Content-Type': 'application/json'},
         body: json.encode({
           'email': registerUser.email,
           'password': registerUser.password,
@@ -35,12 +34,12 @@ class _ProfessionSelectionScreenState extends State<ProfessionSelectionScreen> {
           'workStatus': registerUser.workStatus,
           'occupations': registerUser.occupations
         }));
-    log(res.body);
-    if (res.statusCode == 200) {
+    log(response.body);
+    if (response.statusCode == 200) {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const TempScreen(),
+            builder: (context) => const Login(),
           ));
     } else {
       log('There was an exception');
