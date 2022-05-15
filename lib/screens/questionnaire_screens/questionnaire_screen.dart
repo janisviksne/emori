@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:emori/utilities/constants/endpoint_constants.dart';
 import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
-import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:emori/utilities/utils/slider_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -85,7 +84,20 @@ class _QuestionnaireStartScreenState extends State<QuestionnaireStartScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            kBackArrowGreen(context),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                IconButton(
+                  iconSize: 50.0,
+                  onPressed: () {
+                    questionNr--;
+                    Navigator.pop(context);
+                  },
+                  icon: SvgPicture.asset(
+                      'assets/images/common/back_arrow_green.svg'),
+                ),
+              ],
+            ),
             Center(
               child: kInputTextHeading(
                   formatQuestion(questionIdA, questionTitle), kActiveGreen, 32),
