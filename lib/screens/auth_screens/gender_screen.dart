@@ -3,9 +3,10 @@ import 'dart:developer';
 import 'package:emori/model/user/register_user.dart';
 import 'package:emori/screens/auth_screens/education_screen.dart';
 import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:emori/utilities/widgets/auth_widgets/container_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
 class GenderScreen extends StatefulWidget {
   final RegisterUser registerUser;
@@ -27,19 +28,7 @@ class _GenderScreenState extends State<GenderScreen> {
           padding: const EdgeInsets.only(left: 27, right: 27),
           child: Column(
             children: [
-              Row(
-                children: [
-                  IconButton(
-                    iconSize: 50.0,
-                    onPressed: () {
-                      Navigator.pop(context);
-                      log('Returning to date picker screen');
-                    },
-                    icon: SvgPicture.asset(
-                        'assets/images/common/back_arrow_yellow.svg'),
-                  ),
-                ],
-              ),
+              kBackArrowYellow('Returning to username screen', context),
               kSizedBox(10.0),
               Row(
                 children: [
@@ -86,7 +75,7 @@ class _GenderScreenState extends State<GenderScreen> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     IconButton(
-                      iconSize: 50.0,
+                      iconSize: 100.0,
                       onPressed: () {
                         print(registerUser.email +
                             ' | ' +
@@ -106,8 +95,8 @@ class _GenderScreenState extends State<GenderScreen> {
                                     EducationSelectionScreen(registerUser)));
                         // }
                       },
-                      icon: const Icon(Icons.arrow_forward),
-                      color: kActiveYellow,
+                      icon: SvgPicture.asset(
+                          'assets/images/common/next_button_yellow.svg'),
                     ),
                   ],
                 ),

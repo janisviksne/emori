@@ -2,8 +2,10 @@ import 'dart:developer';
 
 import 'package:emori/model/user/register_user.dart';
 import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'birthdate_screen.dart';
 
@@ -28,19 +30,7 @@ class _UsernameState extends State<UsernameScreen> {
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
               children: [
-                Row(
-                  children: [
-                    IconButton(
-                      iconSize: 50.0,
-                      onPressed: () {
-                        Navigator.pop(context);
-                        log('Returning to e-mail/password input screen');
-                      },
-                      icon: const Icon(Icons.arrow_back),
-                      color: kActiveYellow,
-                    ),
-                  ],
-                ),
+                kBackArrowYellow('Returning to username screen', context),
                 kSizedBox(15.0),
                 Row(
                   children: [
@@ -86,9 +76,9 @@ class _UsernameState extends State<UsernameScreen> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       IconButton(
-                        iconSize: 50.0,
+                        iconSize: 100.0,
                         onPressed: () {
-                          print(registerUser.email +
+                          log(registerUser.email +
                               ' | ' +
                               registerUser.password +
                               ' | ' +
@@ -102,8 +92,8 @@ class _UsernameState extends State<UsernameScreen> {
                                       BirthDatePickerScreen(registerUser)));
                           // }
                         },
-                        icon: const Icon(Icons.arrow_forward),
-                        color: kActiveYellow,
+                        icon: SvgPicture.asset(
+                            'assets/images/common/next_button_yellow.svg'),
                       ),
                     ],
                   ),

@@ -8,6 +8,7 @@ import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:emori/utilities/widgets/auth_widgets/profession_listtile_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
 
 class ProfessionSelectionScreen extends StatefulWidget {
@@ -65,7 +66,8 @@ class _ProfessionSelectionScreenState extends State<ProfessionSelectionScreen> {
               padding: const EdgeInsets.only(left: 27, right: 27),
               child: Column(
                 children: [
-                  kBackArrow('Returning to gender selection screen', context),
+                  kBackArrowYellow(
+                      'Returning to gender selection screen', context),
                   Row(
                     children: [
                       kInputTextHeading('Atzīmē savas\nnodarbinātības\nsfēras',
@@ -101,32 +103,38 @@ class _ProfessionSelectionScreenState extends State<ProfessionSelectionScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      IconButton(
-                        padding: const EdgeInsets.only(top: 100, right: 10.0),
-                        iconSize: 50.0,
-                        onPressed: () {
-                          print(registerUser.email +
-                              ' | ' +
-                              registerUser.password +
-                              ' | ' +
-                              registerUser.nickname +
-                              ' | ' +
-                              registerUser.birthDate.toString() +
-                              ' | ' +
-                              registerUser.gender +
-                              ' | ' +
-                              registerUser.education +
-                              ' | ' +
-                              registerUser.workStatus +
-                              ' | ' +
-                              registerUser.occupations.toString());
-                          // if (_formKey.currentState!.validate()) {
-                          registerNewUser();
-                          log('Moving to work status selection screen');
-                          // }
-                        },
-                        icon: const Icon(Icons.arrow_forward),
-                        color: kActiveYellow,
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            IconButton(
+                              iconSize: 100.0,
+                              onPressed: () {
+                                log(registerUser.email +
+                                    ' | ' +
+                                    registerUser.password +
+                                    ' | ' +
+                                    registerUser.nickname +
+                                    ' | ' +
+                                    registerUser.birthDate.toString() +
+                                    ' | ' +
+                                    registerUser.gender +
+                                    ' | ' +
+                                    registerUser.education +
+                                    ' | ' +
+                                    registerUser.workStatus);
+                                // if (_formKey.currentState!.validate()) {
+                                log('Moving to date picker screen');
+                                registerNewUser();
+                                // }
+                              },
+                              icon: SvgPicture.asset(
+                                  'assets/images/common/next_button_yellow.svg'),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

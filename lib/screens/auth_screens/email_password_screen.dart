@@ -161,7 +161,7 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                                           UsernameScreen(registerUser)));
                             },
                             icon: SvgPicture.asset(
-                                'assets/images/common/inactive_forward_button_green.svg'),
+                                'assets/images/common/active_forward_button_green.svg'),
                           ),
                         ],
                       ),

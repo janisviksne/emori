@@ -8,6 +8,7 @@ import 'package:emori/utilities/utils/picker_utils.dart';
 import 'package:emori/utilities/widgets/auth_widgets/selector_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class WorkStatusScreen extends StatefulWidget {
   final RegisterUser registerUser;
@@ -37,7 +38,7 @@ class _WorkStatusScreenState extends State<WorkStatusScreen> {
                 padding: const EdgeInsets.only(left: 27, right: 27),
                 child: Column(
                   children: [
-                    kBackArrow(
+                    kBackArrowYellow(
                         'Returning to education selection screen', context),
                     Row(
                       children: [
@@ -64,39 +65,42 @@ class _WorkStatusScreenState extends State<WorkStatusScreen> {
                 ),
               ),
               Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    IconButton(
-                      iconSize: 50.0,
-                      onPressed: () {
-                        print(registerUser.email +
-                            ' | ' +
-                            registerUser.password +
-                            ' | ' +
-                            registerUser.nickname +
-                            ' | ' +
-                            registerUser.birthDate.toString() +
-                            ' | ' +
-                            registerUser.gender +
-                            ' | ' +
-                            registerUser.education +
-                            ' | ' +
-                            registerUser.workStatus);
-                        // if (_formKey.currentState!.validate()) {
-                        log('Moving to date picker screen');
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    ProfessionSelectionScreen(registerUser)));
-                        // }
-                      },
-                      icon: const Icon(Icons.arrow_forward),
-                      color: kActiveYellow,
-                    ),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      IconButton(
+                        iconSize: 100.0,
+                        onPressed: () {
+                          log(registerUser.email +
+                              ' | ' +
+                              registerUser.password +
+                              ' | ' +
+                              registerUser.nickname +
+                              ' | ' +
+                              registerUser.birthDate.toString() +
+                              ' | ' +
+                              registerUser.gender +
+                              ' | ' +
+                              registerUser.education +
+                              ' | ' +
+                              registerUser.workStatus);
+                          // if (_formKey.currentState!.validate()) {
+                          log('Moving to date picker screen');
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ProfessionSelectionScreen(registerUser)));
+                          // }
+                        },
+                        icon: SvgPicture.asset(
+                            'assets/images/common/next_button_yellow.svg'),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
