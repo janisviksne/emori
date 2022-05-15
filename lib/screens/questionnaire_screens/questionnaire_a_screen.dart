@@ -9,16 +9,16 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
 
-class QuestionnaireStartScreen extends StatefulWidget {
+class QuestionnaireAStartScreen extends StatefulWidget {
   final dynamic response;
-  const QuestionnaireStartScreen(this.response, {Key? key}) : super(key: key);
+  const QuestionnaireAStartScreen(this.response, {Key? key}) : super(key: key);
 
   @override
-  State<QuestionnaireStartScreen> createState() =>
-      _QuestionnaireStartScreenState();
+  State<QuestionnaireAStartScreen> createState() =>
+      _QuestionnaireAStartScreenState();
 }
 
-class _QuestionnaireStartScreenState extends State<QuestionnaireStartScreen> {
+class _QuestionnaireAStartScreenState extends State<QuestionnaireAStartScreen> {
   //the entire questionnaireA DTO
   late var responseJson = widget.response;
 
@@ -41,7 +41,7 @@ class _QuestionnaireStartScreenState extends State<QuestionnaireStartScreen> {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => QuestionnaireStartScreen(
+            builder: (context) => QuestionnaireAStartScreen(
                 jsonDecode(utf8.decode(response.bodyBytes))),
           ));
     } else {

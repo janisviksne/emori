@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:emori/model/user/login_user.dart';
-import 'package:emori/screens/questionnaire_screens/questionnaire_screen.dart';
+import 'package:emori/screens/questionnaire_screens/questionnaire_a_screen.dart';
 import 'package:emori/utilities/constants/endpoint_constants.dart';
 import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
@@ -28,7 +28,7 @@ class _QuestionnaireAIntroState extends State<QuestionnaireAIntroScreen> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => QuestionnaireStartScreen(
+              builder: (context) => QuestionnaireAStartScreen(
                   jsonDecode(utf8.decode(response.bodyBytes))),
             ));
         log(response.body);
