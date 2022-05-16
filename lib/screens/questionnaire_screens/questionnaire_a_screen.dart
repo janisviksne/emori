@@ -23,8 +23,7 @@ class _QuestionnaireAStartScreenState extends State<QuestionnaireAStartScreen> {
   late var responseJson = widget.response;
 
   //question related data
-  late var questionIdA = responseJson['questionnaireA']
-      ['questionIdA']; //ToDo not sure if i need this id anymore
+  late var questionIdA = responseJson['questionnaireA']['questionIdA'];
   late var questionTitle = responseJson['questionnaireA']['questionTitle'];
 
   //user id
@@ -50,7 +49,7 @@ class _QuestionnaireAStartScreenState extends State<QuestionnaireAStartScreen> {
   }
 
   Future submitAnswer(int answerId, String answerTitle) async {
-    var response = await http.post(Uri.parse(Endpoints.ANSWER_ENDPOINT),
+    var response = await http.post(Uri.parse(Endpoints.ANSWER_A_ENDPOINT),
         headers: {'Content-Type': 'application/json'},
         body: json.encode({
           'questionnaireA': {
@@ -90,17 +89,22 @@ class _QuestionnaireAStartScreenState extends State<QuestionnaireAStartScreen> {
                 IconButton(
                   iconSize: 50.0,
                   onPressed: () {
-                    questionNr--;
-                    Navigator.pop(context);
+                    setState(() {
+                      questionNr--;
+                      Navigator.pop(context);
+                    });
                   },
                   icon: SvgPicture.asset(
                       'assets/images/common/back_arrow_green.svg'),
                 ),
               ],
             ),
-            Center(
-              child: kInputTextHeading(
-                  formatQuestion(questionIdA, questionTitle), kActiveGreen, 32),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                kInputTextHeading(formatQuestion(questionIdA, questionTitle),
+                    kActiveGreen, 28)
+              ],
             ),
             kSizedBox(20.0),
             Center(

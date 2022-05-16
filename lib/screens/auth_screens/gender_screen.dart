@@ -77,7 +77,7 @@ class _GenderScreenState extends State<GenderScreen> {
                     IconButton(
                       iconSize: 100.0,
                       onPressed: () {
-                        print(registerUser.email +
+                        log(registerUser.email +
                             ' | ' +
                             registerUser.password +
                             ' | ' +
