@@ -62,15 +62,15 @@ class _QuestionnaireAStartScreenState extends State<QuestionnaireAStartScreen> {
     log(response.body);
     if (response.statusCode == 200) {
       questionIdA++;
-      log(Endpoints.QUESTION_ENDPOINT + '$userId/$questionIdA');
-      nextQuestion(Endpoints.QUESTION_ENDPOINT + '$userId/$questionIdA');
+      log(Endpoints.QUESTION_A_ENDPOINT + '$userId/$questionIdA');
+      nextQuestion(Endpoints.QUESTION_A_ENDPOINT + '$userId/$questionIdA');
     } else {
       log(response.statusCode.toString());
     }
   }
 
-  int questionNr = 1;
-  Answer answer = Answer(5, 'Nekad');
+  int questionNr = 3;
+  AnswerA answer = AnswerA(5, 'Nekad');
   double selectedAnswerValue = 0.0;
 
   String formatQuestion(int questionNr, String question) =>
@@ -102,8 +102,8 @@ class _QuestionnaireAStartScreenState extends State<QuestionnaireAStartScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                kInputTextHeading(formatQuestion(questionIdA, questionTitle),
-                    kActiveGreen, 28)
+                kInputTextHeading(
+                    formatQuestion(questionNr, questionTitle), kActiveGreen, 28)
               ],
             ),
             kSizedBox(20.0),

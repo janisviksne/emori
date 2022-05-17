@@ -21,7 +21,7 @@ class QuestionnaireAIntroScreen extends StatefulWidget {
 class _QuestionnaireAIntroState extends State<QuestionnaireAIntroScreen> {
   @override
   Widget build(BuildContext context) {
-    Future testQuestion(String endpoint) async {
+    Future startQuestionnaireA(String endpoint) async {
       var response = await http.get(Uri.parse(endpoint),
           headers: {'Content-Type': 'application/json;charset=utf-8'});
       if (response.statusCode == 200) {
@@ -38,7 +38,7 @@ class _QuestionnaireAIntroState extends State<QuestionnaireAIntroScreen> {
     }
 
     late LoginUser loginUser = widget.loginUser;
-    int questionNr = 1;
+    int questionNr = 3;
     return Scaffold(
       backgroundColor: kActiveYellow,
       body: SafeArea(
@@ -87,10 +87,11 @@ class _QuestionnaireAIntroState extends State<QuestionnaireAIntroScreen> {
                               padding: const EdgeInsets.only(top: 250.0),
                               iconSize: 100.0,
                               onPressed: () {
-                                print(Endpoints.QUESTION_ENDPOINT +
+                                log(Endpoints.QUESTION_A_ENDPOINT +
                                     '${loginUser.userId}/$questionNr');
-                                testQuestion(Endpoints.QUESTION_ENDPOINT +
-                                    '${loginUser.userId}/$questionNr');
+                                startQuestionnaireA(
+                                    Endpoints.QUESTION_A_ENDPOINT +
+                                        '${loginUser.userId}/$questionNr');
                               },
                               icon: SvgPicture.asset(
                                   'assets/images/common/active_forward_button_green.svg'),

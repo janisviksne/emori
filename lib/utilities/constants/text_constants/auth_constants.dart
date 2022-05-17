@@ -14,6 +14,30 @@ Text kInputTextHeading(String text, Color color, double fontSize) => Text(text,
       fontSize: fontSize,
       color: color,
     ));
+Text kQuestionCounter(String text, Color color) => Text(
+      text,
+      style: TextStyle(fontSize: 16, color: color, fontFamily: 'Readex Pro'),
+    );
+
+Text kQuestionIntro(String questionIntroText) => Text(
+      questionIntroText,
+      style: TextStyle(
+          color: kActiveGreen.withOpacity(0.5),
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Readex Pro',
+          fontSize: 20),
+    );
+
+Flexible kQuestionText(String text, Color color, double fontSize) => Flexible(
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            color: color, fontSize: fontSize, fontFamily: 'Montagu Slab'),
+        softWrap: true,
+        maxLines: 2,
+      ),
+    );
 
 Text kDescriptionText(String text, Color color, double fontSize) => Text(text,
     style:

@@ -20,7 +20,7 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
       '',
       '',
       '',
-      '0${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}',
+      '${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}',
       'Vīrietis',
       'Pamata (nepabeigta)',
       'Students',

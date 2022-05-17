@@ -37,10 +37,10 @@ class _EducationSelectionScreenState extends State<EducationSelectionScreen> {
                   Row(
                     children: [
                       kInputTextHeading(
-                          'Atzīmē savu\nizglītības līmeni ', kActiveYellow, 40)
+                          'Atzīmē savu\nizglītības līmeni ', kActiveYellow, 32)
                     ],
                   ),
-                  kSizedBox(20.0),
+                  kSizedBox(10.0),
                   Column(
                     children: [
                       ContainerButton<int>(
@@ -52,7 +52,7 @@ class _EducationSelectionScreenState extends State<EducationSelectionScreen> {
                           _value = value!;
                         }),
                       ),
-                      kSizedBox(20.0),
+                      kSizedBox(10.0),
                       ContainerButton<int>(
                         value: 2,
                         groupValue: _value,
@@ -62,7 +62,7 @@ class _EducationSelectionScreenState extends State<EducationSelectionScreen> {
                           _value = value!;
                         }),
                       ),
-                      kSizedBox(20.0),
+                      kSizedBox(10.0),
                       ContainerButton<int>(
                         value: 3,
                         groupValue: _value,
