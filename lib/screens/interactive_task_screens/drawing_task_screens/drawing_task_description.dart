@@ -1,9 +1,10 @@
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/src/size_extension.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'drawing_task_intro1.dart';
+import 'drawing_task_intro_screens/drawing_task_intro1.dart';
 
 class DrawingTaskDescriptionScreen extends StatelessWidget {
   const DrawingTaskDescriptionScreen({Key? key}) : super(key: key);
@@ -14,14 +15,14 @@ class DrawingTaskDescriptionScreen extends StatelessWidget {
       backgroundColor: kActiveYellow,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+          padding: EdgeInsets.symmetric(vertical: 20.0.h, horizontal: 20.0.w),
           child: Column(
             children: [
               Stack(
                 children: [
                   kBackArrowGreen(context),
                   Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
+                    padding: EdgeInsets.symmetric(vertical: 20.0.h),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -54,7 +55,7 @@ class DrawingTaskDescriptionScreen extends StatelessWidget {
                 child: Stack(
                   children: [
                     SvgPicture.asset(
-                      'assets/images/interactive_task_backgrounds/draw_task/tile_background.svg',
+                      'assets/images/common/green_tile_background.svg',
                       fit: BoxFit.fill,
                     ),
                     SvgPicture.asset(
