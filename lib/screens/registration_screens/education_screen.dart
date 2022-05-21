@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:emori/model/user/register_user.dart';
-import 'package:emori/screens/auth_screens/work_status_screen.dart';
-import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/screens/registration_screens/work_status_screen.dart';
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:emori/utilities/widgets/auth_widgets/container_button.dart';
 import 'package:flutter/material.dart';
@@ -32,15 +32,14 @@ class _EducationSelectionScreenState extends State<EducationSelectionScreen> {
               padding: const EdgeInsets.only(left: 27, right: 27),
               child: Column(
                 children: [
-                  kBackArrowYellow(
-                      'Returning to gender selection screen', context),
+                  kBackArrowYellow(context),
                   Row(
                     children: [
                       kInputTextHeading(
                           'Atzīmē savu\nizglītības līmeni ', kActiveYellow, 32)
                     ],
                   ),
-                  kSizedBox(10.0),
+                  kHeightSizedBox(10.0),
                   Column(
                     children: [
                       ContainerButton<int>(
@@ -52,7 +51,7 @@ class _EducationSelectionScreenState extends State<EducationSelectionScreen> {
                           _value = value!;
                         }),
                       ),
-                      kSizedBox(10.0),
+                      kHeightSizedBox(10.0),
                       ContainerButton<int>(
                         value: 2,
                         groupValue: _value,
@@ -62,7 +61,7 @@ class _EducationSelectionScreenState extends State<EducationSelectionScreen> {
                           _value = value!;
                         }),
                       ),
-                      kSizedBox(10.0),
+                      kHeightSizedBox(10.0),
                       ContainerButton<int>(
                         value: 3,
                         groupValue: _value,
@@ -72,7 +71,7 @@ class _EducationSelectionScreenState extends State<EducationSelectionScreen> {
                           _value = value!;
                         }),
                       ),
-                      kSizedBox(20.0),
+                      kHeightSizedBox(20.0),
                       ContainerButton<int>(
                         value: 4,
                         groupValue: _value,
@@ -118,7 +117,7 @@ class _EducationSelectionScreenState extends State<EducationSelectionScreen> {
                         // }
                       },
                       icon: SvgPicture.asset(
-                          'assets/images/common/next_button_yellow.svg'),
+                          'assets/images/common/forward_button_yellow.svg'),
                     ),
                   ],
                 ),

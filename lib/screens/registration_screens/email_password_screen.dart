@@ -1,7 +1,7 @@
 import 'package:emori/model/user/register_user.dart';
-import 'package:emori/screens/auth_screens/login_screen.dart';
-import 'package:emori/screens/auth_screens/username_screen.dart';
-import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/screens/registration_screens/login_screen.dart';
+import 'package:emori/screens/registration_screens/username_screen.dart';
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +44,7 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                       kInputTextHeading('Izveido\nsavu kontu', kActiveGreen, 40)
                     ],
                   ),
-                  kSizedBox(20.0),
+                  kHeightSizedBox(20.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -66,7 +66,7 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                       ),
                     ],
                   ),
-                  kSizedBox(20.0),
+                  kHeightSizedBox(20.0),
                   Form(
                     key: _formKey,
                     child: Column(
@@ -89,7 +89,7 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                           decoration:
                               kInputFieldDecoration('E-pasts', kActiveGreen),
                         ),
-                        kSizedBox(20.0),
+                        kHeightSizedBox(20.0),
                         TextFormField(
                           obscureText: true,
                           controller: TextEditingController(
@@ -109,7 +109,7 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                           decoration:
                               kInputFieldDecoration('Parole', kActiveGreen),
                         ),
-                        kSizedBox(20.0),
+                        kHeightSizedBox(20.0),
                         TextFormField(
                           textAlign: TextAlign.left,
                           obscureText: true,
@@ -161,7 +161,7 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                                           UsernameScreen(registerUser)));
                             },
                             icon: SvgPicture.asset(
-                                'assets/images/common/active_forward_button_green.svg'),
+                                'assets/images/common/forward_button_green.svg'),
                           ),
                         ],
                       ),

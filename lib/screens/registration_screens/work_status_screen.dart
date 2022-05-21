@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:emori/model/user/register_user.dart';
-import 'package:emori/screens/auth_screens/profession_screen.dart';
-import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/screens/registration_screens/profession_screen.dart';
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:emori/utilities/utils/picker_utils.dart';
 import 'package:emori/utilities/widgets/auth_widgets/selector_button.dart';
@@ -38,15 +38,14 @@ class _WorkStatusScreenState extends State<WorkStatusScreen> {
                 padding: const EdgeInsets.only(left: 27, right: 27),
                 child: Column(
                   children: [
-                    kBackArrowYellow(
-                        'Returning to education selection screen', context),
+                    kBackArrowYellow(context),
                     Row(
                       children: [
                         kInputTextHeading('Atzīmē\nnodarbinātības\nstatusu',
                             kActiveYellow, 32)
                       ],
                     ),
-                    kSizedBox(60.0),
+                    kHeightSizedBox(60.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -56,7 +55,7 @@ class _WorkStatusScreenState extends State<WorkStatusScreen> {
                         )
                       ],
                     ),
-                    kSizedBox(20.0),
+                    kHeightSizedBox(20.0),
                     ButtonWidget(
                         onClicked: () => PickerUtils.showPicker(context,
                             child: buildStatusSelector(),
@@ -97,7 +96,7 @@ class _WorkStatusScreenState extends State<WorkStatusScreen> {
                           // }
                         },
                         icon: SvgPicture.asset(
-                            'assets/images/common/next_button_yellow.svg'),
+                            'assets/images/common/forward_button_yellow.svg'),
                       ),
                     ],
                   ),

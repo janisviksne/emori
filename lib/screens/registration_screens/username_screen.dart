@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:emori/model/user/register_user.dart';
-import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,14 +30,14 @@ class _UsernameState extends State<UsernameScreen> {
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
               children: [
-                kBackArrowYellow('Returning to username screen', context),
-                kSizedBox(15.0),
+                kBackArrowYellow(context),
+                kHeightSizedBox(15.0),
                 Row(
                   children: [
                     kInputTextHeading('Kā Tevi uzrunāt?', kActiveYellow, 32)
                   ],
                 ),
-                kSizedBox(15.0),
+                kHeightSizedBox(15.0),
                 Row(
                   children: [
                     kDescriptionText(
@@ -46,7 +46,7 @@ class _UsernameState extends State<UsernameScreen> {
                         18)
                   ],
                 ),
-                kSizedBox(15.0),
+                kHeightSizedBox(15.0),
                 Form(
                     child: Column(
                       children: [
@@ -93,7 +93,7 @@ class _UsernameState extends State<UsernameScreen> {
                           // }
                         },
                         icon: SvgPicture.asset(
-                            'assets/images/common/next_button_yellow.svg'),
+                            'assets/images/common/forward_button_yellow.svg'),
                       ),
                     ],
                   ),

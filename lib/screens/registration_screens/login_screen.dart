@@ -5,7 +5,7 @@ import 'dart:developer';
 import 'package:emori/model/user/login_user.dart';
 import 'package:emori/screens/questionnaire_screens/questionnaire_b_intro.dart';
 import 'package:emori/utilities/constants/endpoint_constants.dart';
-import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -63,14 +63,14 @@ class _LoginState extends State<Login> {
                       kInputTextHeading('Ienāc\nsavā kontā', kActiveGreen, 30),
                     ],
                   ),
-                  kSizedBox(20.0),
+                  kHeightSizedBox(20.0),
                   Row(
                     children: [
                       kDescriptionText('Ievadi savus esošos pieejas datus',
                           kActiveGreen, 16),
                     ],
                   ),
-                  kSizedBox(20.0),
+                  kHeightSizedBox(20.0),
                   Form(
                     key: _formKey,
                     child: Column(
@@ -92,7 +92,7 @@ class _LoginState extends State<Login> {
                           decoration:
                               kInputFieldDecoration('E-pasts', kActiveGreen),
                         ),
-                        kSizedBox(20.0),
+                        kHeightSizedBox(20.0),
                         TextFormField(
                           obscureText: true,
                           controller:
@@ -113,7 +113,7 @@ class _LoginState extends State<Login> {
                       ],
                     ),
                   ),
-                  kSizedBox(20.0),
+                  kHeightSizedBox(20.0),
                   Row(
                     children: [
                       InkWell(
@@ -127,7 +127,7 @@ class _LoginState extends State<Login> {
                       ),
                     ],
                   ),
-                  kSizedBox(20.0),
+                  kHeightSizedBox(20.0),
                   Row(
                     children: [
                       ElevatedButton(
@@ -145,7 +145,7 @@ class _LoginState extends State<Login> {
                           })
                     ],
                   ),
-                  kSizedBox(20.0),
+                  kHeightSizedBox(20.0),
                   Row(
                     children: [
                       ElevatedButton(

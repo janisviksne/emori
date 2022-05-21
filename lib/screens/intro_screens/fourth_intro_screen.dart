@@ -1,4 +1,4 @@
-import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -48,7 +48,7 @@ class FourthIntroScreen extends StatelessWidget {
                 )
               ],
             ),
-            kSizedBox(10.0),
+            kHeightSizedBox(10.0),
             Container(
               padding: const EdgeInsets.only(left: 20.0, right: 20.0),
               child: Column(
@@ -58,7 +58,7 @@ class FourthIntroScreen extends StatelessWidget {
                       kInputTextHeading('Uzdevumi', kActiveYellow, 32),
                     ],
                   ),
-                  kSizedBox(4),
+                  kHeightSizedBox(4),
                   Row(
                     children: [
                       kDescriptionText(

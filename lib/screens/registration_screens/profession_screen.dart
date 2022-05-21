@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:emori/model/user/register_user.dart';
-import 'package:emori/screens/auth_screens/login_screen.dart';
+import 'package:emori/screens/registration_screens/login_screen.dart';
 import 'package:emori/utilities/constants/endpoint_constants.dart';
-import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:emori/utilities/widgets/auth_widgets/profession_listtile_widget.dart';
 import 'package:flutter/material.dart';
@@ -66,15 +66,14 @@ class _ProfessionSelectionScreenState extends State<ProfessionSelectionScreen> {
               padding: const EdgeInsets.only(left: 27, right: 27),
               child: Column(
                 children: [
-                  kBackArrowYellow(
-                      'Returning to gender selection screen', context),
+                  kBackArrowYellow(context),
                   Row(
                     children: [
                       kInputTextHeading('Atzīmē savas\nnodarbinātības\nsfēras',
                           kActiveYellow, 40)
                     ],
                   ),
-                  kSizedBox(20.0),
+                  kHeightSizedBox(20.0),
                 ],
               ),
             ),
@@ -131,7 +130,7 @@ class _ProfessionSelectionScreenState extends State<ProfessionSelectionScreen> {
                                 // }
                               },
                               icon: SvgPicture.asset(
-                                  'assets/images/common/next_button_yellow.svg'),
+                                  'assets/images/common/forward_button_yellow.svg'),
                             ),
                           ],
                         ),

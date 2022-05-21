@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:emori/utilities/constants/endpoint_constants.dart';
-import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/widgets/questionnaire_widgets/yellow_container_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -128,7 +128,7 @@ class _QuestionnaireBStartScreenState extends State<QuestionnaireBStartScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [kQuestionIntro('Pagājušajā nedēļā es')],
               ),
-              kSizedBox(10.0),
+              kHeightSizedBox(10.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [kQuestionText(questionTitle, kActiveGreen, 20)],
@@ -178,26 +178,26 @@ class _QuestionnaireBStartScreenState extends State<QuestionnaireBStartScreen> {
                     title: '(gandrīz) vienmēr',
                   ),
                   feedback: YellowContainerButton(title: '(gandrīz) vienmēr')),
-              kSizedBox(5.0),
+              kHeightSizedBox(5.0),
               const Draggable(
                   data: 'bieži',
                   child: YellowContainerButton(title: 'bieži'),
                   feedback: YellowContainerButton(title: 'bieži')),
-              kSizedBox(5.0),
+              kHeightSizedBox(5.0),
               const Draggable(
                   data: 'dažreiz',
                   child: YellowContainerButton(
                     title: 'dažreiz',
                   ),
                   feedback: YellowContainerButton(title: 'dažreiz')),
-              kSizedBox(5.0),
+              kHeightSizedBox(5.0),
               const Draggable(
                   data: 'reti',
                   child: YellowContainerButton(
                     title: 'reti',
                   ),
                   feedback: YellowContainerButton(title: 'reti')),
-              kSizedBox(5.0),
+              kHeightSizedBox(5.0),
               const Draggable(
                   data: 'nekad',
                   child: YellowContainerButton(
@@ -215,7 +215,7 @@ class _QuestionnaireBStartScreenState extends State<QuestionnaireBStartScreen> {
                         submitAnswerB(answerIdB, answerTitle);
                       },
                       icon: SvgPicture.asset(
-                          'assets/images/common/active_forward_button_green.svg'),
+                          'assets/images/common/forward_button_green.svg'),
                     ),
                   ],
                 ),

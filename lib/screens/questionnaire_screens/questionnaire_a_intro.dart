@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:emori/model/user/login_user.dart';
 import 'package:emori/screens/questionnaire_screens/questionnaire_a_screen.dart';
 import 'package:emori/utilities/constants/endpoint_constants.dart';
-import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -55,7 +55,7 @@ class _QuestionnaireAIntroState extends State<QuestionnaireAIntroScreen> {
                           'Emocijas\nun garastāvoklis', kActiveGreen, 32)
                     ],
                   ),
-                  kSizedBox(30),
+                  kHeightSizedBox(30),
                   Stack(
                     children: [
                       Row(
@@ -94,7 +94,7 @@ class _QuestionnaireAIntroState extends State<QuestionnaireAIntroScreen> {
                                         '${loginUser.userId}/$questionNr');
                               },
                               icon: SvgPicture.asset(
-                                  'assets/images/common/active_forward_button_green.svg'),
+                                  'assets/images/common/forward_button_green.svg'),
                             ),
                           ],
                         ),

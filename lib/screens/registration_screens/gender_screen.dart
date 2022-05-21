@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:emori/model/user/register_user.dart';
-import 'package:emori/screens/auth_screens/education_screen.dart';
-import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/screens/registration_screens/education_screen.dart';
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:emori/utilities/widgets/auth_widgets/container_button.dart';
 import 'package:flutter/material.dart';
@@ -28,14 +28,14 @@ class _GenderScreenState extends State<GenderScreen> {
           padding: const EdgeInsets.only(left: 27, right: 27),
           child: Column(
             children: [
-              kBackArrowYellow('Returning to username screen', context),
-              kSizedBox(10.0),
+              kBackArrowYellow(context),
+              kHeightSizedBox(10.0),
               Row(
                 children: [
                   kInputTextHeading('Norādi savu\ndzimumu', kActiveYellow, 40)
                 ],
               ),
-              kSizedBox(30.0),
+              kHeightSizedBox(30.0),
               Column(
                 children: [
                   ContainerButton<int>(
@@ -47,7 +47,7 @@ class _GenderScreenState extends State<GenderScreen> {
                       _value = value!;
                     }),
                   ),
-                  kSizedBox(20.0),
+                  kHeightSizedBox(20.0),
                   ContainerButton<int>(
                     value: 2,
                     groupValue: _value,
@@ -57,7 +57,7 @@ class _GenderScreenState extends State<GenderScreen> {
                       _value = value!;
                     }),
                   ),
-                  kSizedBox(20.0),
+                  kHeightSizedBox(20.0),
                   ContainerButton<int>(
                     value: 3,
                     groupValue: _value,
@@ -96,7 +96,7 @@ class _GenderScreenState extends State<GenderScreen> {
                         // }
                       },
                       icon: SvgPicture.asset(
-                          'assets/images/common/next_button_yellow.svg'),
+                          'assets/images/common/forward_button_yellow.svg'),
                     ),
                   ],
                 ),

@@ -47,8 +47,23 @@ Container kInputFormLine(Color color) => Container(
       height: 1,
       color: color,
     );
+Text kTextBoldReadex(String text, Color color, double fontSize, bool isBold) =>
+    Text(text,
+        style: TextStyle(
+            fontSize: fontSize,
+            fontFamily: 'Readex Pro',
+            color: color,
+            fontWeight: isBold == true ? FontWeight.bold : FontWeight.normal));
 
-SizedBox kSizedBox(double size) => SizedBox(height: size);
+Text kTextBoldMontagu(String text, Color color, double fontSize, bool isBold) =>
+    Text(text,
+        style: TextStyle(
+            fontSize: fontSize,
+            fontFamily: 'Montagu Slab',
+            color: color,
+            fontWeight: isBold == true ? FontWeight.bold : FontWeight.normal));
+
+SizedBox kHeightSizedBox(double size) => SizedBox(height: size);
 
 const kInputFieldUnderline = TextStyle(
     fontSize: 18, color: kActiveGreen, decoration: TextDecoration.underline);

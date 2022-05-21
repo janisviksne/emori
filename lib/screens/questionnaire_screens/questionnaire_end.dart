@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -49,7 +49,7 @@ class QuestionnaireEndScreen extends StatelessWidget {
                         log('Moving to education selection screen');
                       },
                       icon: SvgPicture.asset(
-                          'assets/images/common/next_button_yellow.svg'),
+                          'assets/images/common/forward_button_yellow.svg'),
                     ),
                   ],
                 ),

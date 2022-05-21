@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:emori/model/user/register_user.dart';
-import 'package:emori/screens/auth_screens/gender_screen.dart';
-import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/screens/registration_screens/gender_screen.dart';
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:emori/utilities/utils/picker_utils.dart';
 import 'package:emori/utilities/widgets/auth_widgets/selector_button.dart';
@@ -31,7 +31,7 @@ class _DatePickerPageState extends State<BirthDatePickerScreen> {
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
               children: [
-                kBackArrowYellow('Returning to username screen', context),
+                kBackArrowYellow(context),
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0),
                   child: Row(
@@ -41,14 +41,14 @@ class _DatePickerPageState extends State<BirthDatePickerScreen> {
                     ],
                   ),
                 ),
-                kSizedBox(60.0),
+                kHeightSizedBox(60.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     kDescriptionText(registerUser.birthDate, kActiveYellow, 22)
                   ],
                 ),
-                kSizedBox(15.0),
+                kHeightSizedBox(15.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -84,7 +84,7 @@ class _DatePickerPageState extends State<BirthDatePickerScreen> {
                           // }
                         },
                         icon: SvgPicture.asset(
-                            'assets/images/common/next_button_yellow.svg'),
+                            'assets/images/common/forward_button_yellow.svg'),
                       ),
                     ],
                   ),

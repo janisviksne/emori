@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../constants/text_constants/auth_constants.dart';
+import '../../constants/text_constants/text_constants.dart';
 
 class ButtonWidget extends StatelessWidget {
   final VoidCallback onClicked;

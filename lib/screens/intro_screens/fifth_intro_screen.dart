@@ -1,6 +1,7 @@
-import 'package:emori/screens/auth_screens/email_password_screen.dart';
-import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/screens/registration_screens/email_password_screen.dart';
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/src/size_extension.dart';
 import 'package:flutter_svg/svg.dart';
 
 class FifthIntroScreen extends StatelessWidget {
@@ -24,7 +25,7 @@ class FifthIntroScreen extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  padding: const EdgeInsets.only(left: 10.0, top: 10.0),
+                  padding: EdgeInsets.only(left: 10.0.w, top: 10.0.h),
                   child: Row(
                     children: [
                       IconButton(
@@ -39,7 +40,7 @@ class FifthIntroScreen extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.only(right: 20, top: 60),
+                  padding: EdgeInsets.only(right: 20.w, top: 60.h),
                   child: Center(
                     child: SvgPicture.asset(
                       'assets/images/intro_backgrounds/fifth_intro/fifth_intro_person.svg',
@@ -49,9 +50,10 @@ class FifthIntroScreen extends StatelessWidget {
                 ),
               ],
             ),
-            kSizedBox(5.0),
+            kHeightSizedBox(5.0),
             Container(
-              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+              padding:
+                  EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 20.0.w),
               child: Column(
                 children: [
                   Row(
@@ -59,7 +61,7 @@ class FifthIntroScreen extends StatelessWidget {
                       kInputTextHeading('Motivācija', kActiveYellow, 32),
                     ],
                   ),
-                  kSizedBox(4),
+                  kHeightSizedBox(4),
                   Row(
                     children: [
                       kDescriptionText(

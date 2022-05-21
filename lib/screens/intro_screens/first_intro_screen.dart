@@ -1,5 +1,5 @@
 import 'package:emori/screens/intro_screens/second_intro_screen.dart';
-import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -46,7 +46,7 @@ class FirstIntroScreen extends StatelessWidget {
                       kInputTextHeading('Sveicināti Emori!', kActiveYellow, 32),
                     ],
                   ),
-                  kSizedBox(2.5),
+                  kHeightSizedBox(2.5),
                 ],
               ),
             ),

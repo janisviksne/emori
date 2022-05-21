@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:emori/utilities/constants/endpoint_constants.dart';
-import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/utils/slider_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -106,13 +106,13 @@ class _QuestionnaireAStartScreenState extends State<QuestionnaireAStartScreen> {
                     formatQuestion(questionNr, questionTitle), kActiveGreen, 28)
               ],
             ),
-            kSizedBox(20.0),
+            kHeightSizedBox(20.0),
             Center(
                 child: kInputTextHeading(
                     SliderUtils.labelValue(selectedAnswerValue).answerTitle,
                     kActiveGreen,
                     22)),
-            kSizedBox(20.0),
+            kHeightSizedBox(20.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -159,7 +159,7 @@ class _QuestionnaireAStartScreenState extends State<QuestionnaireAStartScreen> {
                       submitAnswer(answerIdA, answerTitle);
                     },
                     icon: SvgPicture.asset(
-                        'assets/images/common/active_forward_button_green.svg'),
+                        'assets/images/common/forward_button_green.svg'),
                   ),
                 ],
               ),

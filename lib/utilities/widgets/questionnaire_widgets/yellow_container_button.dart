@@ -1,4 +1,4 @@
-import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:flutter/material.dart';
 
 class YellowContainerButton<T> extends StatelessWidget {

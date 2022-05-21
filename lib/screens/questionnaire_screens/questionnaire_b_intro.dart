@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:emori/model/user/login_user.dart';
 import 'package:emori/screens/questionnaire_screens/questionnaire_b_screen.dart';
 import 'package:emori/utilities/constants/endpoint_constants.dart';
-import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -46,7 +46,7 @@ class QuestionnaireBIntroScreen extends StatelessWidget {
                   kInputTextHeading('Emociju\npiedzīvošana', kActiveGreen, 32)
                 ],
               ),
-              kSizedBox(25.0),
+              kHeightSizedBox(25.0),
               Row(
                 children: [
                   kDescriptionText(
@@ -80,7 +80,7 @@ class QuestionnaireBIntroScreen extends StatelessWidget {
                                       '${loginUser.userId}/$questionNr');
                             },
                             icon: SvgPicture.asset(
-                                'assets/images/common/active_forward_button_green.svg'),
+                                'assets/images/common/forward_button_green.svg'),
                           ),
                         ],
                       ),

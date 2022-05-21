@@ -1,5 +1,5 @@
 import 'package:emori/screens/intro_screens/third_intro_screen.dart';
-import 'package:emori/utilities/constants/text_constants/auth_constants.dart';
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -50,7 +50,7 @@ class SecondIntroScreen extends StatelessWidget {
                 ),
               ],
             ),
-            kSizedBox(4.0),
+            kHeightSizedBox(4.0),
             Container(
               padding: const EdgeInsets.only(left: 20.0, right: 20.0),
               child: Column(
@@ -60,7 +60,7 @@ class SecondIntroScreen extends StatelessWidget {
                       kInputTextHeading('Aptaujas', kActiveYellow, 32),
                     ],
                   ),
-                  kSizedBox(4),
+                  kHeightSizedBox(4),
                   Row(
                     children: [
                       kDescriptionText(
