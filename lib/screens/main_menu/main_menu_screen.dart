@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:emori/screens/interactive_task_screens/drawing_task_screens/drawing_task_description.dart';
+import 'package:emori/screens/interactive_task_screens/love_myself_task_screens/love_myself_task_description.dart';
 import 'package:emori/size_config.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:flutter/material.dart';
@@ -89,7 +90,11 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                   onTap: () {
                     setState(() {
                       //ToDo add navigator leading to spiral intros + task
-                      log('Test3');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const LoveMyselfTaskDescriptionScreen()));
                     });
                   },
                   child: Stack(

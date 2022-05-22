@@ -1,16 +1,16 @@
+import 'package:emori/screens/interactive_task_screens/love_myself_task_screens/love_myself_intro_screen.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/src/size_extension.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'drawing_task_intro_screens/drawing_task_intro1.dart';
-
-class DrawingTaskDescriptionScreen extends StatelessWidget {
-  const DrawingTaskDescriptionScreen({Key? key}) : super(key: key);
+class LoveMyselfTaskDescriptionScreen extends StatelessWidget {
+  const LoveMyselfTaskDescriptionScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    const String hanzAsset = 'assets/images/main_menu_tiles/hanz.svg';
     return Scaffold(
       backgroundColor: kActiveYellow,
       body: SingleChildScrollView(
@@ -33,7 +33,9 @@ class DrawingTaskDescriptionScreen extends StatelessWidget {
               ),
               kHeightSizedBox(15.0),
               Row(
-                children: [kInputTextHeading('Švīkāšana', kActiveGreen, 25)],
+                children: [
+                  kInputTextHeading('Es sev patīku', kActiveGreen, 25)
+                ],
               ),
               kHeightSizedBox(5.0),
               Row(
@@ -49,10 +51,11 @@ class DrawingTaskDescriptionScreen extends StatelessWidget {
                       'assets/images/common/green_tile_background.svg',
                       fit: BoxFit.fill,
                     ),
-                    SvgPicture.asset(
-                      'assets/images/interactive_task_backgrounds/draw_task/draw_tile_person.svg',
-                      fit: BoxFit.fill,
-                    )
+                    Padding(
+                      padding: EdgeInsets.all(30.0.sp),
+                      child: SvgPicture.asset(
+                          'assets/images/main_menu_tiles/love_myself_tile.svg'),
+                    ),
                   ],
                 ),
               ),
@@ -64,7 +67,7 @@ class DrawingTaskDescriptionScreen extends StatelessWidget {
               Row(
                 children: [
                   kDescriptionText(
-                      'Pilnveidot prasmi aktīvi mainīt\n(modificēt) nevēlemās emocijas intensitāti.',
+                      'Šis uzdevums Tev varētu palīdzēt aktīvi mainīt\n(modificēt) nevēlemās emocijas intensitāti,\npievēršot uzmanību pozitīvajam.',
                       kActiveGreen,
                       16)
                 ],
@@ -74,7 +77,7 @@ class DrawingTaskDescriptionScreen extends StatelessWidget {
                 children: [kTextBoldMontagu('Saturs', kActiveGreen, 18, true)],
               ),
               kHeightSizedBox(5.0),
-              kTaskDescriptionListItem('Zīmēšana'),
+              kTaskDescriptionListItem('Rakstīšana'),
               kHeightSizedBox(5.0),
               kTaskDescriptionListItem('Refleksija'),
               Row(
@@ -87,7 +90,8 @@ class DrawingTaskDescriptionScreen extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  FirstDrawTaskIntroScreen()));
+                                  //ToDo pass user Info
+                                  LoveMyselfTaskIntroScreen()));
                     },
                     icon: SvgPicture.asset(
                         'assets/images/common/forward_button_green.svg'),

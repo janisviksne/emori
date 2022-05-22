@@ -52,6 +52,7 @@ flutter:
   - assets/images/main_menu_tiles/
   - assets/images/interactive_task_backgrounds/draw_task/
   - assets/images/interactive_task_backgrounds/draw_task_intro/
+  - assets/images/interactive_task_backgrounds/love_myself_task/
   fonts:
     - family: Readex Pro
       fonts:
