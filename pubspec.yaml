@@ -11,6 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  floor: ^1.2.0
   cupertino_icons: ^1.0.2
   http: ^0.13.4
   flutter_cupertino_date_picker: ^1.0.26+2
@@ -29,6 +30,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  floor_generator: ^1.2.0
+  build_runner: ^2.1.2
 
   flutter_lints: ^1.0.0
 

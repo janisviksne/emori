@@ -43,7 +43,7 @@ class _ProfessionSelectionScreenState extends State<ProfessionSelectionScreen> {
             builder: (context) => const Login(),
           ));
     } else {
-      log('There was an exception');
+      log(response.statusCode.toString());
     }
   }
 

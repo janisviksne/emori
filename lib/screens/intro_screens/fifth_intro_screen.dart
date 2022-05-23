@@ -44,13 +44,13 @@ class FifthIntroScreen extends StatelessWidget {
                   child: Center(
                     child: SvgPicture.asset(
                       'assets/images/intro_backgrounds/fifth_intro/fifth_intro_person.svg',
-                      height: 350,
+                      height: 350.h,
                     ),
                   ),
                 ),
               ],
             ),
-            kHeightSizedBox(5.0),
+            kHeightSizedBox(5.0.h),
             Container(
               padding:
                   EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 20.0.w),
@@ -61,13 +61,13 @@ class FifthIntroScreen extends StatelessWidget {
                       kInputTextHeading('Motivācija', kActiveYellow, 32),
                     ],
                   ),
-                  kHeightSizedBox(4),
+                  kHeightSizedBox(4.0.h),
                   Row(
                     children: [
                       kDescriptionText(
                           'Par uzdevumiem saņemsi virtuālus\nžetonus. Tie apliecinās emociju\nregulācijas prasmju iepazīšanu un attīstību.',
                           kActiveYellow,
-                          18),
+                          16),
                     ],
                   ),
                   Row(

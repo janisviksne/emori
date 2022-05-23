@@ -154,6 +154,8 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                           IconButton(
                             iconSize: 100.0,
                             onPressed: () {
+                              //ToDo 1. There is an overflow after validation fails
+                              //ToDo 2. Improve validation messages
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
