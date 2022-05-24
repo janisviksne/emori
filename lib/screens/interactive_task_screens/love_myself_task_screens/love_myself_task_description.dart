@@ -10,7 +10,6 @@ class LoveMyselfTaskDescriptionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const String hanzAsset = 'assets/images/main_menu_tiles/hanz.svg';
     return Scaffold(
       backgroundColor: kActiveYellow,
       body: SingleChildScrollView(
