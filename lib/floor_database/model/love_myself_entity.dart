@@ -2,8 +2,8 @@ import 'package:floor/floor.dart';
 
 @entity
 class LoveMyselfAnswer {
-  @primaryKey
-  late int answerId;
+  @PrimaryKey(autoGenerate: true)
+  final int? answerId;
 
   late String answerTitle1;
   late String answerTitle2;
@@ -14,17 +14,17 @@ class LoveMyselfAnswer {
   late String answerTitle7;
   late String answerTitle8;
 
-  late String answerDateTime;
+  late final String answerDateTime;
 
   LoveMyselfAnswer(
-      this.answerId,
-      this.answerTitle1,
-      this.answerTitle2,
-      this.answerTitle3,
-      this.answerTitle4,
-      this.answerTitle5,
-      this.answerTitle6,
-      this.answerTitle7,
-      this.answerTitle8,
-      this.answerDateTime);
+      {this.answerId,
+      required this.answerTitle1,
+      required this.answerTitle2,
+      required this.answerTitle3,
+      required this.answerTitle4,
+      required this.answerTitle5,
+      required this.answerTitle6,
+      required this.answerTitle7,
+      required this.answerTitle8,
+      required this.answerDateTime});
 }

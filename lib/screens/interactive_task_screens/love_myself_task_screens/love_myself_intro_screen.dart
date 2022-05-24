@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/src/size_extension.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'love_myself_task_screen.dart';
+
 class LoveMyselfTaskIntroScreen extends StatelessWidget {
   const LoveMyselfTaskIntroScreen({Key? key}) : super(key: key);
 
@@ -65,11 +67,11 @@ class LoveMyselfTaskIntroScreen extends StatelessWidget {
                       IconButton(
                         iconSize: 100.0,
                         onPressed: () {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) =>
-                          //             SecondDrawTaskIntroScreen()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      LoveMyselfTaskScreen()));
                         },
                         icon: SvgPicture.asset(
                             'assets/images/common/forward_button_yellow.svg'),

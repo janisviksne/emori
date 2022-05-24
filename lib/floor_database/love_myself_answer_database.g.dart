@@ -7,21 +7,21 @@ part of 'love_myself_answer_database.dart';
 // **************************************************************************
 
 // ignore: avoid_classes_with_only_static_members
-class $FloorAppDatabase {
+class $FloorLMAnswerDatabase {
   /// Creates a database builder for a persistent database.
   /// Once a database is built, you should keep a reference to it and re-use it.
-  static _$AppDatabaseBuilder databaseBuilder(String name) =>
-      _$AppDatabaseBuilder(name);
+  static _$LMAnswerDatabaseBuilder databaseBuilder(String name) =>
+      _$LMAnswerDatabaseBuilder(name);
 
   /// Creates a database builder for an in memory database.
   /// Information stored in an in memory database disappears when the process is killed.
   /// Once a database is built, you should keep a reference to it and re-use it.
-  static _$AppDatabaseBuilder inMemoryDatabaseBuilder() =>
-      _$AppDatabaseBuilder(null);
+  static _$LMAnswerDatabaseBuilder inMemoryDatabaseBuilder() =>
+      _$LMAnswerDatabaseBuilder(null);
 }
 
-class _$AppDatabaseBuilder {
-  _$AppDatabaseBuilder(this.name);
+class _$LMAnswerDatabaseBuilder {
+  _$LMAnswerDatabaseBuilder(this.name);
 
   final String? name;
 
@@ -30,23 +30,23 @@ class _$AppDatabaseBuilder {
   Callback? _callback;
 
   /// Adds migrations to the builder.
-  _$AppDatabaseBuilder addMigrations(List<Migration> migrations) {
+  _$LMAnswerDatabaseBuilder addMigrations(List<Migration> migrations) {
     _migrations.addAll(migrations);
     return this;
   }
 
   /// Adds a database [Callback] to the builder.
-  _$AppDatabaseBuilder addCallback(Callback callback) {
+  _$LMAnswerDatabaseBuilder addCallback(Callback callback) {
     _callback = callback;
     return this;
   }
 
   /// Creates the database and initializes it.
-  Future<AppDatabase> build() async {
+  Future<LMAnswerDatabase> build() async {
     final path = name != null
         ? await sqfliteDatabaseFactory.getDatabasePath(name!)
         : ':memory:';
-    final database = _$AppDatabase();
+    final database = _$LMAnswerDatabase();
     database.database = await database.open(
       path,
       _migrations,
@@ -56,8 +56,8 @@ class _$AppDatabaseBuilder {
   }
 }
 
-class _$AppDatabase extends AppDatabase {
-  _$AppDatabase([StreamController<String>? listener]) {
+class _$LMAnswerDatabase extends LMAnswerDatabase {
+  _$LMAnswerDatabase([StreamController<String>? listener]) {
     changeListener = listener ?? StreamController<String>.broadcast();
   }
 
@@ -82,7 +82,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `LoveMyselfAnswer` (`answerId` INTEGER NOT NULL, `answerTitle1` TEXT NOT NULL, `answerTitle2` TEXT NOT NULL, `answerTitle3` TEXT NOT NULL, `answerTitle4` TEXT NOT NULL, `answerTitle5` TEXT NOT NULL, `answerTitle6` TEXT NOT NULL, `answerTitle7` TEXT NOT NULL, `answerTitle8` TEXT NOT NULL, `answerDateTime` TEXT NOT NULL, PRIMARY KEY (`answerId`))');
+            'CREATE TABLE IF NOT EXISTS `LoveMyselfAnswer` (`answerId` INTEGER PRIMARY KEY AUTOINCREMENT, `answerTitle1` TEXT NOT NULL, `answerTitle2` TEXT NOT NULL, `answerTitle3` TEXT NOT NULL, `answerTitle4` TEXT NOT NULL, `answerTitle5` TEXT NOT NULL, `answerTitle6` TEXT NOT NULL, `answerTitle7` TEXT NOT NULL, `answerTitle8` TEXT NOT NULL, `answerDateTime` TEXT NOT NULL)');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -99,7 +99,8 @@ class _$AppDatabase extends AppDatabase {
 
 class _$LoveMyselfAnswerDao extends LoveMyselfAnswerDao {
   _$LoveMyselfAnswerDao(this.database, this.changeListener)
-      : _loveMyselfAnswerInsertionAdapter = InsertionAdapter(
+      : _queryAdapter = QueryAdapter(database, changeListener),
+        _loveMyselfAnswerInsertionAdapter = InsertionAdapter(
             database,
             'LoveMyselfAnswer',
             (LoveMyselfAnswer item) => <String, Object?>{
@@ -113,13 +114,34 @@ class _$LoveMyselfAnswerDao extends LoveMyselfAnswerDao {
                   'answerTitle7': item.answerTitle7,
                   'answerTitle8': item.answerTitle8,
                   'answerDateTime': item.answerDateTime
-                });
+                },
+            changeListener);
 
   final sqflite.DatabaseExecutor database;
 
   final StreamController<String> changeListener;
 
+  final QueryAdapter _queryAdapter;
+
   final InsertionAdapter<LoveMyselfAnswer> _loveMyselfAnswerInsertionAdapter;
+
+  @override
+  Stream<List<LoveMyselfAnswer>> getAllLoveMyselfTaskSubmissions() {
+    return _queryAdapter.queryListStream('SELECT * FROM LoveMyselfAnswer',
+        mapper: (Map<String, Object?> row) => LoveMyselfAnswer(
+            answerId: row['answerId'] as int?,
+            answerTitle1: row['answerTitle1'] as String,
+            answerTitle2: row['answerTitle2'] as String,
+            answerTitle3: row['answerTitle3'] as String,
+            answerTitle4: row['answerTitle4'] as String,
+            answerTitle5: row['answerTitle5'] as String,
+            answerTitle6: row['answerTitle6'] as String,
+            answerTitle7: row['answerTitle7'] as String,
+            answerTitle8: row['answerTitle8'] as String,
+            answerDateTime: row['answerDateTime'] as String),
+        queryableName: 'LoveMyselfAnswer',
+        isView: false);
+  }
 
   @override
   Future<void> insertLoveMyselfAnswer(LoveMyselfAnswer loveMyselfAnswer) async {

@@ -61,7 +61,7 @@ class _DrawingTaskScreenState extends State<DrawingTaskScreen> {
                             setState(() {});
                           },
                           icon: SvgPicture.asset(
-                              'assets/images/interactive_task_backgrounds/draw_task/info_icon.svg'))
+                              'assets/images/interactive_task_backgrounds/draw_task/green_info_icon.svg'))
                     ],
                   ),
                 )
