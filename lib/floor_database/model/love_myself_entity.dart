@@ -14,7 +14,7 @@ class LoveMyselfAnswer {
   late String answerTitle7;
   late String answerTitle8;
 
-  late final String answerDateTime;
+  late String answerDateTime;
 
   LoveMyselfAnswer(
       {this.answerId,

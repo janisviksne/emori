@@ -40,7 +40,7 @@ class _ProfessionSelectionScreenState extends State<ProfessionSelectionScreen> {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const Login(),
+            builder: (context) => const LoginScreen(),
           ));
     } else {
       log(response.statusCode.toString());

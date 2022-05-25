@@ -17,11 +17,7 @@ class LoveMyselfTaskDescriptionScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 20.0.h, horizontal: 20.0.w),
           child: Column(
             children: [
-              Stack(
-                children: [
-                  kBackArrowGreen(context),
-                ],
-              ),
+              kBackArrowGreen(context),
               kHeightSizedBox(10.0),
               Row(
                 children: [

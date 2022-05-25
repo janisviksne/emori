@@ -52,6 +52,7 @@ flutter:
   - assets/images/intro_backgrounds/fifth_intro/
   - assets/images/questionnaire_backgrounds/
   - assets/images/common/
+  - assets/images/common/tasks/
   - assets/images/main_menu_tiles/
   - assets/images/interactive_task_backgrounds/draw_task/
   - assets/images/interactive_task_backgrounds/draw_task_intro/

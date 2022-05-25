@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/src/size_extension.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'love_myself_completed_screen.dart';
+
 class LoveMyselfTaskScreen extends StatefulWidget {
   const LoveMyselfTaskScreen({Key? key}) : super(key: key);
 
@@ -322,7 +324,17 @@ class _LoveMyselfTaskScreenState extends State<LoveMyselfTaskScreen> {
                     IconButton(
                       iconSize: 100.0,
                       onPressed: () {
-                        setState(() {});
+                        setState(() {
+                          loveMyselfAnswer.answerDateTime =
+                              DateTime.now().toString();
+                          lmAnswerDatabase.loveMyselfAnswerDao
+                              .insertLoveMyselfAnswer(loveMyselfAnswer);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      LoveMyselfTaskFinishScreen()));
+                        });
                       },
                       icon: SvgPicture.asset(
                           'assets/images/common/forward_button_yellow.svg'),

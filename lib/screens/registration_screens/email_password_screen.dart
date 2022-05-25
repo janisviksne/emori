@@ -57,7 +57,7 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Login()));
+                                  builder: (context) => const LoginScreen()));
                         },
                         child: const Text(
                           'Ienākt',
