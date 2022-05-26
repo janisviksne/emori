@@ -8,7 +8,6 @@ import '../../size_config.dart';
 
 class QuestionnaireEndScreen extends StatelessWidget {
   const QuestionnaireEndScreen({Key? key}) : super(key: key);
-//ToDo add questionnaire evaluation from this
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);

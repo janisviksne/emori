@@ -85,7 +85,6 @@ class LoveMyselfTaskDescriptionScreen extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  //ToDo pass user Info
                                   LoveMyselfTaskIntroScreen()));
                     },
                     icon: SvgPicture.asset(

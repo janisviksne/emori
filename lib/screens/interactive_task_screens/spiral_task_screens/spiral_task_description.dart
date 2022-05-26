@@ -17,6 +17,7 @@ class SpiralTaskDescriptionScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 20.0.h, horizontal: 20.0.w),
           child: Column(
             children: [
+              //ToDo add emori logo at right side
               Stack(
                 children: [
                   kBackArrowGreen(context),
@@ -58,8 +59,8 @@ class SpiralTaskDescriptionScreen extends StatelessWidget {
               kHeightSizedBox(10.0.h),
               Row(
                 children: [
-                  kCenteredDescription(
-                      'Spirāle simbolizē pozitīvu, radošu spēku\n enerģijas virzību un pārmaiņas.\nŠis uzdevums tev varētu palīdzēt vērst\nuzmanību uz pozitīvo.',
+                  kDescriptionText(
+                      'Spirāle simbolizē pozitīvu, radošu spēku\nenerģijas virzību un pārmaiņas.\nŠis uzdevums tev varētu palīdzēt vērst\nuzmanību uz pozitīvo.',
                       kActiveGreen,
                       16)
                 ],

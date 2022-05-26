@@ -1,3 +1,4 @@
+import 'package:emori/screens/interactive_task_screens/spiral_task_screens/spiral_task_screen.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:flutter/material.dart';
@@ -47,10 +48,10 @@ class SpiralTaskIntroScreen extends StatelessWidget {
               child: IconButton(
                 iconSize: 100.0,
                 onPressed: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => SecondDrawTaskIntroScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => SpiralTaskScreen()));
                 },
                 icon: SvgPicture.asset(
                     'assets/images/common/forward_button_yellow.svg'),

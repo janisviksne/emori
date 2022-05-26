@@ -54,7 +54,6 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        //ToDo implement drawing intros
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -94,7 +93,6 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      //ToDo add navigator leading to spiral intros + task
                       Navigator.push(
                           context,
                           MaterialPageRoute(
