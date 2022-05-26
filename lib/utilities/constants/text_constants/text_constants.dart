@@ -43,6 +43,11 @@ Text kDescriptionText(String text, Color color, double fontSize) => Text(text,
     style:
         TextStyle(fontSize: fontSize, fontFamily: 'Readex Pro', color: color));
 
+Text kCenteredDescription(String text, Color color, double fontSize) => Text(
+    text,
+    textAlign: TextAlign.center,
+    style:
+        TextStyle(fontSize: fontSize, fontFamily: 'Readex Pro', color: color));
 Container kInputFormLine(Color color) => Container(
       height: 1,
       color: color,

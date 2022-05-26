@@ -1,5 +1,5 @@
-import 'package:emori/floor_database/love_myself_answer_database.dart';
-import 'package:emori/floor_database/model/love_myself_entity.dart';
+import 'package:emori/database_layer/love_myself_db/love_myself_answer_database.dart';
+import 'package:emori/database_layer/love_myself_db/model/love_myself_entity.dart';
 import 'package:emori/screens/interactive_task_screens/love_myself_task_screens/love_myself_task_description.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
@@ -329,6 +329,7 @@ class _LoveMyselfTaskScreenState extends State<LoveMyselfTaskScreen> {
                               DateTime.now().toString();
                           lmAnswerDatabase.loveMyselfAnswerDao
                               .insertLoveMyselfAnswer(loveMyselfAnswer);
+                          print(loveMyselfAnswer.answerId);
                           Navigator.push(
                               context,
                               MaterialPageRoute(

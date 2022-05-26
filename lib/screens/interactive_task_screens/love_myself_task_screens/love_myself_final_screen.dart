@@ -1,4 +1,4 @@
-import 'package:emori/screens/main_menu/main_menu_screen.dart';
+import 'package:emori/screens/main_menu_screen.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:flutter/material.dart';

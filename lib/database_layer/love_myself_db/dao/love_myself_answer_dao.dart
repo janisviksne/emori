@@ -1,4 +1,4 @@
-import 'package:emori/floor_database/model/love_myself_entity.dart';
+import 'package:emori/database_layer/love_myself_db/model/love_myself_entity.dart';
 import 'package:floor/floor.dart';
 
 @dao

@@ -1,4 +1,4 @@
-import 'package:emori/screens/main_menu/main_menu_screen.dart';
+import 'package:emori/screens/main_menu_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

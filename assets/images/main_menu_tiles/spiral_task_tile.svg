@@ -2,7 +2,7 @@
     <rect y="0.995209" width="165" height="161" rx="10" fill="#2D573D" />
     <mask id="mask0_1315_6834" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
         width="165" height="161">
-        <rect y="0.995209" width="165" height="161" rx="10" fill="#2D573D" />
+        <rect y="0.995209" width="165" height="161" rx="10" fill="#FF5E00" />
     </mask>
     <g mask="url(#mask0_1315_6834)">
         <path

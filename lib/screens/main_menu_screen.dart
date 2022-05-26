@@ -9,6 +9,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/src/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'interactive_task_screens/spiral_task_screens/spiral_task_description.dart';
+
 class MainMenuScreen extends StatefulWidget {
   const MainMenuScreen({Key? key}) : super(key: key);
 
@@ -74,8 +76,11 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        //ToDo add navigator leading to spiral intros + task
-                        log('Test2');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const SpiralTaskDescriptionScreen()));
                       });
                     },
                     child: SvgPicture.asset(
