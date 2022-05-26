@@ -1,3 +1,4 @@
+import 'package:emori/screens/interactive_task_screens/spiral_task_screens/spiral_task_reflection_screens/spiral_task_reflection_screen1.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:flutter/material.dart';
@@ -36,12 +37,12 @@ class SpiralTaskDoneScreen extends StatelessWidget {
                   kInputTextHeading('Uzdevums\nizpildīts!', kActiveYellow, 32),
                 ],
               ),
-              kHeightSizedBox(5.0.h),
+              kHeightSizedBox(15.0.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   kCenteredDescription(
-                      'Šo uzdevumu vari veikt vairākas reizes\nlīdz jūti, ka prāts kļuvis mierīgāks un\nnepatīkamo emociju intensitāte ir\nmazinājusies.',
+                      'Uzdevumu vari veikt atkārtoti līdz jūti, ka\nprāts ir mierīgāks, nepatīkamo\nemociju intensitāte ir mazinājusies.',
                       kActiveYellow,
                       16),
                 ],
@@ -53,11 +54,11 @@ class SpiralTaskDoneScreen extends StatelessWidget {
                     IconButton(
                       iconSize: 100.0,
                       onPressed: () {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) =>
-                        //         LoveMyselfReflectionScreen()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    SpiralTaskReflectionScreen1()));
                       },
                       icon: SvgPicture.asset(
                           'assets/images/common/forward_button_yellow.svg'),
