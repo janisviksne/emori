@@ -1,5 +1,5 @@
-import 'package:emori/database_layer/love_myself_db/love_myself_answer_database.dart';
-import 'package:emori/database_layer/love_myself_db/love_myself_model.dart';
+import 'package:emori/database_layer/database.dart';
+import 'package:emori/database_layer/love_myself_db/love_myself_answer_model.dart';
 import 'package:emori/screens/interactive_task_screens/love_myself_task_screens/love_myself_task_description.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
@@ -17,12 +17,12 @@ class LoveMyselfTaskScreen extends StatefulWidget {
 }
 
 class _LoveMyselfTaskScreenState extends State<LoveMyselfTaskScreen> {
-  late LMAnswerDatabase lmAnswerDatabase;
+  late ReflectionAnswerDatabase lmAnswerDatabase;
 
   @override
   void initState() {
     super.initState();
-    $FloorLMAnswerDatabase
+    $FloorReflectionAnswerDatabase
         .databaseBuilder('loveMyself_answer.db')
         .build()
         .then((value) => lmAnswerDatabase = value);
@@ -329,7 +329,6 @@ class _LoveMyselfTaskScreenState extends State<LoveMyselfTaskScreen> {
                               DateTime.now().toString();
                           lmAnswerDatabase.loveMyselfAnswerDao
                               .insertLoveMyselfAnswer(loveMyselfAnswer);
-                          print(loveMyselfAnswer.answerId);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
