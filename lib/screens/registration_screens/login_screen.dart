@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:convert' as convert;
 import 'dart:developer';
 
-import 'package:emori/model/user/login_user.dart';
+import 'package:emori/request_model/user/login_user.dart';
 import 'package:emori/screens/questionnaire_screens/questionnaire_a_intro.dart';
 import 'package:emori/utilities/constants/endpoint_constants.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';

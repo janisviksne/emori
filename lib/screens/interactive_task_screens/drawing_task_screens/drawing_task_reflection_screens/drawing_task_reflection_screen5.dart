@@ -5,8 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/src/size_extension.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../database_layer/database.dart';
+import '../../../../database_layer/draw_task_reflection_db/draw_task_reflection_model.dart';
+
 class DrawingTaskReflectionScreen5 extends StatefulWidget {
-  const DrawingTaskReflectionScreen5({Key? key}) : super(key: key);
+  final DrawTaskReflection drawTaskReflection;
+  const DrawingTaskReflectionScreen5(this.drawTaskReflection, {Key? key})
+      : super(key: key);
 
   @override
   State<DrawingTaskReflectionScreen5> createState() =>
@@ -15,11 +20,20 @@ class DrawingTaskReflectionScreen5 extends StatefulWidget {
 
 class _DrawingTaskReflectionScreen5State
     extends State<DrawingTaskReflectionScreen5> {
+  late ReflectionAnswerDatabase drawTaskReflectionAnswers;
+
+  @override
+  void initState() {
+    super.initState();
+    $FloorReflectionAnswerDatabase
+        .databaseBuilder('database.db')
+        .build()
+        .then((value) => drawTaskReflectionAnswers = value);
+  }
+
   @override
   Widget build(BuildContext context) {
-    //ToDo add database entity that stores this value
-    //initialize dao to save the input answer
-    String tempValue = '';
+    late DrawTaskReflection drawTaskReflection = widget.drawTaskReflection;
     return Scaffold(
       backgroundColor: kActiveYellow,
       body: SafeArea(
@@ -68,9 +82,10 @@ class _DrawingTaskReflectionScreen5State
               kHeightSizedBox(40.0.h),
               TextFormField(
                 obscureText: false,
-                controller: TextEditingController(text: tempValue),
+                controller: TextEditingController(
+                    text: drawTaskReflection.answerTitle5),
                 onChanged: (val) {
-                  tempValue = val;
+                  drawTaskReflection.answerTitle5 = val;
                 },
                 style: const TextStyle(fontSize: 20, color: kActiveGreen),
                 decoration: kInputFieldDecoration('', kActiveGreen),
@@ -83,7 +98,10 @@ class _DrawingTaskReflectionScreen5State
                     IconButton(
                       iconSize: 100.0,
                       onPressed: () {
-                        //ToDo submit answer database
+                        drawTaskReflection.answerDateTime =
+                            DateTime.now().toString();
+                        drawTaskReflectionAnswers.drawTaskReflectionDao
+                            .insertDrawTaskReflectionAnswer(drawTaskReflection);
                         Navigator.push(
                             context,
                             MaterialPageRoute(

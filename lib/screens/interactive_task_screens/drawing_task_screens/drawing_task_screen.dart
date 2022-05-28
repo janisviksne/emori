@@ -28,7 +28,6 @@ class _DrawingTaskScreenState extends State<DrawingTaskScreen> {
 
   @override
   Widget build(BuildContext context) {
-    String color = 'Krāsa';
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(

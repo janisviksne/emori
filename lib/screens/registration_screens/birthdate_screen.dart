@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:emori/model/user/register_user.dart';
+import 'package:emori/request_model/user/register_user.dart';
 import 'package:emori/screens/registration_screens/gender_screen.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';

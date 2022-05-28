@@ -4,10 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/src/size_extension.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../database_layer/draw_task_reflection_db/draw_task_reflection_model.dart';
 import 'drawing_task_reflection_screen5.dart';
 
 class DrawingTaskReflectionScreen4 extends StatefulWidget {
-  const DrawingTaskReflectionScreen4({Key? key}) : super(key: key);
+  final DrawTaskReflection drawTaskReflection;
+  const DrawingTaskReflectionScreen4(this.drawTaskReflection, {Key? key})
+      : super(key: key);
 
   @override
   State<DrawingTaskReflectionScreen4> createState() =>
@@ -18,9 +21,7 @@ class _DrawingTaskReflectionScreen4State
     extends State<DrawingTaskReflectionScreen4> {
   @override
   Widget build(BuildContext context) {
-    //ToDo add database entity that stores this value
-    //initialize dao to save the input answer
-    String tempValue = '';
+    late DrawTaskReflection drawTaskReflection = widget.drawTaskReflection;
     return Scaffold(
       backgroundColor: kActiveYellow,
       body: SafeArea(
@@ -50,7 +51,8 @@ class _DrawingTaskReflectionScreen4State
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          DrawingTaskReflectionScreen5()));
+                                          DrawingTaskReflectionScreen5(
+                                              drawTaskReflection)));
                             },
                             child:
                                 kDescriptionText('Izlaist', kActiveGreen, 15)),
@@ -71,9 +73,10 @@ class _DrawingTaskReflectionScreen4State
               kHeightSizedBox(40.0.h),
               TextFormField(
                 obscureText: false,
-                controller: TextEditingController(text: tempValue),
+                controller: TextEditingController(
+                    text: drawTaskReflection.answerTitle4),
                 onChanged: (val) {
-                  tempValue = val;
+                  drawTaskReflection.answerTitle4 = val;
                 },
                 style: const TextStyle(fontSize: 20, color: kActiveGreen),
                 decoration: kInputFieldDecoration('', kActiveGreen),
@@ -91,7 +94,8 @@ class _DrawingTaskReflectionScreen4State
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    DrawingTaskReflectionScreen5()));
+                                    DrawingTaskReflectionScreen5(
+                                        drawTaskReflection)));
                       },
                       icon: SvgPicture.asset(
                           'assets/images/common/forward_button_green.svg'),

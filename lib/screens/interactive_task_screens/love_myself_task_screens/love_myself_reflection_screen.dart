@@ -1,9 +1,11 @@
+import 'package:emori/database_layer/love_myself_reflection_db/love_myself_reflection_model.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/src/size_extension.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../database_layer/database.dart';
 import 'love_myself_final_screen.dart';
 
 class LoveMyselfReflectionScreen extends StatefulWidget {
@@ -16,11 +18,21 @@ class LoveMyselfReflectionScreen extends StatefulWidget {
 
 class _LoveMyselfReflectionScreenState
     extends State<LoveMyselfReflectionScreen> {
+  late ReflectionAnswerDatabase lmAnswerDatabase;
+
+  @override
+  void initState() {
+    super.initState();
+    $FloorReflectionAnswerDatabase
+        .databaseBuilder('database.db')
+        .build()
+        .then((value) => lmAnswerDatabase = value);
+  }
+
   @override
   Widget build(BuildContext context) {
-    //ToDo add database entity that stores this value
-    //initialize dao to save the input answer
-    String tempValue = '';
+    LoveMyselfReflection loveMyselfReflection = LoveMyselfReflection(
+        reflectionAnswerId: null, answerTitle1: '', answerDateTime: '');
     return Scaffold(
       backgroundColor: kActiveYellow,
       body: SafeArea(
@@ -32,6 +44,11 @@ class _LoveMyselfReflectionScreenState
               Stack(
                 children: [
                   kBackArrowGreen(context),
+                  Center(
+                    child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 20.0.h),
+                        child: kDescriptionText('1/1', kActiveGreen, 16)),
+                  ),
                   Padding(
                     padding: EdgeInsets.symmetric(
                         vertical: 25.0.h, horizontal: 15.0.w),
@@ -63,9 +80,10 @@ class _LoveMyselfReflectionScreenState
               kHeightSizedBox(40.0.h),
               TextFormField(
                 obscureText: false,
-                controller: TextEditingController(text: tempValue),
+                controller: TextEditingController(
+                    text: loveMyselfReflection.answerTitle1),
                 onChanged: (val) {
-                  tempValue = val;
+                  loveMyselfReflection.answerTitle1 = val;
                 },
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -83,6 +101,8 @@ class _LoveMyselfReflectionScreenState
                     IconButton(
                       iconSize: 100.0,
                       onPressed: () {
+                        lmAnswerDatabase.loveMyselfReflectionDao
+                            .insertLMReflectionAnswer(loveMyselfReflection);
                         Navigator.push(
                             context,
                             MaterialPageRoute(

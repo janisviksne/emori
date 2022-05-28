@@ -92,7 +92,7 @@ class _$ReflectionAnswerDatabase extends ReflectionAnswerDatabase {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `DrawTaskReflection` (`reflectionAnswerId` INTEGER PRIMARY KEY AUTOINCREMENT, `answerTitle1` TEXT NOT NULL, `answerTitle2` TEXT NOT NULL, `answerTitle3` TEXT NOT NULL, `answerTitle4` TEXT NOT NULL, `answerTitle5` TEXT NOT NULL, `answerDateTime` TEXT NOT NULL)');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `LoveMyselfReflection` (`reflectionAnswerId` INTEGER PRIMARY KEY AUTOINCREMENT, `answerTitle1` TEXT NOT NULL, `answerTitle2` TEXT NOT NULL, `answerTitle3` TEXT NOT NULL, `answerDateTime` TEXT NOT NULL)');
+            'CREATE TABLE IF NOT EXISTS `LoveMyselfReflection` (`reflectionAnswerId` INTEGER PRIMARY KEY AUTOINCREMENT, `answerTitle1` TEXT NOT NULL, `answerDateTime` TEXT NOT NULL)');
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `SpiralTaskReflection` (`reflectionAnswerId` INTEGER PRIMARY KEY AUTOINCREMENT, `answerTitle1` TEXT NOT NULL, `answerTitle2` TEXT NOT NULL, `answerTitle3` TEXT NOT NULL, `answerDateTime` TEXT NOT NULL)');
 
@@ -218,8 +218,6 @@ class _$LoveMyselfReflectionDao extends LoveMyselfReflectionDao {
             (LoveMyselfReflection item) => <String, Object?>{
                   'reflectionAnswerId': item.reflectionAnswerId,
                   'answerTitle1': item.answerTitle1,
-                  'answerTitle2': item.answerTitle2,
-                  'answerTitle3': item.answerTitle3,
                   'answerDateTime': item.answerDateTime
                 });
 

@@ -5,8 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/src/size_extension.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../database_layer/database.dart';
+import '../../../../database_layer/spiral_task_reflection_db/spiral_task_reflection_model.dart';
+
 class SpiralTaskReflectionScreen3 extends StatefulWidget {
-  const SpiralTaskReflectionScreen3({Key? key}) : super(key: key);
+  final SpiralTaskReflection spiralTaskReflection;
+  const SpiralTaskReflectionScreen3(this.spiralTaskReflection, {Key? key})
+      : super(key: key);
 
   @override
   State<SpiralTaskReflectionScreen3> createState() =>
@@ -15,6 +20,18 @@ class SpiralTaskReflectionScreen3 extends StatefulWidget {
 
 class _SpiralTaskReflectionScreen3State
     extends State<SpiralTaskReflectionScreen3> {
+  late ReflectionAnswerDatabase spiralReflectionAnswers;
+
+  @override
+  void initState() {
+    super.initState();
+    $FloorReflectionAnswerDatabase
+        .databaseBuilder('database.db')
+        .build()
+        .then((value) => spiralReflectionAnswers = value);
+  }
+
+  late SpiralTaskReflection spiralTaskReflection = widget.spiralTaskReflection;
   @override
   Widget build(BuildContext context) {
     //ToDo add database entity that stores this value
@@ -68,10 +85,10 @@ class _SpiralTaskReflectionScreen3State
               ),
               kHeightSizedBox(40.0.h),
               TextFormField(
-                obscureText: false,
-                controller: TextEditingController(text: tempValue),
+                controller: TextEditingController(
+                    text: spiralTaskReflection.answerTitle3),
                 onChanged: (val) {
-                  tempValue = val;
+                  spiralTaskReflection.answerTitle3 = val;
                 },
                 style: const TextStyle(fontSize: 20, color: kActiveGreen),
                 decoration: kInputFieldDecoration('', kActiveGreen),
@@ -84,7 +101,11 @@ class _SpiralTaskReflectionScreen3State
                     IconButton(
                       iconSize: 100.0,
                       onPressed: () {
-                        //ToDo submit answer database
+                        spiralTaskReflection.answerDateTime =
+                            DateTime.now().toString();
+                        spiralReflectionAnswers.spiralTaskReflectionDao
+                            .insertDrawTaskReflectionAnswer(
+                                spiralTaskReflection);
                         Navigator.push(
                             context,
                             MaterialPageRoute(

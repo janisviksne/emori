@@ -1,3 +1,4 @@
+import 'package:emori/database_layer/spiral_task_reflection_db/spiral_task_reflection_model.dart';
 import 'package:emori/screens/interactive_task_screens/spiral_task_screens/spiral_task_reflection_screens/spiral_task_reflection_screen2.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
@@ -17,9 +18,12 @@ class _SpiralTaskReflectionScreen1State
     extends State<SpiralTaskReflectionScreen1> {
   @override
   Widget build(BuildContext context) {
-    //ToDo add database entity that stores this value
-    //initialize dao to save the input answer
-    String tempValue = '';
+    SpiralTaskReflection spiralTaskReflection = SpiralTaskReflection(
+        reflectionAnswerId: null,
+        answerTitle1: '',
+        answerTitle2: '',
+        answerTitle3: '',
+        answerDateTime: '');
     return Scaffold(
       backgroundColor: kActiveYellow,
       body: SafeArea(
@@ -49,7 +53,8 @@ class _SpiralTaskReflectionScreen1State
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          SpiralTaskReflectionScreen2()));
+                                          SpiralTaskReflectionScreen2(
+                                              spiralTaskReflection)));
                             },
                             child:
                                 kDescriptionText('Izlaist', kActiveGreen, 15)),
@@ -68,9 +73,10 @@ class _SpiralTaskReflectionScreen1State
               kHeightSizedBox(40.0.h),
               TextFormField(
                 obscureText: false,
-                controller: TextEditingController(text: tempValue),
+                controller: TextEditingController(
+                    text: spiralTaskReflection.answerTitle1),
                 onChanged: (val) {
-                  tempValue = val;
+                  spiralTaskReflection.answerTitle1 = val;
                 },
                 style: const TextStyle(fontSize: 20, color: kActiveGreen),
                 decoration: kInputFieldDecoration('', kActiveGreen),
@@ -88,7 +94,8 @@ class _SpiralTaskReflectionScreen1State
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    SpiralTaskReflectionScreen2()));
+                                    SpiralTaskReflectionScreen2(
+                                        spiralTaskReflection)));
                       },
                       icon: SvgPicture.asset(
                           'assets/images/common/forward_button_green.svg'),

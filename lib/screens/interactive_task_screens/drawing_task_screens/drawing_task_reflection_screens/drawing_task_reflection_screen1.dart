@@ -1,3 +1,4 @@
+import 'package:emori/database_layer/draw_task_reflection_db/draw_task_reflection_model.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:flutter/material.dart';
@@ -18,9 +19,15 @@ class _DrawingTaskReflectionScreen1State
     extends State<DrawingTaskReflectionScreen1> {
   @override
   Widget build(BuildContext context) {
-    //ToDo add database entity that stores this value
-    //initialize dao to save the input answer
-    String tempValue = '';
+    DrawTaskReflection drawTaskReflection = DrawTaskReflection(
+        reflectionAnswerId: null,
+        answerTitle1: '',
+        answerTitle2: '',
+        answerTitle3: '',
+        answerTitle4: '',
+        answerTitle5: '',
+        answerDateTime: '');
+
     return Scaffold(
       backgroundColor: kActiveYellow,
       body: SafeArea(
@@ -50,7 +57,8 @@ class _DrawingTaskReflectionScreen1State
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          DrawingTaskReflectionScreen2()));
+                                          DrawingTaskReflectionScreen2(
+                                              drawTaskReflection)));
                             },
                             child:
                                 kDescriptionText('Izlaist', kActiveGreen, 15)),
@@ -69,9 +77,10 @@ class _DrawingTaskReflectionScreen1State
               kHeightSizedBox(40.0.h),
               TextFormField(
                 obscureText: false,
-                controller: TextEditingController(text: tempValue),
+                controller: TextEditingController(
+                    text: drawTaskReflection.answerTitle1),
                 onChanged: (val) {
-                  tempValue = val;
+                  drawTaskReflection.answerTitle1 = val;
                 },
                 style: const TextStyle(fontSize: 20, color: kActiveGreen),
                 decoration: kInputFieldDecoration('', kActiveGreen),
@@ -84,12 +93,12 @@ class _DrawingTaskReflectionScreen1State
                     IconButton(
                       iconSize: 100.0,
                       onPressed: () {
-                        //ToDo submit answer database
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    DrawingTaskReflectionScreen2()));
+                                    DrawingTaskReflectionScreen2(
+                                        drawTaskReflection)));
                       },
                       icon: SvgPicture.asset(
                           'assets/images/common/forward_button_green.svg'),

@@ -1,3 +1,4 @@
+import 'package:emori/database_layer/spiral_task_reflection_db/spiral_task_reflection_model.dart';
 import 'package:emori/screens/interactive_task_screens/spiral_task_screens/spiral_task_reflection_screens/spiral_task_reflection_screen3.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
@@ -6,7 +7,9 @@ import 'package:flutter_screenutil/src/size_extension.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SpiralTaskReflectionScreen2 extends StatefulWidget {
-  const SpiralTaskReflectionScreen2({Key? key}) : super(key: key);
+  final SpiralTaskReflection spiralTaskReflection;
+  const SpiralTaskReflectionScreen2(this.spiralTaskReflection, {Key? key})
+      : super(key: key);
 
   @override
   State<SpiralTaskReflectionScreen2> createState() =>
@@ -17,9 +20,8 @@ class _SpiralTaskReflectionScreen2State
     extends State<SpiralTaskReflectionScreen2> {
   @override
   Widget build(BuildContext context) {
-    //ToDo add database entity that stores this value
-    //initialize dao to save the input answer
-    String tempValue = '';
+    late SpiralTaskReflection spiralTaskReflection =
+        widget.spiralTaskReflection;
     return Scaffold(
       backgroundColor: kActiveYellow,
       body: SafeArea(
@@ -48,7 +50,8 @@ class _SpiralTaskReflectionScreen2State
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          SpiralTaskReflectionScreen3()));
+                                          SpiralTaskReflectionScreen3(
+                                              spiralTaskReflection)));
                             },
                             child:
                                 kDescriptionText('Izlaist', kActiveGreen, 15)),
@@ -68,10 +71,10 @@ class _SpiralTaskReflectionScreen2State
               ),
               kHeightSizedBox(40.0.h),
               TextFormField(
-                obscureText: false,
-                controller: TextEditingController(text: tempValue),
+                controller: TextEditingController(
+                    text: spiralTaskReflection.answerTitle2),
                 onChanged: (val) {
-                  tempValue = val;
+                  spiralTaskReflection.answerTitle2 = val;
                 },
                 style: const TextStyle(fontSize: 20, color: kActiveGreen),
                 decoration: kInputFieldDecoration('', kActiveGreen),
@@ -84,11 +87,12 @@ class _SpiralTaskReflectionScreen2State
                     IconButton(
                       iconSize: 100.0,
                       onPressed: () {
-                        //ToDo submit answer database
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => FinalLoveMyselfScreen()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    SpiralTaskReflectionScreen3(
+                                        spiralTaskReflection)));
                       },
                       icon: SvgPicture.asset(
                           'assets/images/common/forward_button_green.svg'),

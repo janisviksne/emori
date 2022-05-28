@@ -23,12 +23,13 @@ class _LoveMyselfTaskScreenState extends State<LoveMyselfTaskScreen> {
   void initState() {
     super.initState();
     $FloorReflectionAnswerDatabase
-        .databaseBuilder('loveMyself_answer.db')
+        .databaseBuilder('database.db')
         .build()
         .then((value) => lmAnswerDatabase = value);
   }
 
   LoveMyselfAnswer loveMyselfAnswer = LoveMyselfAnswer(
+      answerId: null,
       answerTitle1: '',
       answerTitle2: '',
       answerTitle3: '',

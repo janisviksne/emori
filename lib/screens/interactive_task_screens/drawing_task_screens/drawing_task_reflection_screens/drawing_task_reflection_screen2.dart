@@ -1,3 +1,4 @@
+import 'package:emori/database_layer/draw_task_reflection_db/draw_task_reflection_model.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,9 @@ import 'package:flutter_svg/svg.dart';
 import 'drawing_task_reflection_screen3.dart';
 
 class DrawingTaskReflectionScreen2 extends StatefulWidget {
-  const DrawingTaskReflectionScreen2({Key? key}) : super(key: key);
+  final DrawTaskReflection drawTaskReflection;
+  const DrawingTaskReflectionScreen2(this.drawTaskReflection, {Key? key})
+      : super(key: key);
 
   @override
   State<DrawingTaskReflectionScreen2> createState() =>
@@ -18,9 +21,7 @@ class _DrawingTaskReflectionScreen2State
     extends State<DrawingTaskReflectionScreen2> {
   @override
   Widget build(BuildContext context) {
-    //ToDo add database entity that stores this value
-    //initialize dao to save the input answer
-    String tempValue = '';
+    late DrawTaskReflection drawTaskReflection = widget.drawTaskReflection;
     return Scaffold(
       backgroundColor: kActiveYellow,
       body: SafeArea(
@@ -50,7 +51,8 @@ class _DrawingTaskReflectionScreen2State
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          DrawingTaskReflectionScreen3()));
+                                          DrawingTaskReflectionScreen3(
+                                              drawTaskReflection)));
                             },
                             child:
                                 kDescriptionText('Izlaist', kActiveGreen, 15)),
@@ -71,9 +73,10 @@ class _DrawingTaskReflectionScreen2State
               kHeightSizedBox(40.0.h),
               TextFormField(
                 obscureText: false,
-                controller: TextEditingController(text: tempValue),
+                controller: TextEditingController(
+                    text: drawTaskReflection.answerTitle2),
                 onChanged: (val) {
-                  tempValue = val;
+                  drawTaskReflection.answerTitle2 = val;
                 },
                 style: const TextStyle(fontSize: 20, color: kActiveGreen),
                 decoration: kInputFieldDecoration('', kActiveGreen),
@@ -91,7 +94,8 @@ class _DrawingTaskReflectionScreen2State
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    DrawingTaskReflectionScreen3()));
+                                    DrawingTaskReflectionScreen3(
+                                        drawTaskReflection)));
                       },
                       icon: SvgPicture.asset(
                           'assets/images/common/forward_button_green.svg'),
