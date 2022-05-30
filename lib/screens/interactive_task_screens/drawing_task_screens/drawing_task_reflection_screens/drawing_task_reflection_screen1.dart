@@ -20,7 +20,6 @@ class _DrawingTaskReflectionScreen1State
   @override
   Widget build(BuildContext context) {
     DrawTaskReflection drawTaskReflection = DrawTaskReflection(
-        reflectionAnswerId: null,
         answerTitle1: '',
         answerTitle2: '',
         answerTitle3: '',

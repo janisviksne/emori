@@ -1,14 +1,17 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:typed_data';
-import 'dart:ui' as ui;
 
 import 'package:emori/screens/interactive_task_screens/spiral_task_screens/spiral_task_description.dart';
 import 'package:emori/screens/interactive_task_screens/spiral_task_screens/spiral_task_done.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/src/size_extension.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:scribble/scribble.dart';
 
 class SpiralTaskScreen extends StatefulWidget {
@@ -21,7 +24,6 @@ class SpiralTaskScreen extends StatefulWidget {
 class _SpiralTaskScreenState extends State<SpiralTaskScreen> {
   late ScribbleNotifier notifier;
   late FocusNode focusNode;
-
   @override
   void initState() {
     notifier = ScribbleNotifier();
@@ -124,49 +126,59 @@ class _SpiralTaskScreenState extends State<SpiralTaskScreen> {
     );
   }
 
-  Future<ui.Image> loadImage(Uint8List img) async {
-    final image = await notifier.renderImage();
-    final Completer<ui.Image> completer = Completer();
-    ui.decodeImageFromList(image.buffer.asUint8List(), (ui.Image img) {
-      return completer.complete(img);
-    });
-    return completer.future;
-  }
-
   //ToDo find out possible image save (without using screenshot)
-  Future<void> _saveImage(BuildContext context) async {
-    BytesBuilder b = BytesBuilder();
-    final image = await notifier.renderImage();
 
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-          title: Text(DateTime.now().day.toString() +
-              '-' +
-              DateTime.now().month.toString() +
-              '-' +
-              DateTime.now().year.toString() +
-              ' ' +
-              DateTime.now().hour.toString() +
-              ':' +
-              DateTime.now().minute.toString() +
-              ':' +
-              formatSeconds()),
-          content: Stack(
-            //ToDo check if i can make drawing size bigger
-            children: [
-              Padding(
-                padding: EdgeInsets.only(left: 40.0.w, bottom: 40.0.h),
-                child: Image.memory(
-                  image.buffer.asUint8List(),
-                  fit: BoxFit.fill,
-                ),
-              ),
-              Image.asset(
-                  'assets/images/interactive_task_backgrounds/spiral_task/spiral.png')
-            ],
-          )),
-    );
+  Future<void> _saveImage(BuildContext context) async {
+    final image = await notifier.renderImage();
+    if (!(await Permission.storage.status.isGranted))
+      await Permission.storage.request();
+
+    final result = await ImageGallerySaver.saveImage(
+        Uint8List.fromList(image.buffer.asUint8List()),
+        quality: 60,
+        name: DateTime.now().day.toString() +
+            '-' +
+            DateTime.now().month.toString() +
+            '-' +
+            DateTime.now().year.toString() +
+            ' ' +
+            DateTime.now().hour.toString() +
+            ':' +
+            DateTime.now().minute.toString() +
+            ':' +
+            formatSeconds());
+    log(result);
+
+    // showDialog(
+    //   context: context,
+    //   builder: (context) => AlertDialog(
+    //     title: Text(DateTime.now().day.toString() +
+    //         '-' +
+    //         DateTime.now().month.toString() +
+    //         '-' +
+    //         DateTime.now().year.toString() +
+    //         ' ' +
+    //         DateTime.now().hour.toString() +
+    //         ':' +
+    //         DateTime.now().minute.toString() +
+    //         ':' +
+    //         formatSeconds()),
+    //     content: Stack(
+    //       //ToDo check if i can make drawing size bigger
+    //       children: [
+    //         Padding(
+    //           padding: EdgeInsets.only(left: 40.0.w, bottom: 40.0.h),
+    //           child: Image.memory(
+    //             image.buffer.asUint8List(),
+    //             fit: BoxFit.fill,
+    //           ),
+    //         ),
+    //         Image.asset(
+    //             'assets/images/interactive_task_backgrounds/spiral_task/spiral.png')
+    //       ],
+    //     ),
+    //   ),
+    // );
   }
 
   Widget _buildStrokeToolbar(BuildContext context) {
@@ -340,27 +352,4 @@ class _SpiralTaskScreenState extends State<SpiralTaskScreen> {
           'assets/images/interactive_task_backgrounds/draw_task/clear_all.svg'),
     );
   }
-}
-
-Widget _buildTextBox(BuildContext context) {
-  return Container(
-    padding: const EdgeInsets.symmetric(horizontal: 50),
-    child: TextField(
-      maxLines: 1,
-      keyboardType: TextInputType.multiline,
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        wordSpacing: 5,
-        height: 2,
-        color: Colors.white,
-        fontWeight: FontWeight.bold,
-        fontSize: 19,
-        background: Paint()
-          ..color = Colors.blue
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = 35
-          ..strokeJoin = StrokeJoin.round,
-      ),
-    ),
-  );
 }

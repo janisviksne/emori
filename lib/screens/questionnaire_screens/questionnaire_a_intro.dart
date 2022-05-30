@@ -7,6 +7,7 @@ import 'package:emori/utilities/constants/endpoint_constants.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
 
@@ -79,12 +80,12 @@ class _QuestionnaireAIntroState extends State<QuestionnaireAIntroScreen> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 110),
+                        padding: EdgeInsets.only(top: 110.h),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             IconButton(
-                              padding: const EdgeInsets.only(top: 250.0),
+                              padding: EdgeInsets.only(top: 250.0.h),
                               iconSize: 100.0,
                               onPressed: () {
                                 log(Endpoints.QUESTION_A_ENDPOINT +

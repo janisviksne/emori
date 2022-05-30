@@ -31,8 +31,8 @@ class _LoveMyselfReflectionScreenState
 
   @override
   Widget build(BuildContext context) {
-    LoveMyselfReflection loveMyselfReflection = LoveMyselfReflection(
-        reflectionAnswerId: null, answerTitle1: '', answerDateTime: '');
+    LoveMyselfReflection loveMyselfReflection =
+        LoveMyselfReflection(answerTitle1: '', answerDateTime: '');
     return Scaffold(
       backgroundColor: kActiveYellow,
       body: SafeArea(

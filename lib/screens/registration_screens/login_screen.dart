@@ -3,13 +3,13 @@ import 'dart:convert' as convert;
 import 'dart:developer';
 
 import 'package:emori/request_model/user/login_user.dart';
-import 'package:emori/screens/questionnaire_screens/questionnaire_a_intro.dart';
 import 'package:emori/utilities/constants/endpoint_constants.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import '../questionnaire_screens/questionnaire_b_intro.dart';
 import 'email_password_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -26,17 +26,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future login() async {
     var response = await http.post(Uri.parse(Endpoints.LOGIN_ENDPOINT),
-        headers: {'Content-Type': 'application/json;charset=utf-8'},
+        headers: {'Content-Type': 'application/json'},
         body: json.encode(
             {'email': loginUser.email, 'password': loginUser.password}));
     if (response.statusCode == 200) {
-      log(response.statusCode.toString());
       log(response.body);
       loginUser.userId = await convert.jsonDecode(response.body);
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => QuestionnaireAIntroScreen(loginUser),
+            builder: (context) => QuestionnaireBIntroScreen(loginUser),
           ));
     } else {
       log(response.statusCode.toString());
@@ -51,7 +50,6 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Container(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 20),

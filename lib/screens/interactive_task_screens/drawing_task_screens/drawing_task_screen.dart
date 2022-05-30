@@ -4,6 +4,8 @@ import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:scribble/scribble.dart';
 
+import 'draw_task_done.dart';
+
 class DrawingTaskScreen extends StatefulWidget {
   const DrawingTaskScreen({Key? key}) : super(key: key);
 
@@ -20,10 +22,6 @@ class _DrawingTaskScreenState extends State<DrawingTaskScreen> {
     notifier = ScribbleNotifier();
     focusNode = FocusNode();
     super.initState();
-  }
-
-  void onFocus() {
-    setState(() {});
   }
 
   @override
@@ -51,7 +49,14 @@ class _DrawingTaskScreenState extends State<DrawingTaskScreen> {
                     children: [
                       IconButton(
                           onPressed: () {
-                            setState(() {});
+                            setState(() {
+                              _saveImage(context);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          DrawTaskDoneScreen()));
+                            });
                           },
                           icon: SvgPicture.asset(
                               'assets/images/interactive_task_backgrounds/draw_task/submit_icon.svg')),

@@ -45,9 +45,10 @@ class LoveMyselfTaskDescriptionScreen extends StatelessWidget {
                       fit: BoxFit.fill,
                     ),
                     Padding(
-                      padding: EdgeInsets.all(30.0.sp),
-                      child: SvgPicture.asset(
-                          'assets/images/main_menu_tiles/love_myself_tile.svg'),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 50.0.sp, vertical: 30.0.sp),
+                      child:
+                          Image.asset('assets/images/main_menu_tiles/hans.png'),
                     ),
                   ],
                 ),

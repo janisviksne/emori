@@ -26,7 +26,7 @@ class SpiralTaskDescriptionScreen extends StatelessWidget {
               kHeightSizedBox(10.0.h),
               Row(
                 children: [
-                  kDescriptionText('\tModulis: modifikācija', kActiveGreen, 16)
+                  kDescriptionText('Modulis: modifikācija', kActiveGreen, 16)
                 ],
               ),
               kHeightSizedBox(40.0.h),

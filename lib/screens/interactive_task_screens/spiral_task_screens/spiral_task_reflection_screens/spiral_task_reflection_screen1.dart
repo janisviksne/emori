@@ -19,7 +19,6 @@ class _SpiralTaskReflectionScreen1State
   @override
   Widget build(BuildContext context) {
     SpiralTaskReflection spiralTaskReflection = SpiralTaskReflection(
-        reflectionAnswerId: null,
         answerTitle1: '',
         answerTitle2: '',
         answerTitle3: '',

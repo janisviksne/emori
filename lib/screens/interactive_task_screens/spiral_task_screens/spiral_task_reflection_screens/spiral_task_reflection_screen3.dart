@@ -78,9 +78,7 @@ class _SpiralTaskReflectionScreen3State
               Row(
                 children: [
                   kInputTextHeading(
-                      'Ko Tev nozīmē šie,\nsimboli, krāsas, vārdi?',
-                      kActiveGreen,
-                      30),
+                      'Lūdzu, iedod,\nnosaukumu darbam!', kActiveGreen, 30),
                 ],
               ),
               kHeightSizedBox(40.0.h),

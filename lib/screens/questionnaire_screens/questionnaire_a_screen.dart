@@ -53,7 +53,7 @@ class _QuestionnaireAStartScreenState extends State<QuestionnaireAStartScreen> {
         headers: {'Content-Type': 'application/json'},
         body: json.encode({
           'questionnaireA': {
-            'questionIdA': questionNr,
+            'questionIdA': questionIdA,
             'questionTitle': questionTitle
           },
           'userId': userId,
@@ -69,12 +69,10 @@ class _QuestionnaireAStartScreenState extends State<QuestionnaireAStartScreen> {
     }
   }
 
-  int questionNr = 3;
+  int questionNr = 1;
+
   AnswerA answer = AnswerA(5, 'Nekad');
   double selectedAnswerValue = 0.0;
-
-  String formatQuestion(int questionNr, String question) =>
-      questionNr.toString() + '. ' + question;
 
   @override
   Widget build(BuildContext context) {
@@ -83,27 +81,45 @@ class _QuestionnaireAStartScreenState extends State<QuestionnaireAStartScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+            Stack(
               children: [
-                IconButton(
-                  iconSize: 50.0,
-                  onPressed: () {
-                    setState(() {
-                      questionNr--;
-                      Navigator.pop(context);
-                    });
-                  },
-                  icon: SvgPicture.asset(
-                      'assets/images/common/back_arrow_green.svg'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                      iconSize: 50.0,
+                      onPressed: () {
+                        setState(() {
+                          questionNr--;
+                          Navigator.pop(context);
+                        });
+                      },
+                      icon: SvgPicture.asset(
+                          'assets/images/common/back_arrow_green.svg'),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      kQuestionCounter(
+                          questionNr.toString() + '/50', kActiveGreen),
+                    ],
+                  ),
                 ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                kInputTextHeading(
-                    formatQuestion(questionNr, questionTitle), kActiveGreen, 28)
+                Column(
+                  children: [
+                    kQuestionIntro('Pagājušajā nedēļā es jutos'),
+                    kInputTextHeading(questionTitle, kActiveGreen, 28)
+                  ],
+                ),
               ],
             ),
             kHeightSizedBox(20.0),
@@ -156,7 +172,10 @@ class _QuestionnaireAStartScreenState extends State<QuestionnaireAStartScreen> {
                   IconButton(
                     iconSize: 100.0,
                     onPressed: () {
-                      submitAnswer(answerIdA, answerTitle);
+                      setState(() {
+                        questionNr++;
+                        submitAnswer(answerIdA, answerTitle);
+                      });
                     },
                     icon: SvgPicture.asset(
                         'assets/images/common/forward_button_green.svg'),

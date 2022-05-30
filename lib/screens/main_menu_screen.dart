@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:emori/screens/interactive_task_screens/drawing_task_screens/drawing_task_description.dart';
 import 'package:emori/screens/interactive_task_screens/love_myself_task_screens/love_myself_task_description.dart';
-import 'package:emori/size_config.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -21,7 +20,6 @@ class MainMenuScreen extends StatefulWidget {
 class _MainMenuScreenState extends State<MainMenuScreen> {
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
       backgroundColor: kActiveYellow,
       body: SafeArea(
@@ -109,9 +107,9 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(30.0.sp),
-                        child: SvgPicture.asset(
-                          'assets/images/main_menu_tiles/love_myself_tile.svg',
+                        padding: EdgeInsets.all(35.0.sp),
+                        child: Image.asset(
+                          'assets/images/main_menu_tiles/hans.png',
                         ),
                       ),
                       Padding(

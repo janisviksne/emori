@@ -1,4 +1,4 @@
-import 'package:emori/screens/main_menu_screen.dart';
+import 'package:emori/screens/registration_screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       builder: (BuildContext context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light(),
-        home: MainMenuScreen(),
+        home: LoginScreen(),
       ),
       designSize: const Size(360, 780),
     );

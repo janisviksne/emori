@@ -163,9 +163,6 @@ class _QuestionnaireBStartScreenState extends State<QuestionnaireBStartScreen> {
                     draggedValue = activeValue;
                     answerTitle = activeValue;
                     answerIdB = getAnswerBId(answerTitle);
-
-                    log(answerIdB.toString());
-                    log(answerTitle);
                   });
                 },
               ),

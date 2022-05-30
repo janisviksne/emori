@@ -26,9 +26,7 @@ class DrawingTaskDescriptionScreen extends StatelessWidget {
               kHeightSizedBox(10.0),
               Row(
                 children: [
-                  SvgPicture.asset(
-                      'assets/images/interactive_task_backgrounds/draw_task/draw_info_icon.svg'),
-                  kDescriptionText('\tModulis: modifikācija', kActiveGreen, 16)
+                  kDescriptionText('Modulis: modifikācija', kActiveGreen, 16)
                 ],
               ),
               kHeightSizedBox(15.0),
