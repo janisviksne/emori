@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dotted_border/dotted_border.dart';
+import 'package:emori/screens/questionnaire_screens/questionnaire_b_end.dart';
 import 'package:emori/utilities/constants/endpoint_constants.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/widgets/questionnaire_widgets/yellow_container_button.dart';
@@ -209,7 +210,15 @@ class _QuestionnaireBStartScreenState extends State<QuestionnaireBStartScreen> {
                     IconButton(
                       iconSize: 100.0,
                       onPressed: () {
-                        submitAnswerB(answerIdB, answerTitle);
+                        if (questionIdB == 5) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => QuestionnaireBEndScreen(),
+                              ));
+                        } else {
+                          submitAnswerB(answerIdB, answerTitle);
+                        }
                       },
                       icon: SvgPicture.asset(
                           'assets/images/common/forward_button_green.svg'),

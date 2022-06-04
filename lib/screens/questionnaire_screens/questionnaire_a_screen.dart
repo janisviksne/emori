@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:emori/screens/questionnaire_screens/questionnaire_a_end.dart';
 import 'package:emori/utilities/constants/endpoint_constants.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/utils/slider_utils.dart';
@@ -69,8 +70,6 @@ class _QuestionnaireAStartScreenState extends State<QuestionnaireAStartScreen> {
     }
   }
 
-  int questionNr = 1;
-
   AnswerA answer = AnswerA(5, 'Nekad');
   double selectedAnswerValue = 0.0;
 
@@ -90,7 +89,7 @@ class _QuestionnaireAStartScreenState extends State<QuestionnaireAStartScreen> {
                       iconSize: 50.0,
                       onPressed: () {
                         setState(() {
-                          questionNr--;
+                          questionIdA--;
                           Navigator.pop(context);
                         });
                       },
@@ -105,7 +104,7 @@ class _QuestionnaireAStartScreenState extends State<QuestionnaireAStartScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       kQuestionCounter(
-                          questionNr.toString() + '/50', kActiveGreen),
+                          questionIdA.toString() + '/50', kActiveGreen),
                     ],
                   ),
                 ),
@@ -173,8 +172,16 @@ class _QuestionnaireAStartScreenState extends State<QuestionnaireAStartScreen> {
                     iconSize: 100.0,
                     onPressed: () {
                       setState(() {
-                        questionNr++;
-                        submitAnswer(answerIdA, answerTitle);
+                        if (questionIdA == 5) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    QuestionnaireAEndScreen(userId),
+                              ));
+                        } else {
+                          submitAnswer(answerIdA, answerTitle);
+                        }
                       });
                     },
                     icon: SvgPicture.asset(

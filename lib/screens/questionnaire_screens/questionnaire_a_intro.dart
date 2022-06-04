@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:emori/request_model/user/login_user.dart';
 import 'package:emori/screens/questionnaire_screens/questionnaire_a_screen.dart';
 import 'package:emori/utilities/constants/endpoint_constants.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
@@ -12,8 +11,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
 
 class QuestionnaireAIntroScreen extends StatefulWidget {
-  final LoginUser loginUser;
-  const QuestionnaireAIntroScreen(this.loginUser, {Key? key}) : super(key: key);
+  final int userId;
+  const QuestionnaireAIntroScreen(this.userId, {Key? key}) : super(key: key);
 
   @override
   State<QuestionnaireAIntroScreen> createState() => _QuestionnaireAIntroState();
@@ -38,8 +37,8 @@ class _QuestionnaireAIntroState extends State<QuestionnaireAIntroScreen> {
       }
     }
 
-    late LoginUser loginUser = widget.loginUser;
-    int questionNr = 3;
+    int userId = widget.userId;
+    int questionNr = 1;
     return Scaffold(
       backgroundColor: kActiveYellow,
       body: SafeArea(
@@ -47,7 +46,7 @@ class _QuestionnaireAIntroState extends State<QuestionnaireAIntroScreen> {
           children: [
             kBackArrowGreen(context),
             Container(
-              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+              padding: EdgeInsets.only(left: 20.0.w, right: 20.0.w),
               child: Column(
                 children: [
                   Row(
@@ -89,10 +88,10 @@ class _QuestionnaireAIntroState extends State<QuestionnaireAIntroScreen> {
                               iconSize: 100.0,
                               onPressed: () {
                                 log(Endpoints.QUESTION_A_ENDPOINT +
-                                    '${loginUser.userId}/$questionNr');
+                                    '$userId/$questionNr');
                                 startQuestionnaireA(
                                     Endpoints.QUESTION_A_ENDPOINT +
-                                        '${loginUser.userId}/$questionNr');
+                                        '$userId/$questionNr');
                               },
                               icon: SvgPicture.asset(
                                   'assets/images/common/forward_button_green.svg'),

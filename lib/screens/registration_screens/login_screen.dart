@@ -9,7 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import '../questionnaire_screens/questionnaire_b_intro.dart';
+import '../questionnaire_screens/questionnaire_a_intro.dart';
 import 'email_password_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => QuestionnaireBIntroScreen(loginUser),
+            builder: (context) => QuestionnaireAIntroScreen(loginUser.userId),
           ));
     } else {
       log(response.statusCode.toString());
@@ -48,127 +48,130 @@ class _LoginScreenState extends State<LoginScreen> {
       resizeToAvoidBottomInset: false,
       backgroundColor: kActiveYellow,
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      kInputTextHeading('Ienāc\nsavā kontā', kActiveGreen, 30),
-                    ],
-                  ),
-                  kHeightSizedBox(20.0),
-                  Row(
-                    children: [
-                      kDescriptionText('Ievadi savus esošos pieejas datus',
-                          kActiveGreen, 16),
-                    ],
-                  ),
-                  kHeightSizedBox(20.0),
-                  Form(
-                    key: _formKey,
-                    child: Column(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        TextFormField(
-                          obscureText: false,
-                          controller:
-                              TextEditingController(text: loginUser.email),
-                          onChanged: (val) {
-                            loginUser.email = val;
+                        kInputTextHeading(
+                            'Ienāc\nsavā kontā', kActiveGreen, 30),
+                      ],
+                    ),
+                    kHeightSizedBox(20.0),
+                    Row(
+                      children: [
+                        kDescriptionText('Ievadi savus esošos pieejas datus',
+                            kActiveGreen, 16),
+                      ],
+                    ),
+                    kHeightSizedBox(20.0),
+                    Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            obscureText: false,
+                            controller:
+                                TextEditingController(text: loginUser.email),
+                            onChanged: (val) {
+                              loginUser.email = val;
+                            },
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Šis lauks nedrīkst būt tukšs!';
+                              }
+                            },
+                            style: const TextStyle(
+                                fontSize: 20, color: kActiveGreen),
+                            decoration:
+                                kInputFieldDecoration('E-pasts', kActiveGreen),
+                          ),
+                          kHeightSizedBox(20.0),
+                          TextFormField(
+                            obscureText: true,
+                            controller:
+                                TextEditingController(text: loginUser.password),
+                            onChanged: (val) {
+                              loginUser.password = val;
+                            },
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Šis lauks nedrīkst būt tukšs!';
+                              }
+                            },
+                            style: const TextStyle(
+                                fontSize: 20, color: kActiveGreen),
+                            decoration:
+                                kInputFieldDecoration('Parole', kActiveGreen),
+                          ),
+                        ],
+                      ),
+                    ),
+                    kHeightSizedBox(20.0),
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            log('Redirect to forgot password.');
                           },
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Šis lauks nedrīkst būt tukšs!';
-                            }
-                          },
-                          style: const TextStyle(
-                              fontSize: 20, color: kActiveGreen),
-                          decoration:
-                              kInputFieldDecoration('E-pasts', kActiveGreen),
-                        ),
-                        kHeightSizedBox(20.0),
-                        TextFormField(
-                          obscureText: true,
-                          controller:
-                              TextEditingController(text: loginUser.password),
-                          onChanged: (val) {
-                            loginUser.password = val;
-                          },
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Šis lauks nedrīkst būt tukšs!';
-                            }
-                          },
-                          style: const TextStyle(
-                              fontSize: 20, color: kActiveGreen),
-                          decoration:
-                              kInputFieldDecoration('Parole', kActiveGreen),
+                          child: const Text(
+                            'Aizmirsi paroli?',
+                            style: kInputFieldUnderline,
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                  kHeightSizedBox(20.0),
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          log('Redirect to forgot password.');
-                        },
-                        child: const Text(
-                          'Aizmirsi paroli?',
-                          style: kInputFieldUnderline,
-                        ),
-                      ),
-                    ],
-                  ),
-                  kHeightSizedBox(20.0),
-                  Row(
-                    children: [
-                      ElevatedButton(
+                    kHeightSizedBox(20.0),
+                    Row(
+                      children: [
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                primary: kActiveGreen,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 24, vertical: 12),
+                                textStyle: const TextStyle(
+                                    fontSize: 16, color: kActiveYellow)),
+                            child: const Text('Ienākt'),
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                login();
+                              }
+                            })
+                      ],
+                    ),
+                    kHeightSizedBox(20.0),
+                    Row(
+                      children: [
+                        ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               primary: kActiveGreen,
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 24, vertical: 12),
                               textStyle: const TextStyle(
                                   fontSize: 16, color: kActiveYellow)),
-                          child: const Text('Ienākt'),
+                          child: const Text('Reģistrējies'),
                           onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              login();
-                            }
-                          })
-                    ],
-                  ),
-                  kHeightSizedBox(20.0),
-                  Row(
-                    children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            primary: kActiveGreen,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 24, vertical: 12),
-                            textStyle: const TextStyle(
-                                fontSize: 16, color: kActiveYellow)),
-                        child: const Text('Reģistrējies'),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const EmailPasswordScreen()));
-                        },
-                      )
-                    ],
-                  ),
-                ],
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const EmailPasswordScreen()));
+                          },
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-            //ToDo THE LOGIN SCREEN IMAGE WILL GO HERE
-          ],
+              //ToDo THE LOGIN SCREEN IMAGE WILL GO HERE
+            ],
+          ),
         ),
       ),
     );

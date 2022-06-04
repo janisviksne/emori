@@ -16,6 +16,7 @@ class EmailPasswordScreen extends StatefulWidget {
 
 class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
+
   RegisterUser registerUser = RegisterUser(
       '',
       '',
@@ -25,154 +26,155 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
       'Pamata (nepabeigta)',
       'Students',
       List.empty(growable: true));
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: kActiveYellow,
       body: SafeArea(
-        child: Column(
-          children: [
-            kBackArrowGreen(context),
-            Container(
-              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      kInputTextHeading('Izveido\nsavu kontu', kActiveGreen, 40)
-                    ],
-                  ),
-                  kHeightSizedBox(20.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Vai Tev jau ir izveidots konts? ',
-                        style: TextStyle(color: kActiveGreen, fontSize: 20),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const LoginScreen()));
-                        },
-                        child: const Text(
-                          'Ienākt',
-                          style: kInputFieldUnderline,
-                        ),
-                      ),
-                    ],
-                  ),
-                  kHeightSizedBox(20.0),
-                  Form(
-                    key: _formKey,
-                    child: Column(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              kBackArrowGreen(context),
+              Container(
+                padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        kInputTextHeading(
+                            'Izveido\nsavu kontu', kActiveGreen, 40)
+                      ],
+                    ),
+                    kHeightSizedBox(20.0),
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        TextFormField(
-                          obscureText: false,
-                          controller:
-                              TextEditingController(text: registerUser.email),
-                          onChanged: (val) {
-                            registerUser.email = val;
-                          },
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Šis lauks nedrīkst būt tukšs!';
-                            }
-                          },
-                          style: const TextStyle(
-                              fontSize: 20, color: kActiveGreen),
-                          decoration:
-                              kInputFieldDecoration('E-pasts', kActiveGreen),
+                        const Text(
+                          'Vai Tev jau ir izveidots konts? ',
+                          style: TextStyle(color: kActiveGreen, fontSize: 20),
                         ),
-                        kHeightSizedBox(20.0),
-                        TextFormField(
-                          obscureText: true,
-                          controller: TextEditingController(
-                              text: registerUser.password),
-                          onChanged: (val) {
-                            registerUser.password = val;
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const LoginScreen()));
                           },
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Šis lauks nedrīkst būt tukšs!';
-                            } else if (registerUser.password != value) {
-                              return 'Ievadītās paroles nesakrīt!';
-                            }
-                          },
-                          style: const TextStyle(
-                              fontSize: 20, color: kActiveGreen),
-                          decoration:
-                              kInputFieldDecoration('Parole', kActiveGreen),
-                        ),
-                        kHeightSizedBox(20.0),
-                        TextFormField(
-                          textAlign: TextAlign.left,
-                          obscureText: true,
-                          controller: TextEditingController(
-                              text: registerUser.password),
-                          onChanged: (val) {
-                            registerUser.password = val;
-                          },
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Šis lauks nedrīkst būt tukšs!';
-                            } else if (registerUser.password != value) {
-                              return 'Ievadītās paroles nesakrīt!';
-                            }
-                          },
-                          style: const TextStyle(
-                              fontSize: 20, color: kActiveGreen),
-                          decoration: kInputFieldDecoration(
-                              'Parole atkārtoti', kActiveGreen),
+                          child: const Text(
+                            'Ienākt',
+                            style: kInputFieldUnderline,
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.only(top: 40),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SvgPicture.asset(
-                    'assets/images/auth_backgrounds/hand_registration_email.svg',
-                    height: 200,
-                  ),
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.only(right: 20.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                    kHeightSizedBox(20.0),
+                    Form(
+                      key: _formKey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          IconButton(
-                            iconSize: 100.0,
-                            onPressed: () {
-                              //ToDo 1. There is an overflow after validation fails
-                              //ToDo 2. Improve validation messages
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          UsernameScreen(registerUser)));
+                          TextFormField(
+                            obscureText: false,
+                            controller:
+                                TextEditingController(text: registerUser.email),
+                            onChanged: (val) {
+                              registerUser.email = val;
                             },
-                            icon: SvgPicture.asset(
-                                'assets/images/common/forward_button_green.svg'),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Šis lauks nedrīkst būt tukšs!';
+                              }
+                            },
+                            style: const TextStyle(
+                                fontSize: 20, color: kActiveGreen),
+                            decoration:
+                                kInputFieldDecoration('E-pasts', kActiveGreen),
+                          ),
+                          kHeightSizedBox(20.0),
+                          TextFormField(
+                            obscureText: true,
+                            controller: TextEditingController(
+                                text: registerUser.password),
+                            onChanged: (val) {
+                              registerUser.password = val;
+                            },
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Šis lauks nedrīkst būt tukšs!';
+                              } else if (registerUser.password != value) {
+                                return 'Ievadītās paroles nesakrīt!';
+                              }
+                            },
+                            style: const TextStyle(
+                                fontSize: 20, color: kActiveGreen),
+                            decoration:
+                                kInputFieldDecoration('Parole', kActiveGreen),
+                          ),
+                          kHeightSizedBox(20.0),
+                          TextFormField(
+                            textAlign: TextAlign.left,
+                            obscureText: true,
+                            controller: TextEditingController(
+                                text: registerUser.password),
+                            onChanged: (val) {
+                              registerUser.password = val;
+                            },
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Šis lauks nedrīkst būt tukšs!';
+                              } else if (registerUser.password != value) {
+                                return 'Ievadītās paroles nesakrīt!';
+                              }
+                            },
+                            style: const TextStyle(
+                                fontSize: 20, color: kActiveGreen),
+                            decoration: kInputFieldDecoration(
+                                'Parole atkārtoti', kActiveGreen),
                           ),
                         ],
                       ),
                     ),
-                  )
-                ],
+                  ],
+                ),
               ),
-            )
-          ],
+              Container(
+                padding: const EdgeInsets.only(top: 40),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SvgPicture.asset(
+                      'assets/images/auth_backgrounds/hand_registration_email.svg',
+                      height: 200,
+                    ),
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.only(right: 20.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            IconButton(
+                              iconSize: 100.0,
+                              onPressed: () {
+                                //ToDo 2. Improve validation messages
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            UsernameScreen(registerUser)));
+                              },
+                              icon: SvgPicture.asset(
+                                  'assets/images/common/forward_button_green.svg'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -1,13 +1,12 @@
-import 'dart:developer';
-
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../size_config.dart';
+import '../main_menu_screen.dart';
 
-class QuestionnaireEndScreen extends StatelessWidget {
-  const QuestionnaireEndScreen({Key? key}) : super(key: key);
+class QuestionnaireBEndScreen extends StatelessWidget {
+  const QuestionnaireBEndScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -45,7 +44,11 @@ class QuestionnaireEndScreen extends StatelessWidget {
                     IconButton(
                       iconSize: 100.0,
                       onPressed: () {
-                        log('Moving to education selection screen');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MainMenuScreen(),
+                            ));
                       },
                       icon: SvgPicture.asset(
                           'assets/images/common/forward_button_yellow.svg'),

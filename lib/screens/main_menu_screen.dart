@@ -104,12 +104,14 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                         padding: const EdgeInsets.all(12.0),
                         child: SvgPicture.asset(
                           'assets/images/common/green_tile_background.svg',
+                          fit: BoxFit.contain,
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.all(35.0.sp),
                         child: Image.asset(
                           'assets/images/main_menu_tiles/hans.png',
+                          fit: BoxFit.contain,
                         ),
                       ),
                       Padding(

@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:emori/request_model/user/login_user.dart';
 import 'package:emori/screens/questionnaire_screens/questionnaire_b_screen.dart';
 import 'package:emori/utilities/constants/endpoint_constants.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
@@ -11,8 +10,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
 
 class QuestionnaireBIntroScreen extends StatelessWidget {
-  final LoginUser loginUser;
-  const QuestionnaireBIntroScreen(this.loginUser, {Key? key}) : super(key: key);
+  final int userId;
+  const QuestionnaireBIntroScreen(this.userId, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +76,7 @@ class QuestionnaireBIntroScreen extends StatelessWidget {
                             onPressed: () {
                               startQuestionnaireB(
                                   Endpoints.QUESTION_B_ENDPOINT +
-                                      '${loginUser.userId}/$questionNr');
+                                      '$userId/$questionNr');
                             },
                             icon: SvgPicture.asset(
                                 'assets/images/common/forward_button_green.svg'),
