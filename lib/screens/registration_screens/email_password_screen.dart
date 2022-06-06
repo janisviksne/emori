@@ -14,6 +14,14 @@ class EmailPasswordScreen extends StatefulWidget {
   _EmailPasswordScreenState createState() => _EmailPasswordScreenState();
 }
 
+extension EmailValidator on String {
+  bool isValidEmail() {
+    return RegExp(
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(this);
+  }
+}
+
 class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
 
@@ -83,7 +91,10 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                             },
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Šis lauks nedrīkst būt tukšs!';
+                                return 'E-pasta lauks nedrīkst būt tukšs!';
+                              } else if (registerUser.email.isValidEmail() ==
+                                  false) {
+                                return 'Nepareizi ievadīta e-pasta adrese!';
                               }
                             },
                             style: const TextStyle(
@@ -157,11 +168,14 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                               iconSize: 100.0,
                               onPressed: () {
                                 //ToDo 2. Improve validation messages
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            UsernameScreen(registerUser)));
+                                if (_formKey.currentState!.validate() &&
+                                    registerUser.email.isValidEmail()) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              UsernameScreen(registerUser)));
+                                }
                               },
                               icon: SvgPicture.asset(
                                   'assets/images/common/forward_button_green.svg'),
