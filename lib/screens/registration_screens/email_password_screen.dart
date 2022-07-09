@@ -22,12 +22,6 @@ extension EmailValidator on String {
   }
 }
 
-bool isValidPassword(String value) {
-  String pattern = '^((?!.*[\s])(?=.*[A-Z])(?=.*\d).{7,15})';
-  RegExp regExp = RegExp(pattern);
-  return regExp.hasMatch(value);
-}
-
 class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
 
@@ -121,10 +115,11 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                                 return 'Šis lauks nedrīkst būt tukšs!';
                               } else if (registerUser.password != value) {
                                 return 'Ievadītās paroles nesakrīt!';
-                              } else if (!isValidPassword(
-                                  registerUser.password)) {
-                                return 'Parolē ir pārāk īsa vai tajā ir neatļauti simboli';
                               }
+                              // else if (!isValidPassword(
+                              //     registerUser.password)) {
+                              //   return 'Parolē ir pārāk īsa vai tajā ir neatļauti simboli';
+                              // }
                             },
                             style: const TextStyle(
                                 fontSize: 20, color: kActiveGreen),

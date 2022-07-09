@@ -14,31 +14,34 @@ class LoveMyselfTaskFinishScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: kActiveYellow,
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0.w),
-          child: Column(
-            children: [
-              kHeightSizedBox(20.0.h),
-              kBackArrowGreen(context),
-              kHeightSizedBox(10.0.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.asset(
-                    'assets/images/common/tasks/task_finished_person.svg',
-                    width: 305.w,
-                    height: 315.h,
-                  )
-                ],
-              ),
-              kHeightSizedBox(10.0.h),
-              Row(
+        child: Column(
+          children: [
+            kHeightSizedBox(20.0.h),
+            kBackArrowGreen(context),
+            kHeightSizedBox(10.0.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  'assets/images/common/tasks/task_finished_person.svg',
+                  width: 305.w,
+                  height: 315.h,
+                )
+              ],
+            ),
+            kHeightSizedBox(10.0.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0.w),
+              child: Row(
                 children: [
                   kInputTextHeading('Uzdevums\nizpildīts!', kActiveGreen, 32),
                 ],
               ),
-              kHeightSizedBox(5.0.h),
-              Row(
+            ),
+            kHeightSizedBox(5.0.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0.w),
+              child: Row(
                 children: [
                   kDescriptionText(
                       'Šo uzdevumu vari veikt vairākas reizes\nlīdz jūti, ka prāts kļuvis mierīgāks un\nnepatīkamo emociju intensitāte ir\nmazinājusies.',
@@ -46,27 +49,27 @@ class LoveMyselfTaskFinishScreen extends StatelessWidget {
                       16),
                 ],
               ),
-              Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    IconButton(
-                      iconSize: 100.0,
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    LoveMyselfReflectionScreen()));
-                      },
-                      icon: SvgPicture.asset(
-                          'assets/images/common/forward_button_green.svg'),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
+            ),
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    iconSize: 100.0,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  LoveMyselfReflectionScreen()));
+                    },
+                    icon: SvgPicture.asset(
+                        'assets/images/common/forward_button_green.svg'),
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

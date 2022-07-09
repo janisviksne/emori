@@ -48,7 +48,8 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
               crossAxisCount: 2,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: EdgeInsets.symmetric(
+                      vertical: 10.0.h, horizontal: 10.0.w),
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
@@ -61,7 +62,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                       });
                     },
                     child: SvgPicture.asset(
-                      'assets/images/main_menu_tiles/drawing_task_tile.svg',
+                      'assets/images/main_menu_tiles/draw_task_tile.svg',
                       fit: BoxFit.contain,
                       width: 160.w,
                       height: 160.h,
@@ -69,7 +70,8 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: EdgeInsets.symmetric(
+                      vertical: 10.0.h, horizontal: 10.0.w),
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
@@ -101,26 +103,19 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                   child: Stack(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: EdgeInsets.symmetric(
+                            vertical: 10.0.h, horizontal: 10.0.w),
                         child: SvgPicture.asset(
-                          'assets/images/common/green_tile_background.svg',
+                          'assets/images/main_menu_tiles/love_myself_tile.svg',
                           fit: BoxFit.contain,
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(35.0.sp),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 40.0.w, vertical: 15.0.h),
                         child: Image.asset(
                           'assets/images/main_menu_tiles/hans.png',
                           fit: BoxFit.contain,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 20.w, top: 165.h),
-                        child: Row(
-                          children: [
-                            kTextBoldReadex(
-                                'Es sev\npatīku', kActiveYellow, 16, true)
-                          ],
                         ),
                       ),
                     ],

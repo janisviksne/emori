@@ -1,7 +1,13 @@
+import 'dart:developer';
+import 'dart:typed_data';
+
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:scribble/scribble.dart';
 
 import 'draw_task_done.dart';
@@ -16,6 +22,11 @@ class DrawingTaskScreen extends StatefulWidget {
 class _DrawingTaskScreenState extends State<DrawingTaskScreen> {
   late ScribbleNotifier notifier;
   late FocusNode focusNode;
+  String formatSeconds() {
+    return DateTime.now().second < 10
+        ? '0' + DateTime.now().second.toString()
+        : DateTime.now().second.toString();
+  }
 
   @override
   void initState() {
@@ -27,11 +38,10 @@ class _DrawingTaskScreenState extends State<DrawingTaskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            kHeightSizedBox(20.0),
+            kHeightSizedBox(20.0.h),
             Stack(
               children: [
                 IconButton(
@@ -43,7 +53,7 @@ class _DrawingTaskScreenState extends State<DrawingTaskScreen> {
                       'assets/images/common/back_arrow_green.svg'),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10.0, right: 10.0),
+                  padding: EdgeInsets.only(top: 10.0.h, right: 10.0.w),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -103,13 +113,26 @@ class _DrawingTaskScreenState extends State<DrawingTaskScreen> {
 
   Future<void> _saveImage(BuildContext context) async {
     final image = await notifier.renderImage();
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(DateTime.now().toString()),
-        content: Image.memory(image.buffer.asUint8List()),
-      ),
-    );
+
+    if (!(await Permission.storage.status.isGranted)) {
+      await Permission.storage.request();
+    }
+
+    final result = await ImageGallerySaver.saveImage(
+        Uint8List.fromList(image.buffer.asUint8List()),
+        quality: 60,
+        name: DateTime.now().day.toString() +
+            '-' +
+            DateTime.now().month.toString() +
+            '-' +
+            DateTime.now().year.toString() +
+            ' ' +
+            DateTime.now().hour.toString() +
+            ':' +
+            DateTime.now().minute.toString() +
+            ':' +
+            formatSeconds());
+    log(result);
   }
 
   Widget _buildStrokeToolbar(BuildContext context) {
@@ -283,27 +306,4 @@ class _DrawingTaskScreenState extends State<DrawingTaskScreen> {
           'assets/images/interactive_task_backgrounds/draw_task/clear_all.svg'),
     );
   }
-}
-
-Widget _buildTextBox(BuildContext context) {
-  return Container(
-    padding: const EdgeInsets.symmetric(horizontal: 50),
-    child: TextField(
-      maxLines: 1,
-      keyboardType: TextInputType.multiline,
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        wordSpacing: 5,
-        height: 2,
-        color: Colors.white,
-        fontWeight: FontWeight.bold,
-        fontSize: 19,
-        background: Paint()
-          ..color = Colors.blue
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = 35
-          ..strokeJoin = StrokeJoin.round,
-      ),
-    ),
-  );
 }

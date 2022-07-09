@@ -210,7 +210,7 @@ class _QuestionnaireBStartScreenState extends State<QuestionnaireBStartScreen> {
                     IconButton(
                       iconSize: 100.0,
                       onPressed: () {
-                        if (questionIdB == 5) {
+                        if (questionIdB == 3) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(

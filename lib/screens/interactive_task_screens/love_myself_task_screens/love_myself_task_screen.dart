@@ -29,7 +29,6 @@ class _LoveMyselfTaskScreenState extends State<LoveMyselfTaskScreen> {
   }
 
   LoveMyselfAnswer loveMyselfAnswer = LoveMyselfAnswer(
-      answerId: null,
       answerTitle1: '',
       answerTitle2: '',
       answerTitle3: '',

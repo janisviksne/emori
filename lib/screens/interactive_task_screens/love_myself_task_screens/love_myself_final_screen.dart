@@ -3,6 +3,7 @@ import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/src/size_extension.dart';
+import 'package:flutter_svg/svg.dart';
 
 class FinalLoveMyselfScreen extends StatelessWidget {
   const FinalLoveMyselfScreen({Key? key}) : super(key: key);
@@ -48,6 +49,26 @@ class FinalLoveMyselfScreen extends StatelessWidget {
                   children: [
                     kInputTextHeading(
                         'Paldies, ka veltīji\nlaiku sev!', kActiveGreen, 30),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      iconSize: 100.0,
+                      onPressed: () {
+                        //ToDo submit answer database
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MainMenuScreen()));
+                      },
+                      icon: SvgPicture.asset(
+                          'assets/images/common/forward_button_green.svg'),
+                    ),
                   ],
                 ),
               )

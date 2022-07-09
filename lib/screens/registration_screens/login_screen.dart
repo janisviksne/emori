@@ -84,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             },
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Šis lauks nedrīkst būt tukšs!';
+                                return 'E-pasta lauks nedrīkst būt tukšs!';
                               }
                             },
                             style: const TextStyle(
@@ -102,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             },
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Šis lauks nedrīkst būt tukšs!';
+                                return 'Paroles lauks nedrīkst būt tukšs!';
                               }
                             },
                             style: const TextStyle(

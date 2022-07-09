@@ -126,8 +126,6 @@ class _SpiralTaskScreenState extends State<SpiralTaskScreen> {
     );
   }
 
-  //ToDo find out possible image save (without using screenshot)
-
   Future<void> _saveImage(BuildContext context) async {
     final image = await notifier.renderImage();
     if (!(await Permission.storage.status.isGranted))
@@ -148,37 +146,6 @@ class _SpiralTaskScreenState extends State<SpiralTaskScreen> {
             ':' +
             formatSeconds());
     log(result);
-
-    // showDialog(
-    //   context: context,
-    //   builder: (context) => AlertDialog(
-    //     title: Text(DateTime.now().day.toString() +
-    //         '-' +
-    //         DateTime.now().month.toString() +
-    //         '-' +
-    //         DateTime.now().year.toString() +
-    //         ' ' +
-    //         DateTime.now().hour.toString() +
-    //         ':' +
-    //         DateTime.now().minute.toString() +
-    //         ':' +
-    //         formatSeconds()),
-    //     content: Stack(
-    //       //ToDo check if i can make drawing size bigger
-    //       children: [
-    //         Padding(
-    //           padding: EdgeInsets.only(left: 40.0.w, bottom: 40.0.h),
-    //           child: Image.memory(
-    //             image.buffer.asUint8List(),
-    //             fit: BoxFit.fill,
-    //           ),
-    //         ),
-    //         Image.asset(
-    //             'assets/images/interactive_task_backgrounds/spiral_task/spiral.png')
-    //       ],
-    //     ),
-    //   ),
-    // );
   }
 
   Widget _buildStrokeToolbar(BuildContext context) {

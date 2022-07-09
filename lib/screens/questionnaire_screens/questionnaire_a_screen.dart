@@ -172,7 +172,7 @@ class _QuestionnaireAStartScreenState extends State<QuestionnaireAStartScreen> {
                     iconSize: 100.0,
                     onPressed: () {
                       setState(() {
-                        if (questionIdA == 5) {
+                        if (questionIdA == 3) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
