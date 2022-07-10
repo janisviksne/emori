@@ -8,6 +8,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/src/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'interactive_task_screens/54321_task_screens/54321_task_description_screen.dart';
 import 'interactive_task_screens/spiral_task_screens/spiral_task_description.dart';
 
 class MainMenuScreen extends StatefulWidget {
@@ -119,6 +120,28 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                         ),
                       ),
                     ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: 10.0.h, horizontal: 10.0.w),
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    FiveNumberTaskDescriptionScreen()));
+                        log('CLICKED1');
+                      });
+                    },
+                    child: SvgPicture.asset(
+                      'assets/images/main_menu_tiles/54321_task_tile.svg',
+                      fit: BoxFit.contain,
+                      width: 160.w,
+                      height: 160.h,
+                    ),
                   ),
                 ),
               ],
