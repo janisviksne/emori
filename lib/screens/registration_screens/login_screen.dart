@@ -129,23 +129,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ],
                     ),
-                    // Row(
-                    //   children: [
-                    //     ElevatedButton(
-                    //         style: ElevatedButton.styleFrom(
-                    //             primary: kActiveGreen,
-                    //             padding: const EdgeInsets.symmetric(
-                    //                 horizontal: 24, vertical: 12),
-                    //             textStyle: const TextStyle(
-                    //                 fontSize: 16, color: kActiveYellow)),
-                    //         child: const Text('Ienākt'),
-                    //         onPressed: () {
-                    //           if (_formKey.currentState!.validate()) {
-                    //             login();
-                    //           }
-                    //         })
-                    //   ],
-                    // ),
                     Row(
                       children: [
                         ElevatedButton(
@@ -171,6 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 20.0.h),
+                //ToDo Image should not get pushed down by failing validation
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -187,7 +171,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             IconButton(
                               iconSize: 100.0,
                               onPressed: () {
-                                //ToDo 2. Improve validation messages
                                 if (_formKey.currentState!.validate()) {
                                   login();
                                 }
