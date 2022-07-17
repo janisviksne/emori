@@ -7,6 +7,8 @@ import 'package:emori/utilities/constants/endpoint_constants.dart';
 import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
 
 import '../questionnaire_screens/questionnaire_a_intro.dart';
@@ -53,24 +55,24 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                padding:
+                    EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.0.w),
                 child: Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        kInputTextHeading(
-                            'Ienāc\nsavā kontā', kActiveGreen, 30),
+                        kInputTextHeading('Ienāc kontā', kActiveGreen, 30),
                       ],
                     ),
-                    kHeightSizedBox(20.0),
+                    kHeightSizedBox(20.0.h),
                     Row(
                       children: [
                         kDescriptionText('Ievadi savus esošos pieejas datus',
                             kActiveGreen, 16),
                       ],
                     ),
-                    kHeightSizedBox(20.0),
+                    kHeightSizedBox(20.0.h),
                     Form(
                       key: _formKey,
                       child: Column(
@@ -92,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             decoration:
                                 kInputFieldDecoration('E-pasts', kActiveGreen),
                           ),
-                          kHeightSizedBox(20.0),
+                          kHeightSizedBox(20.0.h),
                           TextFormField(
                             obscureText: true,
                             controller:
@@ -113,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                     ),
-                    kHeightSizedBox(20.0),
+                    kHeightSizedBox(20.0.h),
                     Row(
                       children: [
                         InkWell(
@@ -127,25 +129,23 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ],
                     ),
-                    kHeightSizedBox(20.0),
-                    Row(
-                      children: [
-                        ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                primary: kActiveGreen,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 24, vertical: 12),
-                                textStyle: const TextStyle(
-                                    fontSize: 16, color: kActiveYellow)),
-                            child: const Text('Ienākt'),
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                login();
-                              }
-                            })
-                      ],
-                    ),
-                    kHeightSizedBox(20.0),
+                    // Row(
+                    //   children: [
+                    //     ElevatedButton(
+                    //         style: ElevatedButton.styleFrom(
+                    //             primary: kActiveGreen,
+                    //             padding: const EdgeInsets.symmetric(
+                    //                 horizontal: 24, vertical: 12),
+                    //             textStyle: const TextStyle(
+                    //                 fontSize: 16, color: kActiveYellow)),
+                    //         child: const Text('Ienākt'),
+                    //         onPressed: () {
+                    //           if (_formKey.currentState!.validate()) {
+                    //             login();
+                    //           }
+                    //         })
+                    //   ],
+                    // ),
                     Row(
                       children: [
                         ElevatedButton(
@@ -169,7 +169,39 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
               ),
-              //ToDo THE LOGIN SCREEN IMAGE WILL GO HERE
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 20.0.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SvgPicture.asset(
+                      'assets/images/auth_backgrounds/login_screen_image.svg',
+                      height: 355.h,
+                    ),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(right: 30.0.sp),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            IconButton(
+                              iconSize: 100.0,
+                              onPressed: () {
+                                //ToDo 2. Improve validation messages
+                                if (_formKey.currentState!.validate()) {
+                                  login();
+                                }
+                              },
+                              icon: SvgPicture.asset(
+                                  'assets/images/common/forward_button_green.svg'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),

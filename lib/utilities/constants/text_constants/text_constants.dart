@@ -71,7 +71,12 @@ Text kTextBoldMontagu(String text, Color color, double fontSize, bool isBold) =>
 SizedBox kHeightSizedBox(double size) => SizedBox(height: size);
 
 const kInputFieldUnderline = TextStyle(
-    fontSize: 18, color: kActiveGreen, decoration: TextDecoration.underline);
+    fontSize: 18,
+    color: kActiveGreen,
+    decoration: TextDecoration.underline,
+    decorationThickness: 1.5,
+    fontFamily: 'Readex Pro',
+    fontWeight: FontWeight.bold);
 
 /*
 * User input field constants

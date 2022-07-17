@@ -6,6 +6,7 @@ import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:emori/utilities/widgets/auth_widgets/container_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class EducationSelectionScreen extends StatefulWidget {
@@ -29,7 +30,7 @@ class _EducationSelectionScreenState extends State<EducationSelectionScreen> {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.only(left: 27, right: 27),
+              padding: EdgeInsets.symmetric(horizontal: 27.w),
               child: Column(
                 children: [
                   kBackArrowYellow(context),

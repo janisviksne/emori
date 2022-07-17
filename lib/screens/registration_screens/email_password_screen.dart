@@ -5,6 +5,7 @@ import 'package:emori/utilities/constants/text_constants/text_constants.dart';
 import 'package:emori/utilities/constants/widget_constants/widget_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class EmailPasswordScreen extends StatefulWidget {
@@ -50,18 +51,18 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                   children: [
                     Row(
                       children: [
-                        kInputTextHeading(
-                            'Izveido\nsavu kontu', kActiveGreen, 40)
+                        kInputTextHeading('Izveido kontu', kActiveGreen, 40)
                       ],
                     ),
-                    kHeightSizedBox(20.0),
+                    kHeightSizedBox(15.0.h),
+                    Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                      kDescriptionText(
+                          'Vai Tev jau ir izveidots konts?', kActiveGreen, 20),
+                    ]),
+                    kHeightSizedBox(10.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Vai Tev jau ir izveidots konts? ',
-                          style: TextStyle(color: kActiveGreen, fontSize: 20),
-                        ),
                         InkWell(
                           onTap: () {
                             Navigator.push(
@@ -153,18 +154,18 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                   ],
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.only(top: 40),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 60.0.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     SvgPicture.asset(
-                      'assets/images/auth_backgrounds/hand_registration_email.svg',
-                      height: 200,
+                      'assets/images/auth_backgrounds/registration_images/hand_registration_email.svg',
+                      height: 250.h,
                     ),
                     Expanded(
                       child: Container(
-                        padding: const EdgeInsets.only(right: 20.0),
+                        padding: EdgeInsets.only(right: 20.0.sp),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
@@ -189,7 +190,7 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                     )
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),

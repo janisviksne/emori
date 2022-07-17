@@ -44,6 +44,7 @@ flutter:
   # Add assets to your application like this:
   assets:
   - assets/images/auth_backgrounds/
+  - assets/images/auth_backgrounds/registration_images/
   - assets/images/intro_backgrounds/first_intro/
   - assets/images/intro_backgrounds/second_intro/
   - assets/images/intro_backgrounds/third_intro/
