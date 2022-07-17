@@ -15,12 +15,12 @@ class ProfessionListTileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final style = isSelected
-        ? const TextStyle(
+        ? TextStyle(
             fontSize: 18,
             color: kActiveGreen,
             fontWeight: FontWeight.bold,
             fontFamily: 'Readex Pro')
-        : const TextStyle(
+        : TextStyle(
             fontSize: 18, color: kActiveYellow, fontFamily: 'Readex Pro');
 
     return Container(
@@ -32,7 +32,7 @@ class ProfessionListTileWidget extends StatelessWidget {
           style: style,
         ),
         trailing: isSelected
-            ? const Icon(Icons.check, color: kActiveGreen, size: 26)
+            ? Icon(Icons.check, color: kActiveGreen, size: 26)
             : null,
       ),
     );

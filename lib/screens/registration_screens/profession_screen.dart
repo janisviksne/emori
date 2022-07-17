@@ -111,19 +111,6 @@ class _ProfessionSelectionScreenState extends State<ProfessionSelectionScreen> {
                             IconButton(
                               iconSize: 100.0,
                               onPressed: () {
-                                log(registerUser.email +
-                                    ' | ' +
-                                    registerUser.password +
-                                    ' | ' +
-                                    registerUser.nickname +
-                                    ' | ' +
-                                    registerUser.birthDate.toString() +
-                                    ' | ' +
-                                    registerUser.gender +
-                                    ' | ' +
-                                    registerUser.education +
-                                    ' | ' +
-                                    registerUser.workStatus);
                                 // if (_formKey.currentState!.validate()) {
                                 log('Moving to date picker screen');
                                 registerNewUser();

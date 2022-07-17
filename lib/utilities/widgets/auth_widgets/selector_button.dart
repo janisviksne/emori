@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../constants/text_constants/text_constants.dart';
 
@@ -17,8 +18,8 @@ class ButtonWidget extends StatelessWidget {
                 MaterialStateColor.resolveWith((states) => kActiveYellow)),
         child: Row(
           mainAxisSize: MainAxisSize.min,
-          children: const [
-            SizedBox(width: 8),
+          children: [
+            SizedBox(width: 8.w),
             Text(
               'Izvēlies',
               textAlign: TextAlign.center,

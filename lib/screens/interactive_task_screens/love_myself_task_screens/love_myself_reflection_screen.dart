@@ -90,7 +90,7 @@ class _LoveMyselfReflectionScreenState
                     return 'Šis lauks nedrīkst būt tukšs!';
                   }
                 },
-                style: const TextStyle(fontSize: 20, color: kActiveGreen),
+                style: TextStyle(fontSize: 20, color: kActiveGreen),
                 decoration: kInputFieldDecoration('', kActiveGreen),
               ),
               Expanded(

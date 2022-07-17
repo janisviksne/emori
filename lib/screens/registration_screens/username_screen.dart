@@ -62,8 +62,7 @@ class _UsernameState extends State<UsernameScreen> {
                               return 'Ievadītais lauks nedrīkst būt tukšs!';
                             }
                           },
-                          style: const TextStyle(
-                              fontSize: 20, color: kActiveYellow),
+                          style: TextStyle(fontSize: 20, color: kActiveYellow),
                           decoration: kInputFieldDecoration(
                               'Uzruna / vārds', kActiveYellow),
                         ),

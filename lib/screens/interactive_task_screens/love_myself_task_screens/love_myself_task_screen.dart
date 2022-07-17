@@ -101,8 +101,7 @@ class _LoveMyselfTaskScreenState extends State<LoveMyselfTaskScreen> {
                             return 'Šis lauks nedrīkst būt tukšs!';
                           }
                         },
-                        style:
-                            const TextStyle(fontSize: 20, color: kActiveYellow),
+                        style: TextStyle(fontSize: 20, color: kActiveYellow),
                       ),
                     ),
                   ],
@@ -131,8 +130,7 @@ class _LoveMyselfTaskScreenState extends State<LoveMyselfTaskScreen> {
                             return 'Šis lauks nedrīkst būt tukšs!';
                           }
                         },
-                        style:
-                            const TextStyle(fontSize: 20, color: kActiveYellow),
+                        style: TextStyle(fontSize: 20, color: kActiveYellow),
                       ),
                     ),
                   ],
@@ -161,8 +159,7 @@ class _LoveMyselfTaskScreenState extends State<LoveMyselfTaskScreen> {
                             return 'Šis lauks nedrīkst būt tukšs!';
                           }
                         },
-                        style:
-                            const TextStyle(fontSize: 20, color: kActiveYellow),
+                        style: TextStyle(fontSize: 20, color: kActiveYellow),
                       ),
                     ),
                   ],
@@ -191,8 +188,7 @@ class _LoveMyselfTaskScreenState extends State<LoveMyselfTaskScreen> {
                             return 'Šis lauks nedrīkst būt tukšs!';
                           }
                         },
-                        style:
-                            const TextStyle(fontSize: 20, color: kActiveYellow),
+                        style: TextStyle(fontSize: 20, color: kActiveYellow),
                       ),
                     ),
                   ],
@@ -221,8 +217,7 @@ class _LoveMyselfTaskScreenState extends State<LoveMyselfTaskScreen> {
                             return 'Šis lauks nedrīkst būt tukšs!';
                           }
                         },
-                        style:
-                            const TextStyle(fontSize: 20, color: kActiveYellow),
+                        style: TextStyle(fontSize: 20, color: kActiveYellow),
                       ),
                     ),
                   ],
@@ -251,8 +246,7 @@ class _LoveMyselfTaskScreenState extends State<LoveMyselfTaskScreen> {
                             return 'Šis lauks nedrīkst būt tukšs!';
                           }
                         },
-                        style:
-                            const TextStyle(fontSize: 20, color: kActiveYellow),
+                        style: TextStyle(fontSize: 20, color: kActiveYellow),
                       ),
                     ),
                   ],
@@ -281,8 +275,7 @@ class _LoveMyselfTaskScreenState extends State<LoveMyselfTaskScreen> {
                             return 'Šis lauks nedrīkst būt tukšs!';
                           }
                         },
-                        style:
-                            const TextStyle(fontSize: 20, color: kActiveYellow),
+                        style: TextStyle(fontSize: 20, color: kActiveYellow),
                       ),
                     ),
                   ],
@@ -311,8 +304,7 @@ class _LoveMyselfTaskScreenState extends State<LoveMyselfTaskScreen> {
                             return 'Šis lauks nedrīkst būt tukšs!';
                           }
                         },
-                        style:
-                            const TextStyle(fontSize: 20, color: kActiveYellow),
+                        style: TextStyle(fontSize: 20, color: kActiveYellow),
                       ),
                     ),
                   ],

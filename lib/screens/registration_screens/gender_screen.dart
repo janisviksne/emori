@@ -77,15 +77,6 @@ class _GenderScreenState extends State<GenderScreen> {
                     IconButton(
                       iconSize: 100.0,
                       onPressed: () {
-                        log(registerUser.email +
-                            ' | ' +
-                            registerUser.password +
-                            ' | ' +
-                            registerUser.nickname +
-                            ' | ' +
-                            registerUser.birthDate.toString() +
-                            ' | ' +
-                            registerUser.gender);
                         // if (_formKey.currentState!.validate()) {
                         log('Moving to education selection screen');
                         Navigator.push(

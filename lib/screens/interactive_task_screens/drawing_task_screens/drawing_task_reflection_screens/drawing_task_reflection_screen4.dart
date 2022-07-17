@@ -78,7 +78,7 @@ class _DrawingTaskReflectionScreen4State
                 onChanged: (val) {
                   drawTaskReflection.answerTitle4 = val;
                 },
-                style: const TextStyle(fontSize: 20, color: kActiveGreen),
+                style: TextStyle(fontSize: 20, color: kActiveGreen),
                 decoration: kInputFieldDecoration('', kActiveGreen),
               ),
               Expanded(

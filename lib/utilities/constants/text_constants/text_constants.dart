@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-const kActiveGreen = Color.fromRGBO(45, 87, 61, 1.0);
-const kActiveYellow = Color.fromRGBO(248, 241, 214, 1.0);
+Color kActiveGreen = const Color.fromRGBO(45, 87, 61, 1.0);
+Color kActiveYellow = const Color.fromRGBO(248, 241, 214, 1.0);
 
 TextStyle kTextStyle(Color color) => TextStyle(
       fontSize: 18,
@@ -70,7 +70,7 @@ Text kTextBoldMontagu(String text, Color color, double fontSize, bool isBold) =>
 
 SizedBox kHeightSizedBox(double size) => SizedBox(height: size);
 
-const kInputFieldUnderline = TextStyle(
+TextStyle kInputFieldUnderline = TextStyle(
     fontSize: 18,
     color: kActiveGreen,
     decoration: TextDecoration.underline,

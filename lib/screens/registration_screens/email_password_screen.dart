@@ -70,7 +70,7 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                                 MaterialPageRoute(
                                     builder: (context) => const LoginScreen()));
                           },
-                          child: const Text(
+                          child: Text(
                             'Ienākt',
                             style: kInputFieldUnderline,
                           ),
@@ -98,8 +98,7 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                                 return 'Nepareizi ievadīta e-pasta adrese!';
                               }
                             },
-                            style: const TextStyle(
-                                fontSize: 20, color: kActiveGreen),
+                            style: TextStyle(fontSize: 20, color: kActiveGreen),
                             decoration:
                                 kInputFieldDecoration('E-pasts', kActiveGreen),
                           ),
@@ -122,8 +121,7 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                               //   return 'Parolē ir pārāk īsa vai tajā ir neatļauti simboli';
                               // }
                             },
-                            style: const TextStyle(
-                                fontSize: 20, color: kActiveGreen),
+                            style: TextStyle(fontSize: 20, color: kActiveGreen),
                             decoration:
                                 kInputFieldDecoration('Parole', kActiveGreen),
                           ),
@@ -143,8 +141,7 @@ class _EmailPasswordScreenState extends State<EmailPasswordScreen> {
                                 return 'Ievadītās paroles nesakrīt!';
                               }
                             },
-                            style: const TextStyle(
-                                fontSize: 20, color: kActiveGreen),
+                            style: TextStyle(fontSize: 20, color: kActiveGreen),
                             decoration: kInputFieldDecoration(
                                 'Parole atkārtoti', kActiveGreen),
                           ),

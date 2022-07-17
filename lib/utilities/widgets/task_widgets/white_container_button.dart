@@ -1,0 +1,58 @@
+import 'package:emori/utilities/constants/text_constants/text_constants.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+class WhiteContainerButton<T> extends StatelessWidget {
+  final T value;
+  final T groupValue;
+  final String title;
+  final ValueChanged<T?> onChanged;
+
+  // ignore: use_key_in_widget_constructors
+  const WhiteContainerButton({
+    required this.value,
+    required this.groupValue,
+    required this.onChanged,
+    required this.title,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => onChanged(value),
+      child: SizedBox(
+        height: 56,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _customContainerButton,
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget get _customContainerButton {
+    final isSelected = value == groupValue;
+    return Container(
+      alignment: Alignment.center,
+      width: 345,
+      height: 120,
+      decoration: BoxDecoration(
+        color: isSelected ? kActiveGreen : Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: kActiveGreen,
+          width: 1,
+        ),
+      ),
+      child: Text(
+        title,
+        style: TextStyle(
+            color: isSelected ? kActiveYellow : kActiveGreen,
+            fontSize: 18,
+            fontFamily: 'Readex Pro'),
+      ),
+    );
+  }
+}

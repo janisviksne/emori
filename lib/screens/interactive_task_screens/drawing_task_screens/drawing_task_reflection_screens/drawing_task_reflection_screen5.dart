@@ -58,7 +58,7 @@ class _DrawingTaskReflectionScreen5State
                       children: [
                         InkWell(
                             onTap: () {
-                              //ToDo after describing everything check if i can pass image around
+                              //ToDo check if image is passable to another screen
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -87,7 +87,7 @@ class _DrawingTaskReflectionScreen5State
                 onChanged: (val) {
                   drawTaskReflection.answerTitle5 = val;
                 },
-                style: const TextStyle(fontSize: 20, color: kActiveGreen),
+                style: TextStyle(fontSize: 20, color: kActiveGreen),
                 decoration: kInputFieldDecoration('', kActiveGreen),
               ),
               Expanded(

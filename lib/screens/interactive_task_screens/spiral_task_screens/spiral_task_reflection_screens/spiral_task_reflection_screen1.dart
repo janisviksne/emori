@@ -77,7 +77,7 @@ class _SpiralTaskReflectionScreen1State
                 onChanged: (val) {
                   spiralTaskReflection.answerTitle1 = val;
                 },
-                style: const TextStyle(fontSize: 20, color: kActiveGreen),
+                style: TextStyle(fontSize: 20, color: kActiveGreen),
                 decoration: kInputFieldDecoration('', kActiveGreen),
               ),
               Expanded(

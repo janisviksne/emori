@@ -32,7 +32,6 @@ class _LoginScreenState extends State<LoginScreen> {
         body: json.encode(
             {'email': loginUser.email, 'password': loginUser.password}));
     if (response.statusCode == 200) {
-      log(response.body);
       loginUser.userId = await convert.jsonDecode(response.body);
       Navigator.push(
           context,
@@ -89,8 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 return 'E-pasta lauks nedrīkst būt tukšs!';
                               }
                             },
-                            style: const TextStyle(
-                                fontSize: 20, color: kActiveGreen),
+                            style: TextStyle(fontSize: 20, color: kActiveGreen),
                             decoration:
                                 kInputFieldDecoration('E-pasts', kActiveGreen),
                           ),
@@ -107,8 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 return 'Paroles lauks nedrīkst būt tukšs!';
                               }
                             },
-                            style: const TextStyle(
-                                fontSize: 20, color: kActiveGreen),
+                            style: TextStyle(fontSize: 20, color: kActiveGreen),
                             decoration:
                                 kInputFieldDecoration('Parole', kActiveGreen),
                           ),
@@ -122,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           onTap: () {
                             log('Redirect to forgot password.');
                           },
-                          child: const Text(
+                          child: Text(
                             'Aizmirsi paroli?',
                             style: kInputFieldUnderline,
                           ),
@@ -136,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               primary: kActiveGreen,
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 24, vertical: 12),
-                              textStyle: const TextStyle(
+                              textStyle: TextStyle(
                                   fontSize: 16, color: kActiveYellow)),
                           child: const Text('Reģistrējies'),
                           onPressed: () {

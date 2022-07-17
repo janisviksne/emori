@@ -44,7 +44,7 @@ class YellowContainerButton<T> extends StatelessWidget {
       ),
       child: Text(
         title,
-        style: const TextStyle(
+        style: TextStyle(
             color: kActiveGreen, fontSize: 18, fontFamily: 'Readex Pro'),
       ),
     );
