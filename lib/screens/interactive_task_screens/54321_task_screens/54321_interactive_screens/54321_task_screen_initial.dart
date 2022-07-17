@@ -5,8 +5,8 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../utilities/constants/widget_constants/widget_constants.dart';
 import '../../../../utilities/widgets/task_widgets/white_container_button.dart';
+import '54321_interactive_task_text_screens/54321_task_screen_text1.dart';
 import '54321_task_screen_audio.dart';
-import '54321_task_screen_text.dart';
 
 class FiveNumberTaskFirstScreen extends StatefulWidget {
   const FiveNumberTaskFirstScreen({Key? key}) : super(key: key);
@@ -40,7 +40,7 @@ class _FiveNumberTaskFirstScreenState extends State<FiveNumberTaskFirstScreen> {
               Row(
                 children: [
                   kDescriptionText(
-                      'Tev tiks dota uzdevuma instrukcija kādā\nno šīm divām piedāvātajām formām',
+                      'Tev tiks dota uzdevuma instrukcija kādā\nno divām piedāvātajām formām',
                       kActiveGreen,
                       16),
                 ],
@@ -82,7 +82,7 @@ class _FiveNumberTaskFirstScreenState extends State<FiveNumberTaskFirstScreen> {
                             MaterialPageRoute(
                                 builder: (context) => taskType == 'audiāli'
                                     ? FiveNumberTaskScreenAudio()
-                                    : FiveNumberTaskScreenText()));
+                                    : FiveNumberTaskScreenText1()));
                       },
                       icon: SvgPicture.asset(
                           'assets/images/common/forward_button_green.svg'),
